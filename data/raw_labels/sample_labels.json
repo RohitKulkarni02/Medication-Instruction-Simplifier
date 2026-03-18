@@ -1,0 +1,35 @@
+[
+  {
+    "drug_id": "amoxicillin_250mg_1",
+    "drug_name": "Amoxicillin",
+    "dosage": "Take 1 tablet (250 mg) every 12 hours.",
+    "warnings": [
+      "Do not take if you have ever had an allergic reaction to penicillin-class antibiotics.",
+      "Seek medical help if you develop severe diarrhea."
+    ],
+    "contraindications": [
+      "Allergy to penicillin."
+    ],
+    "interactions": [
+      "Probenecid may increase amoxicillin levels."
+    ],
+    "full_label": "DOSAGE AND ADMINISTRATION: Take 1 tablet (250 mg) every 12 hours.\nWARNINGS: Do not take if you have ever had an allergic reaction to penicillin-class antibiotics. Seek medical help if you develop severe diarrhea.\nCONTRAINDICATIONS: Allergy to penicillin.\nDRUG INTERACTIONS: Probenecid may increase amoxicillin levels."
+  },
+  {
+    "drug_id": "ibuprofen_200mg_1",
+    "drug_name": "Ibuprofen",
+    "dosage": "Take 1 tablet (200 mg) every 6 to 8 hours as needed for pain.",
+    "warnings": [
+      "Do not exceed 6 tablets in 24 hours.",
+      "Stop use and ask a doctor if you experience swelling, shortness of breath, or trouble breathing."
+    ],
+    "contraindications": [
+      "Allergy to ibuprofen or other NSAIDs."
+    ],
+    "interactions": [
+      "Taking ibuprofen with warfarin may increase the risk of bleeding."
+    ],
+    "full_label": "DOSAGE AND ADMINISTRATION: Take 1 tablet (200 mg) every 6 to 8 hours as needed for pain.\nWARNINGS: Do not exceed 6 tablets in 24 hours. Stop use and ask a doctor if you experience swelling, shortness of breath, or trouble breathing.\nCONTRAINDICATIONS: Allergy to ibuprofen or other NSAIDs.\nDRUG INTERACTIONS: Taking ibuprofen with warfarin may increase the risk of bleeding."
+  }
+]
+

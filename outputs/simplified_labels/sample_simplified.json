@@ -1,0 +1,34 @@
+[
+  {
+    "drug_name": "Amoxicillin",
+    "original_text": "DOSAGE AND ADMINISTRATION: Take 1 tablet (250 mg) every 12 hours.\nWARNINGS: Do not take if you have ever had an allergic reaction to penicillin-class antibiotics. Seek medical help if you develop severe diarrhea.\nCONTRAINDICATIONS: Allergy to penicillin.\nDRUG INTERACTIONS: Probenecid may increase amoxicillin levels.",
+    "simplified_text": "Patient-friendly medication instructions for Amoxicillin\n\nDosage\nTake 1 tablet (250 mg) every 12 hours.\n\nWarnings\n- Do not take if you have ever had an allergic reaction to penicillin-class antibiotics.\n- Seek medical help if you develop severe diarrhea.\n\nContraindications\n- Allergy to penicillin.\n\nDrug interactions\n- Probenecid may increase amoxicillin levels.",
+    "dosage": "Take 1 tablet (250 mg) every 12 hours.",
+    "warnings": [
+      "Do not take if you have ever had an allergic reaction to penicillin-class antibiotics.",
+      "Seek medical help if you develop severe diarrhea."
+    ],
+    "contraindications": [
+      "Allergy to penicillin."
+    ],
+    "interactions": [
+      "Probenecid may increase amoxicillin levels."
+    ]
+  },
+  {
+    "drug_name": "Ibuprofen",
+    "original_text": "DOSAGE AND ADMINISTRATION: Take 1 tablet (200 mg) every 6 to 8 hours as needed for pain.\nWARNINGS: Do not exceed 6 tablets in 24 hours. Stop use and ask a doctor if you experience swelling, shortness of breath, or trouble breathing.\nCONTRAINDICATIONS: Allergy to ibuprofen or other NSAIDs.\nDRUG INTERACTIONS: Taking ibuprofen with warfarin may increase the risk of bleeding.",
+    "simplified_text": "Patient-friendly medication instructions for Ibuprofen\n\nDosage\nTake 1 tablet (200 mg) every 6 to 8 hours as needed for pain.\n\nWarnings\n- Do not exceed 6 tablets in 24 hours.\n- Stop use and ask a doctor if you experience swelling, shortness of breath, or trouble breathing.\n\nContraindications\n- Allergy to ibuprofen or other NSAIDs.\n\nDrug interactions\n- Taking ibuprofen with warfarin may increase the risk of bleeding.",
+    "dosage": "Take 1 tablet (200 mg) every 6 to 8 hours as needed for pain.",
+    "warnings": [
+      "Do not exceed 6 tablets in 24 hours.",
+      "Stop use and ask a doctor if you experience swelling, shortness of breath, or trouble breathing."
+    ],
+    "contraindications": [
+      "Allergy to ibuprofen or other NSAIDs."
+    ],
+    "interactions": [
+      "Taking ibuprofen with warfarin may increase the risk of bleeding."
+    ]
+  }
+]
