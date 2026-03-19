@@ -1,6 +1,6 @@
 # Drug Label Dataset Builder
 
-This project pulls drug labeling data from the openFDA Drug Label API and exports it into a clean JSON dataset for downstream analysis or LLM use.
+This project pulls drug labeling data from the openFDA Drug Label API and exports it into a clean JSON dataset
 
 ## What it does
 
@@ -42,7 +42,7 @@ Each exported record includes:
 - `full_label` — all extracted text joined together into one field
 
 
-## How to run
+## Example Runs
 
 ### 1. Run the curated drug list
 

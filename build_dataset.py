@@ -7,19 +7,6 @@ import logging
 import argparse
 from datetime import datetime
 
-# TO RUN:
-# Terminal -> python build_dataset.py to get the predetermined control list below or just run below
-# Arguments: --bulk (number) to get a random selection of a # of drugs
-# or --drug (drug name) for 1 drug
-
-# JSON Output:
-# - Top level metadata such as drug name, brand name
-# - Safety-critical fields pulled to the top for quick reading access
-# - all_fields contains every extracted text field
-# - full_label with all text concatenated
-#    - This can be fed to the LLM to get simplification for full label information
-
-
 API_KEY = "PZAZh10IvwqVKGd4GWngojnFbGcBNnz1DOWGsnXg"
 BASE_URL = "https://api.fda.gov/drug/label.json"
 CALL_DELAY = 0.5
