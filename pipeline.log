@@ -1,0 +1,392 @@
+2026-03-18 17:16:27,164 [INFO] Starting bulk fetch for 50 labels...
+2026-03-18 17:16:28,515 [WARNING] Missing safety-critical fields for 'SILICEA': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,515 [WARNING] Skipping label with no drug name (spl_id: f229e866-5775-4e42-a316-8480dd92fec6)
+2026-03-18 17:16:28,515 [WARNING] Missing safety-critical fields for 'POVIDONE-IODINE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,515 [WARNING] Skipping label with no drug name (spl_id: 01f4b0f6-94df-fd91-e063-6394a90a7997)
+2026-03-18 17:16:28,515 [WARNING] Skipping label with no drug name (spl_id: f8ce57b8-ebf7-4dc1-96ec-c8fbc41c17ff)
+2026-03-18 17:16:28,520 [WARNING] Skipping label with no drug name (spl_id: 48ec3789-57c6-4834-8a4b-09ae4cb2eb38)
+2026-03-18 17:16:28,521 [WARNING] Missing safety-critical fields for 'BENZALKONIUM CHLORIDE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,521 [WARNING] Skipping label with no drug name (spl_id: d08e6fbf-9162-47cd-9cf6-74ea24d48214)
+2026-03-18 17:16:28,521 [WARNING] Skipping label with no drug name (spl_id: 66a9f5f2-42e8-4500-a1f4-d4eb4e86758b)
+2026-03-18 17:16:28,521 [WARNING] Missing safety-critical fields for 'SALICYLIC ACID': contraindications, drug_interactions
+2026-03-18 17:16:28,521 [WARNING] Skipping label with no drug name (spl_id: 12da355e-ceac-7ce3-e063-6394a90a86f1)
+2026-03-18 17:16:28,528 [WARNING] Skipping label with no drug name (spl_id: 29c0c23b-f87d-4a94-a411-4091f399ecd1)
+2026-03-18 17:16:28,531 [WARNING] Skipping label with no drug name (spl_id: 528f5a4e-274b-5b3c-e054-00144ff8d46c)
+2026-03-18 17:16:28,532 [WARNING] Missing safety-critical fields for 'HYDROCORTISONE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,532 [WARNING] Skipping label with no drug name (spl_id: 45877af0-76f8-7b5d-e063-6294a90a3953)
+2026-03-18 17:16:28,536 [WARNING] Skipping label with no drug name (spl_id: eec625ed-404f-6a13-e053-2a95a90aaf0d)
+2026-03-18 17:16:28,536 [WARNING] Skipping label with no drug name (spl_id: bdafad45-6825-4cf2-bb9a-a2ff6ad2e581)
+2026-03-18 17:16:28,537 [WARNING] Missing safety-critical fields for 'HELIANTHEMUM NUMMULARIUM FLOWER, CLEMATIS VITALBA FLOWER, IMPATIENS GLANDULIFERA FLOWER, PRUNUS CERASIFERA FLOWER, ORNITHOGALUM UMBELLATUM, AND AESCULUS HIPPOCASTANUM FLOWER': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,537 [WARNING] Missing safety-critical fields for 'ACETAMINOPHEN': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,537 [WARNING] Skipping label with no drug name (spl_id: 30db70ac-df32-0f98-e054-00144ff88e88)
+2026-03-18 17:16:28,537 [WARNING] Skipping label with no drug name (spl_id: e4e38e4a-1007-425c-9710-1a3c508f56fd)
+2026-03-18 17:16:28,537 [WARNING] Skipping label with no drug name (spl_id: e5a90643-3f0e-45a2-a9a4-65229c38d6ab)
+2026-03-18 17:16:28,537 [WARNING] Skipping label with no drug name (spl_id: ea2c6a04-be1d-463f-bc67-851da43b87b5)
+2026-03-18 17:16:28,537 [WARNING] Missing safety-critical fields for 'GLYCERIN': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,537 [WARNING] Skipping label with no drug name (spl_id: c3d96073-8a40-a58c-21f4-2bf4bfad9887)
+2026-03-18 17:16:28,537 [WARNING] Skipping label with no drug name (spl_id: 367959d4-ed23-43ed-bac8-f7c6d606dc55)
+2026-03-18 17:16:28,537 [WARNING] Skipping label with no drug name (spl_id: 7c5b3625-4922-4296-b34b-5336b0ca2099)
+2026-03-18 17:16:28,537 [WARNING] Missing safety-critical fields for 'BENZOCAINE, RESORCINOL': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,537 [WARNING] Skipping label with no drug name (spl_id: b6c190d1-aab6-6fdc-e053-2a95a90abf85)
+2026-03-18 17:16:28,537 [WARNING] Skipping label with no drug name (spl_id: 40d0b087-3987-213c-e054-00144ff8d46c)
+2026-03-18 17:16:28,537 [WARNING] Skipping label with no drug name (spl_id: cb92989a-98b5-46d3-82e8-cbedde97d667)
+2026-03-18 17:16:28,537 [WARNING] Skipping label with no drug name (spl_id: 3d6a40a1-b103-4636-b143-6119ff16803a)
+2026-03-18 17:16:28,537 [WARNING] Skipping label with no drug name (spl_id: 0d26bd16-503b-49f5-a459-f48483d021b5)
+2026-03-18 17:16:28,540 [WARNING] Skipping label with no drug name (spl_id: c68be39d-f1c6-80a2-e053-2a95a90a61b5)
+2026-03-18 17:16:28,540 [WARNING] Skipping label with no drug name (spl_id: 89aa506d-64d5-4c44-8ef1-0f3a2d3ca183)
+2026-03-18 17:16:28,541 [WARNING] Missing safety-critical fields for 'ALUMINUM CHLOROHYDRATE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,542 [WARNING] Missing safety-critical fields for 'BETAMETHASONE DIPROPIONATE': drug_interactions
+2026-03-18 17:16:28,542 [WARNING] Skipping label with no drug name (spl_id: 74b7d044-ac52-4d7c-bf85-9a52283357c6)
+2026-03-18 17:16:28,542 [WARNING] Skipping label with no drug name (spl_id: c9efb85c-6792-4afb-b727-7ff82539cace)
+2026-03-18 17:16:28,542 [WARNING] Missing safety-critical fields for 'POVIDONE-IODINE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,543 [WARNING] Skipping label with no drug name (spl_id: 58f9e9f6-9960-4e9f-a606-695ea04abffb)
+2026-03-18 17:16:28,543 [WARNING] Skipping label with no drug name (spl_id: a53a65a4-d0b9-4459-98ac-82c22cd279ce)
+2026-03-18 17:16:28,543 [WARNING] Skipping label with no drug name (spl_id: 471f3917-49e9-55be-e063-6394a90a6b85)
+2026-03-18 17:16:28,546 [WARNING] Skipping label with no drug name (spl_id: 48808b7b-26c6-0448-e054-00144ff8d46c)
+2026-03-18 17:16:28,546 [WARNING] Skipping label with no drug name (spl_id: b647933b-f1e2-4778-8168-1415c01f5920)
+2026-03-18 17:16:28,546 [WARNING] Skipping label with no drug name (spl_id: ed6202f9-42ac-4736-b014-545f9c5c2be6)
+2026-03-18 17:16:28,546 [WARNING] Skipping label with no drug name (spl_id: f35a00b1-12ad-4730-8158-062a09f70329)
+2026-03-18 17:16:28,546 [WARNING] Skipping label with no drug name (spl_id: a541f9f5-e27b-4f22-ab16-4bacffa4e572)
+2026-03-18 17:16:28,546 [WARNING] Missing safety-critical fields for 'PETROLATUM AND LANOLIN': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,546 [WARNING] Skipping label with no drug name (spl_id: e30ceea3-89d5-4472-8091-226c878fe2ed)
+2026-03-18 17:16:28,546 [WARNING] Skipping label with no drug name (spl_id: 6735d026-b782-4d2f-a333-6e0186c1567c)
+2026-03-18 17:16:28,546 [WARNING] Skipping label with no drug name (spl_id: 0011c61b-e3ce-d909-e063-6394a90a6ac2)
+2026-03-18 17:16:28,546 [WARNING] Skipping label with no drug name (spl_id: e828ba72-7c2e-4ad3-9348-824c233b3d06)
+2026-03-18 17:16:28,549 [WARNING] Skipping label with no drug name (spl_id: 0013824B-6AEE-4DA4-AFFD-35BC6BF19D91)
+2026-03-18 17:16:28,549 [WARNING] Skipping label with no drug name (spl_id: 9117f8fa-f838-4f23-8da6-ff8bf32a9326)
+2026-03-18 17:16:28,549 [WARNING] Skipping label with no drug name (spl_id: fd12cd86-bbb2-4a3d-81e3-6b46e5f11e37)
+2026-03-18 17:16:28,549 [WARNING] Missing safety-critical fields for 'ACETAMINOPHEN': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,549 [WARNING] Skipping label with no drug name (spl_id: 45ed9b92-a2b5-53d2-e054-00144ff88e88)
+2026-03-18 17:16:28,549 [WARNING] Skipping label with no drug name (spl_id: 75fc31e7-8d28-4296-8a73-a17f0d872c67)
+2026-03-18 17:16:28,549 [WARNING] Skipping label with no drug name (spl_id: 0b581dc2-c9a7-4792-e063-6394a90a7db3)
+2026-03-18 17:16:28,549 [WARNING] Missing safety-critical fields for 'SODIUM FLUORIDE': contraindications, drug_interactions
+2026-03-18 17:16:28,554 [WARNING] Missing safety-critical fields for 'BENZALKONIUM CHLORIDE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,554 [WARNING] Missing safety-critical fields for 'ESOMEPRAZOLE MAGNESIUM': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: 45d912e2-7610-40c4-b35a-1a520ab62e09)
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: 28105e38-dd04-c3b2-e063-6394a90abf36)
+2026-03-18 17:16:28,554 [WARNING] Missing safety-critical fields for 'OCTISALATE, TITANIUM DIOXIDE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: af1dad81-bf25-42c9-933f-e1aab296f738)
+2026-03-18 17:16:28,554 [WARNING] Missing safety-critical fields for 'POLYETHYLENE GLYCOL 400': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: 00192bf2-1280-2656-e063-6294a90a4237)
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: 42da8ead-c417-e182-e063-6394a90a7a37)
+2026-03-18 17:16:28,554 [WARNING] Missing safety-critical fields for 'POLYETHYLENE GLYCOL 400, TETRAHYDROZOLINE HCL': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: 6f8c4717-2a22-7d3a-e053-2991aa0a99f3)
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: dd944506-1db6-402b-e053-2a95a90a3430)
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: ef34a696-43c4-4850-8b48-fce763d5a262)
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: 6a52e468-0d09-43d5-9055-380d56651f7f)
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: ab5153c1-a823-4f23-bd98-e818db369e65)
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: 9860d565-4e69-4d23-9c2e-3a5978c6b58d)
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: 3fcac10a-9021-4e2d-ab33-5a1aac3230aa)
+2026-03-18 17:16:28,554 [WARNING] Missing safety-critical fields for 'ISOPROPYL ALCOHOL': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: 06e429a5-0429-4899-a0d5-37fa340ccd4e)
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: dd80166d-cac5-3261-e053-2995a90aa412)
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: 8f6182f0-e8ce-4177-9021-25673b3c3b37)
+2026-03-18 17:16:28,554 [WARNING] Skipping label with no drug name (spl_id: ce91983d-5202-256c-1002-3dbd31e19fde)
+2026-03-18 17:16:28,555 [WARNING] Skipping label with no drug name (spl_id: bd47f3e5-58ff-4cf3-86bc-e5740d79c5d7)
+2026-03-18 17:16:28,555 [WARNING] Skipping label with no drug name (spl_id: 46f3d6e9-57bf-65d2-e054-00144ff8d46c)
+2026-03-18 17:16:28,555 [WARNING] Skipping label with no drug name (spl_id: 8f2b01b8-e712-4107-b824-e1f07faa2a41)
+2026-03-18 17:16:28,555 [WARNING] Skipping label with no drug name (spl_id: 68239683-18b4-45e0-b132-db401924df17)
+2026-03-18 17:16:28,555 [WARNING] Skipping label with no drug name (spl_id: fdd828e3-1583-48b5-8b57-bdae587f2beb)
+2026-03-18 17:16:28,555 [WARNING] Skipping label with no drug name (spl_id: db87e908-057c-03c8-e053-2995a90a2194)
+2026-03-18 17:16:28,555 [INFO] Fetched 32 records so far...
+2026-03-18 17:16:30,243 [WARNING] Skipping label with no drug name (spl_id: 0563acc8-bcbd-4b2c-a92e-e8b4fd53b929)
+2026-03-18 17:16:30,243 [WARNING] Skipping label with no drug name (spl_id: 55406aff-355d-43bb-82d3-34d81639792d)
+2026-03-18 17:16:30,244 [WARNING] Skipping label with no drug name (spl_id: 3bdb1166-d32e-e7e1-e063-6294a90a7cf3)
+2026-03-18 17:16:30,248 [WARNING] Missing safety-critical fields for 'SALICYLIC ACID': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,249 [WARNING] Missing safety-critical fields for 'NAPROXEN SODIUM 220MG': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,249 [WARNING] Skipping label with no drug name (spl_id: baa618d9-f802-f827-e053-2995a90a09e0)
+2026-03-18 17:16:30,249 [WARNING] Missing safety-critical fields for 'CHLOROXYLENOL': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,249 [WARNING] Skipping label with no drug name (spl_id: 4a1fb46b-329e-4176-9af3-0cd1f31a53c7)
+2026-03-18 17:16:30,249 [WARNING] Skipping label with no drug name (spl_id: b8f0144e-5986-41b0-a283-3384bbc4117e)
+2026-03-18 17:16:30,249 [WARNING] Missing safety-critical fields for 'CARBAMIDE PEROXIDE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,249 [WARNING] Skipping label with no drug name (spl_id: a958dac3-8156-4222-a379-82fb3c229a74)
+2026-03-18 17:16:30,249 [WARNING] Skipping label with no drug name (spl_id: 0024163a-7904-053e-e063-6394a90a75df)
+2026-03-18 17:16:30,249 [WARNING] Skipping label with no drug name (spl_id: 00242727-5d15-5ab1-e063-6394a90ac6ba)
+2026-03-18 17:16:30,252 [WARNING] Skipping label with no drug name (spl_id: 00246f6f-a987-e2c3-e063-6394a90aa27d)
+2026-03-18 17:16:30,252 [WARNING] Skipping label with no drug name (spl_id: 457094d1-02ad-411f-a2ad-fbf42845eafc)
+2026-03-18 17:16:30,252 [WARNING] Missing safety-critical fields for 'EVEN TONE PLUS NIACINAMIDE APPLE BLOSSOM AND MANGO BUTTER DRY SPRAY 72H ANTIPERSPIRANT DEODORANT': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,252 [WARNING] Missing safety-critical fields for 'EVEN TONE PLUS NIACINAMIDE PEACH BLOSSOM AND RICE MILK DRY SPRAY 72H ANTIPERSPIRANT DEODORANT': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,252 [WARNING] Skipping label with no drug name (spl_id: 4721fb64-bc1c-b450-e063-6294a90a056e)
+2026-03-18 17:16:30,252 [WARNING] Skipping label with no drug name (spl_id: 7f8dff49-bf19-6d92-e053-2991aa0a6152)
+2026-03-18 17:16:30,252 [WARNING] Skipping label with no drug name (spl_id: d9041edb-4800-43a2-9468-1f86947e5f57)
+2026-03-18 17:16:30,253 [WARNING] Skipping label with no drug name (spl_id: f4a8921b-1b27-4768-887a-81bad872a378)
+2026-03-18 17:16:30,253 [WARNING] Skipping label with no drug name (spl_id: 457465e3-bc92-c577-e063-6294a90a2fb4)
+2026-03-18 17:16:30,253 [WARNING] Missing safety-critical fields for 'EVEN TONE PLUS NIACINAMIDE SHEA BUTTER AND VANILLA DRY SPRAY 72H ANTIPERSPIRANT DEODORANT': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,253 [WARNING] Skipping label with no drug name (spl_id: 0026d74b-7a6c-66ce-e063-6294a90a0ffa)
+2026-03-18 17:16:30,253 [WARNING] Skipping label with no drug name (spl_id: 0f52f15b-c688-f5c0-e063-6394a90ae39c)
+2026-03-18 17:16:30,253 [WARNING] Skipping label with no drug name (spl_id: 19c08063-f9b8-4052-88a7-2efeda86a527)
+2026-03-18 17:16:30,253 [WARNING] Missing safety-critical fields for 'BELLIS PERENNIS, HYPERICUM PERFOMATUM,TOXICODENDRON PUBSCENS LEAF, RUTA GRAVEOLENS FLOWERING TOP': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,253 [WARNING] Skipping label with no drug name (spl_id: e2586bc2-3647-408e-aba4-b1716c07f5ea)
+2026-03-18 17:16:30,253 [WARNING] Skipping label with no drug name (spl_id: 2abd75c3-555f-d428-e063-6294a90ae77d)
+2026-03-18 17:16:30,253 [WARNING] Skipping label with no drug name (spl_id: 0027b8a3-73bf-4005-a7e3-b035f451a861)
+2026-03-18 17:16:30,253 [WARNING] Missing safety-critical fields for 'PHENAZOPYRIDINE': warnings, drug_interactions
+2026-03-18 17:16:30,253 [WARNING] Skipping label with no drug name (spl_id: b059aa75-9e2b-4151-9f2e-b8a4c1e9e763)
+2026-03-18 17:16:30,254 [WARNING] Missing safety-critical fields for 'AVOBENZONE, HOMOSALATE, OCTISALATE, AND OCTOCRYLENE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,254 [WARNING] Missing safety-critical fields for 'ALUMINUM CHLOROHYDRATE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,254 [WARNING] Skipping label with no drug name (spl_id: 33131cdb-3a5c-4814-97e4-0e66d142fe85)
+2026-03-18 17:16:30,254 [WARNING] Missing safety-critical fields for 'ZINC OXIDE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,256 [WARNING] Missing safety-critical fields for 'MENTHOL': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,256 [WARNING] Missing safety-critical fields for 'SODIUM FLUORIDE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,257 [WARNING] Missing safety-critical fields for 'CAMPHOR, MENTHOL': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,257 [WARNING] Skipping label with no drug name (spl_id: 111572c2-3009-4a36-b651-328537b313d3)
+2026-03-18 17:16:30,257 [WARNING] Missing safety-critical fields for 'ZINC OXIDE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,257 [WARNING] Skipping label with no drug name (spl_id: d367bd6d-a9b7-4367-8366-14b97fa5d8f0)
+2026-03-18 17:16:30,257 [WARNING] Skipping label with no drug name (spl_id: 6afed5fe-19a2-4e43-ab89-57eed6097e5a)
+2026-03-18 17:16:30,257 [WARNING] Skipping label with no drug name (spl_id: 9e774ccd-eabf-4f7e-bbe6-aa5a21226130)
+2026-03-18 17:16:30,257 [WARNING] Skipping label with no drug name (spl_id: 81b4519f-8add-406f-a8ae-8879df251e0b)
+2026-03-18 17:16:30,257 [WARNING] Skipping label with no drug name (spl_id: f31e3744-662f-2fe3-e053-2995a90a8c00)
+2026-03-18 17:16:30,257 [WARNING] Skipping label with no drug name (spl_id: 72a728ac-4d57-4b93-b5e1-9fb74c28163b)
+2026-03-18 17:16:30,257 [WARNING] Missing safety-critical fields for 'ALUMINIUM FLUORATUM': dosage_and_administration, warnings, contraindications, drug_interactions, indications_and_usage, adverse_reactions
+2026-03-18 17:16:30,257 [WARNING] Skipping label with no drug name (spl_id: 7f9ce45e-8770-1d61-e053-2a91aa0a5886)
+2026-03-18 17:16:30,257 [WARNING] Skipping label with no drug name (spl_id: 3c425d08-4168-a5bc-e063-6394a90a2e95)
+2026-03-18 17:16:30,257 [WARNING] Skipping label with no drug name (spl_id: 4c40fbad-f018-45a5-813f-5a7dca18c9a6)
+2026-03-18 17:16:30,257 [WARNING] Missing safety-critical fields for 'TETRAHYDROZOLINE HCL': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,257 [WARNING] Skipping label with no drug name (spl_id: 002da62b-aec8-8e2a-e063-6294a90a5efc)
+2026-03-18 17:16:30,257 [WARNING] Skipping label with no drug name (spl_id: 002db658-6b03-ea49-e063-6294a90ae3e7)
+2026-03-18 17:16:30,257 [WARNING] Missing safety-critical fields for 'CAMPHOR, MENTHOL': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,265 [WARNING] Skipping label with no drug name (spl_id: 6280b919-6b17-365e-e053-2991aa0a0b9c)
+2026-03-18 17:16:30,265 [WARNING] Skipping label with no drug name (spl_id: 5d9579bf-102a-a41e-e053-2a91aa0ab9ac)
+2026-03-18 17:16:30,265 [WARNING] Skipping label with no drug name (spl_id: f03590e9-03f4-42db-aa41-57ef3237a98c)
+2026-03-18 17:16:30,265 [WARNING] Skipping label with no drug name (spl_id: 002e56c5-4f1a-ffb2-e063-6294a90a0c43)
+2026-03-18 17:16:30,265 [WARNING] Skipping label with no drug name (spl_id: 21dd4b8e-fe3d-8eae-e063-6394a90a164d)
+2026-03-18 17:16:30,269 [WARNING] Missing safety-critical fields for 'ADENOSINE, NIACINAMIDE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,269 [WARNING] Missing safety-critical fields for 'ALUMINIUM NITRICUM': dosage_and_administration, warnings, contraindications, drug_interactions, indications_and_usage, adverse_reactions
+2026-03-18 17:16:30,269 [WARNING] Skipping label with no drug name (spl_id: 5945b2c1-def7-4364-b716-bf633f6b6ce4)
+2026-03-18 17:16:30,271 [WARNING] Skipping label with no drug name (spl_id: 499be834-b8fa-bec8-e063-6294a90a469c)
+2026-03-18 17:16:30,271 [WARNING] Missing safety-critical fields for 'GARLIC, AVENA SATIVA FLOWERING TOP, ANGELICA ARCHANGELICA ROOT, ARABICA COFFEE BEAN, HOLY BASIL LEAF, PASSIFLORA EDULIS FLOWER, SCUTELLARIA LATERIFLORA WHOLE, VERBENA HASTATA TOP, AND MACROPIPER METHYSTICUM ROOT': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,271 [WARNING] Skipping label with no drug name (spl_id: 30c8eeea-0194-4abb-a848-ec85ac2c0090)
+2026-03-18 17:16:30,271 [WARNING] Missing safety-critical fields for 'TITANIUM DIOXIDE, ZINC OXIDE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,271 [WARNING] Skipping label with no drug name (spl_id: 62d437ab-33f3-47c6-b070-cc0bd59df0a7)
+2026-03-18 17:16:30,271 [WARNING] Missing safety-critical fields for 'ASCORBIC ACID, SODIUM FLUORIDE, VITAMIN A AND VITAMIN D': contraindications, drug_interactions
+2026-03-18 17:16:30,271 [WARNING] Skipping label with no drug name (spl_id: e684d1c3-c4b9-afc7-e053-2a95a90a5398)
+2026-03-18 17:16:30,271 [WARNING] Skipping label with no drug name (spl_id: 233e02b9-66b8-4056-8ada-23563ff6dbf3)
+2026-03-18 17:16:30,271 [WARNING] Skipping label with no drug name (spl_id: 24ee5bfb-896b-470d-bc81-c33f19218a8a)
+2026-03-18 17:16:30,274 [WARNING] Missing safety-critical fields for 'AVOBENZONE, OCTINOXATE, OCTISALATE, OCTOCRYLENE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,274 [WARNING] Skipping label with no drug name (spl_id: 26d206e8-873c-48ef-a4c5-6594772ca12c)
+2026-03-18 17:16:30,283 [WARNING] Skipping label with no drug name (spl_id: d098171e-4f75-4702-bbec-d6a50bb56c57)
+2026-03-18 17:16:30,283 [WARNING] Skipping label with no drug name (spl_id: 237f3963-47ea-7dfa-e063-6394a90a6a1e)
+2026-03-18 17:16:30,283 [WARNING] Skipping label with no drug name (spl_id: 26584cbd-27a6-ffff-e063-6294a90a1bcc)
+2026-03-18 17:16:30,283 [WARNING] Skipping label with no drug name (spl_id: 243393c6-1495-dddf-e063-6294a90a60bc)
+2026-03-18 17:16:30,285 [WARNING] Skipping label with no drug name (spl_id: 977f1de9-3567-4053-ac35-eeb15012f936)
+2026-03-18 17:16:30,285 [WARNING] Skipping label with no drug name (spl_id: 4bec4c7d-62f7-4b2b-b4df-bb1f629b1d1b)
+2026-03-18 17:16:30,285 [WARNING] Missing safety-critical fields for 'EVEN TONE PLUS NIACINAMIDE PEACH BLOSSOM AND RICE MILK ANTIPERSPIRANT DEODORANT': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,285 [WARNING] Skipping label with no drug name (spl_id: c0543309-9868-45a3-bcf8-6e4275dec4da)
+2026-03-18 17:16:30,285 [WARNING] Skipping label with no drug name (spl_id: fb43c2d8-731b-437c-ba5c-82e7b8dbe712)
+2026-03-18 17:16:30,285 [WARNING] Missing safety-critical fields for 'EVEN TONE PLUS NIACINAMIDE APPLE BLOSSOM AND MANGO BUTTER ANTIPERSPIRANT DEODORANT': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,285 [WARNING] Missing safety-critical fields for 'EVEN TONE PLUS NIACINAMIDE SHEA BUTTER AND VANILLA ANTIPERSPIRANT DEODORANT': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,286 [WARNING] Missing safety-critical fields for 'ACETAMINOPHEN': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,286 [WARNING] Missing safety-critical fields for 'EVEN TONE PLUS NIACINAMIDE ROSEWOOD AND POWDER ANTIPERSPIRANT DEODORANT': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,286 [WARNING] Skipping label with no drug name (spl_id: cea1c4f1-7d00-492d-e053-2a95a90a9087)
+2026-03-18 17:16:30,286 [WARNING] Missing safety-critical fields for 'DIPHENHYDRAMINE HCL': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:16:30,286 [WARNING] Skipping label with no drug name (spl_id: cbb0f401-ee2f-45fe-81dd-f252a17922eb)
+2026-03-18 17:16:30,286 [INFO] Fetched 73 records so far...
+2026-03-18 17:16:30,791 [INFO] Bulk fetch complete. 50 records retrieved.
+2026-03-18 17:16:30,817 [INFO] Dataset exported to data/drug_labels.json (50 records)
+2026-03-18 17:19:09,178 [INFO] Starting curated fetch for 25 drugs...
+2026-03-18 17:19:09,178 [INFO] [1/25] Fetching: ibuprofen
+2026-03-18 17:19:10,035 [INFO] Found 20 labels for 'ibuprofen', selected label with 7 safety-critical fields, effective date: 20260217
+2026-03-18 17:19:10,545 [INFO] [2/25] Fetching: acetaminophen
+2026-03-18 17:19:11,215 [INFO] Found 20 labels for 'acetaminophen', selected label with 7 safety-critical fields, effective date: 20241226
+2026-03-18 17:19:11,730 [INFO] [3/25] Fetching: diphenhydramine
+2026-03-18 17:19:12,318 [INFO] Found 20 labels for 'diphenhydramine', selected label with 6 safety-critical fields, effective date: 20250516
+2026-03-18 17:19:12,825 [INFO] [4/25] Fetching: loratadine
+2026-03-18 17:19:13,566 [INFO] Found 20 labels for 'loratadine', selected label with 4 safety-critical fields, effective date: 20241231
+2026-03-18 17:19:13,566 [WARNING] Missing safety-critical fields for 'LORATADINE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:19:14,072 [INFO] [5/25] Fetching: omeprazole
+2026-03-18 17:19:14,767 [INFO] Found 20 labels for 'omeprazole', selected label with 6 safety-critical fields, effective date: 20260225
+2026-03-18 17:19:15,279 [INFO] [6/25] Fetching: cetirizine
+2026-03-18 17:19:15,857 [INFO] Found 20 labels for 'cetirizine', selected label with 4 safety-critical fields, effective date: 20260306
+2026-03-18 17:19:15,859 [WARNING] Missing safety-critical fields for 'CETIRIZINE HYDROCHLORIDE': warnings, drug_interactions
+2026-03-18 17:19:16,364 [INFO] [7/25] Fetching: aspirin
+2026-03-18 17:19:16,889 [INFO] Found 20 labels for 'aspirin', selected label with 3 safety-critical fields, effective date: 20260202
+2026-03-18 17:19:16,890 [WARNING] Missing safety-critical fields for 'ACETAMINOPHEN, ASPIRIN, AND CAFFEINE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 17:19:17,395 [INFO] [8/25] Fetching: naproxen
+2026-03-18 17:19:18,283 [INFO] Found 20 labels for 'naproxen', selected label with 7 safety-critical fields, effective date: 20260129
+2026-03-18 17:19:18,794 [INFO] [9/25] Fetching: amoxicillin
+2026-03-18 17:19:19,571 [INFO] Found 20 labels for 'amoxicillin', selected label with 6 safety-critical fields, effective date: 20260119
+2026-03-18 17:19:20,076 [INFO] [10/25] Fetching: metformin
+2026-03-18 17:19:20,991 [INFO] Found 20 labels for 'metformin', selected label with 7 safety-critical fields, effective date: 20260114
+2026-03-18 17:19:21,498 [INFO] [11/25] Fetching: lisinopril
+2026-03-18 17:19:22,264 [INFO] Found 20 labels for 'lisinopril', selected label with 7 safety-critical fields, effective date: 20260303
+2026-03-18 17:19:22,768 [INFO] [12/25] Fetching: atorvastatin
+2026-03-18 17:19:23,766 [INFO] Found 20 labels for 'atorvastatin', selected label with 6 safety-critical fields, effective date: 20260306
+2026-03-18 17:19:24,271 [INFO] [13/25] Fetching: metoprolol
+2026-03-18 17:19:25,177 [INFO] Found 20 labels for 'metoprolol', selected label with 6 safety-critical fields, effective date: 20260210
+2026-03-18 17:19:25,685 [INFO] [14/25] Fetching: sertraline
+2026-03-18 17:19:26,678 [INFO] Found 20 labels for 'sertraline', selected label with 7 safety-critical fields, effective date: 20260120
+2026-03-18 17:19:27,188 [INFO] [15/25] Fetching: prednisone
+2026-03-18 17:19:27,880 [INFO] Found 20 labels for 'prednisone', selected label with 6 safety-critical fields, effective date: 20260101
+2026-03-18 17:19:28,389 [INFO] [16/25] Fetching: azithromycin
+2026-03-18 17:19:29,392 [INFO] Found 20 labels for 'azithromycin', selected label with 6 safety-critical fields, effective date: 20260316
+2026-03-18 17:19:29,898 [INFO] [17/25] Fetching: methotrexate
+2026-03-18 17:19:31,031 [INFO] Found 20 labels for 'methotrexate', selected label with 7 safety-critical fields, effective date: 20260302
+2026-03-18 17:19:31,537 [INFO] [18/25] Fetching: tofacitinib
+2026-03-18 17:19:32,259 [INFO] Found 2 labels for 'tofacitinib', selected label with 7 safety-critical fields, effective date: 20260312
+2026-03-18 17:19:32,771 [INFO] [19/25] Fetching: warfarin
+2026-03-18 17:19:34,467 [INFO] Found 20 labels for 'warfarin', selected label with 7 safety-critical fields, effective date: 20260312
+2026-03-18 17:19:34,977 [INFO] [20/25] Fetching: isotretinoin
+2026-03-18 17:19:35,896 [INFO] Found 20 labels for 'isotretinoin', selected label with 7 safety-critical fields, effective date: 20260213
+2026-03-18 17:19:36,401 [INFO] [21/25] Fetching: clozapine
+2026-03-18 17:19:37,393 [INFO] Found 17 labels for 'clozapine', selected label with 7 safety-critical fields, effective date: 20260313
+2026-03-18 17:19:37,902 [INFO] [22/25] Fetching: oxycodone
+2026-03-18 17:19:38,968 [INFO] Found 20 labels for 'oxycodone', selected label with 7 safety-critical fields, effective date: 20260114
+2026-03-18 17:19:39,476 [INFO] [23/25] Fetching: alprazolam
+2026-03-18 17:19:40,470 [INFO] Found 20 labels for 'alprazolam', selected label with 7 safety-critical fields, effective date: 20251226
+2026-03-18 17:19:40,980 [INFO] [24/25] Fetching: amphetamine
+2026-03-18 17:19:41,886 [INFO] Found 20 labels for 'amphetamine', selected label with 7 safety-critical fields, effective date: 20251105
+2026-03-18 17:19:42,391 [INFO] [25/25] Fetching: diazepam
+2026-03-18 17:19:43,160 [INFO] Found 20 labels for 'diazepam', selected label with 7 safety-critical fields, effective date: 20251027
+2026-03-18 17:19:43,667 [INFO] Curated fetch complete. 25/25 drugs retrieved.
+2026-03-18 17:19:43,707 [INFO] Dataset exported to data/drug_labels.json (25 records)
+2026-03-18 19:57:53,368 [INFO] Fetching single drug: alprazolam
+2026-03-18 19:57:54,604 [INFO] Found 20 labels for 'alprazolam', selected label with 7 safety-critical fields, effective date: 20251226
+2026-03-18 19:57:54,609 [INFO] Dataset exported to data/drug_labels.json (1 records)
+2026-03-18 20:01:17,162 [INFO] Starting curated fetch for 25 drugs...
+2026-03-18 20:01:17,162 [INFO] [1/25] Fetching: ibuprofen
+2026-03-18 20:01:18,547 [INFO] Found 20 labels for 'ibuprofen', selected label with 7 safety-critical fields, effective date: 20260217
+2026-03-18 20:01:19,056 [INFO] [2/25] Fetching: acetaminophen
+2026-03-18 20:01:19,673 [INFO] Found 20 labels for 'acetaminophen', selected label with 7 safety-critical fields, effective date: 20241226
+2026-03-18 20:01:20,187 [INFO] [3/25] Fetching: diphenhydramine
+2026-03-18 20:01:20,767 [INFO] Found 20 labels for 'diphenhydramine', selected label with 6 safety-critical fields, effective date: 20250516
+2026-03-18 20:01:21,273 [INFO] [4/25] Fetching: loratadine
+2026-03-18 20:01:22,070 [INFO] Found 20 labels for 'loratadine', selected label with 4 safety-critical fields, effective date: 20241231
+2026-03-18 20:01:22,071 [WARNING] Missing safety-critical fields for 'LORATADINE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:01:22,573 [INFO] [5/25] Fetching: omeprazole
+2026-03-18 20:01:23,425 [INFO] Found 20 labels for 'omeprazole', selected label with 6 safety-critical fields, effective date: 20260225
+2026-03-18 20:01:23,939 [INFO] [6/25] Fetching: cetirizine
+2026-03-18 20:01:24,440 [INFO] Found 20 labels for 'cetirizine', selected label with 4 safety-critical fields, effective date: 20260306
+2026-03-18 20:01:24,442 [WARNING] Missing safety-critical fields for 'CETIRIZINE HYDROCHLORIDE': warnings, drug_interactions
+2026-03-18 20:01:24,947 [INFO] [7/25] Fetching: aspirin
+2026-03-18 20:01:25,531 [INFO] Found 20 labels for 'aspirin', selected label with 3 safety-critical fields, effective date: 20260202
+2026-03-18 20:01:25,533 [WARNING] Missing safety-critical fields for 'ACETAMINOPHEN, ASPIRIN, AND CAFFEINE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:01:26,036 [INFO] [8/25] Fetching: naproxen
+2026-03-18 20:01:27,165 [INFO] Found 20 labels for 'naproxen', selected label with 7 safety-critical fields, effective date: 20260129
+2026-03-18 20:01:27,678 [INFO] [9/25] Fetching: amoxicillin
+2026-03-18 20:01:28,750 [INFO] Found 20 labels for 'amoxicillin', selected label with 6 safety-critical fields, effective date: 20260119
+2026-03-18 20:01:29,260 [INFO] [10/25] Fetching: metformin
+2026-03-18 20:01:30,247 [INFO] Found 20 labels for 'metformin', selected label with 7 safety-critical fields, effective date: 20260114
+2026-03-18 20:01:30,756 [INFO] [11/25] Fetching: lisinopril
+2026-03-18 20:01:31,562 [INFO] Found 20 labels for 'lisinopril', selected label with 7 safety-critical fields, effective date: 20260303
+2026-03-18 20:01:32,071 [INFO] [12/25] Fetching: atorvastatin
+2026-03-18 20:01:33,088 [INFO] Found 20 labels for 'atorvastatin', selected label with 6 safety-critical fields, effective date: 20260306
+2026-03-18 20:01:33,597 [INFO] [13/25] Fetching: metoprolol
+2026-03-18 20:01:34,434 [INFO] Found 20 labels for 'metoprolol', selected label with 6 safety-critical fields, effective date: 20260210
+2026-03-18 20:01:34,943 [INFO] [14/25] Fetching: sertraline
+2026-03-18 20:01:36,017 [INFO] Found 20 labels for 'sertraline', selected label with 7 safety-critical fields, effective date: 20260120
+2026-03-18 20:01:36,529 [INFO] [15/25] Fetching: prednisone
+2026-03-18 20:01:37,240 [INFO] Found 20 labels for 'prednisone', selected label with 6 safety-critical fields, effective date: 20260101
+2026-03-18 20:01:37,747 [INFO] [16/25] Fetching: azithromycin
+2026-03-18 20:01:38,860 [INFO] Found 20 labels for 'azithromycin', selected label with 6 safety-critical fields, effective date: 20260316
+2026-03-18 20:01:39,370 [INFO] [17/25] Fetching: methotrexate
+2026-03-18 20:01:40,464 [INFO] Found 20 labels for 'methotrexate', selected label with 7 safety-critical fields, effective date: 20260302
+2026-03-18 20:01:40,973 [INFO] [18/25] Fetching: tofacitinib
+2026-03-18 20:01:41,695 [INFO] Found 2 labels for 'tofacitinib', selected label with 7 safety-critical fields, effective date: 20260312
+2026-03-18 20:01:42,211 [INFO] [19/25] Fetching: warfarin
+2026-03-18 20:01:43,064 [INFO] Found 20 labels for 'warfarin', selected label with 7 safety-critical fields, effective date: 20260312
+2026-03-18 20:01:43,575 [INFO] [20/25] Fetching: isotretinoin
+2026-03-18 20:01:44,547 [INFO] Found 20 labels for 'isotretinoin', selected label with 7 safety-critical fields, effective date: 20260213
+2026-03-18 20:01:45,058 [INFO] [21/25] Fetching: clozapine
+2026-03-18 20:01:46,127 [INFO] Found 17 labels for 'clozapine', selected label with 7 safety-critical fields, effective date: 20260313
+2026-03-18 20:01:46,639 [INFO] [22/25] Fetching: oxycodone
+2026-03-18 20:01:47,626 [INFO] Found 20 labels for 'oxycodone', selected label with 7 safety-critical fields, effective date: 20260114
+2026-03-18 20:01:48,137 [INFO] [23/25] Fetching: alprazolam
+2026-03-18 20:01:49,112 [INFO] Found 20 labels for 'alprazolam', selected label with 7 safety-critical fields, effective date: 20251226
+2026-03-18 20:01:49,623 [INFO] [24/25] Fetching: amphetamine
+2026-03-18 20:01:50,417 [INFO] Found 20 labels for 'amphetamine', selected label with 7 safety-critical fields, effective date: 20251105
+2026-03-18 20:01:50,926 [INFO] [25/25] Fetching: diazepam
+2026-03-18 20:01:51,796 [INFO] Found 20 labels for 'diazepam', selected label with 7 safety-critical fields, effective date: 20251027
+2026-03-18 20:01:52,304 [INFO] Curated fetch complete. 25/25 drugs retrieved.
+2026-03-18 20:01:52,339 [INFO] Dataset exported to data/drug_labels.json (25 records)
+2026-03-18 20:02:10,395 [INFO] Starting bulk fetch for 5 labels...
+2026-03-18 20:02:11,523 [WARNING] Missing safety-critical fields for 'SILICEA': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,523 [WARNING] Skipping label with no drug name (spl_id: f229e866-5775-4e42-a316-8480dd92fec6)
+2026-03-18 20:02:11,523 [WARNING] Missing safety-critical fields for 'POVIDONE-IODINE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,523 [WARNING] Skipping label with no drug name (spl_id: 01f4b0f6-94df-fd91-e063-6394a90a7997)
+2026-03-18 20:02:11,523 [WARNING] Skipping label with no drug name (spl_id: f8ce57b8-ebf7-4dc1-96ec-c8fbc41c17ff)
+2026-03-18 20:02:11,527 [WARNING] Skipping label with no drug name (spl_id: 48ec3789-57c6-4834-8a4b-09ae4cb2eb38)
+2026-03-18 20:02:11,527 [WARNING] Missing safety-critical fields for 'BENZALKONIUM CHLORIDE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,527 [WARNING] Skipping label with no drug name (spl_id: d08e6fbf-9162-47cd-9cf6-74ea24d48214)
+2026-03-18 20:02:11,527 [WARNING] Skipping label with no drug name (spl_id: 66a9f5f2-42e8-4500-a1f4-d4eb4e86758b)
+2026-03-18 20:02:11,527 [WARNING] Missing safety-critical fields for 'SALICYLIC ACID': contraindications, drug_interactions
+2026-03-18 20:02:11,527 [WARNING] Skipping label with no drug name (spl_id: 12da355e-ceac-7ce3-e063-6394a90a86f1)
+2026-03-18 20:02:11,533 [WARNING] Skipping label with no drug name (spl_id: 29c0c23b-f87d-4a94-a411-4091f399ecd1)
+2026-03-18 20:02:11,535 [WARNING] Skipping label with no drug name (spl_id: 528f5a4e-274b-5b3c-e054-00144ff8d46c)
+2026-03-18 20:02:11,536 [WARNING] Missing safety-critical fields for 'HYDROCORTISONE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,536 [WARNING] Skipping label with no drug name (spl_id: 45877af0-76f8-7b5d-e063-6294a90a3953)
+2026-03-18 20:02:11,541 [WARNING] Skipping label with no drug name (spl_id: eec625ed-404f-6a13-e053-2a95a90aaf0d)
+2026-03-18 20:02:11,541 [WARNING] Skipping label with no drug name (spl_id: bdafad45-6825-4cf2-bb9a-a2ff6ad2e581)
+2026-03-18 20:02:11,541 [WARNING] Missing safety-critical fields for 'HELIANTHEMUM NUMMULARIUM FLOWER, CLEMATIS VITALBA FLOWER, IMPATIENS GLANDULIFERA FLOWER, PRUNUS CERASIFERA FLOWER, ORNITHOGALUM UMBELLATUM, AND AESCULUS HIPPOCASTANUM FLOWER': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,541 [WARNING] Missing safety-critical fields for 'ACETAMINOPHEN': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,541 [WARNING] Skipping label with no drug name (spl_id: 30db70ac-df32-0f98-e054-00144ff88e88)
+2026-03-18 20:02:11,541 [WARNING] Skipping label with no drug name (spl_id: e4e38e4a-1007-425c-9710-1a3c508f56fd)
+2026-03-18 20:02:11,541 [WARNING] Skipping label with no drug name (spl_id: e5a90643-3f0e-45a2-a9a4-65229c38d6ab)
+2026-03-18 20:02:11,541 [WARNING] Skipping label with no drug name (spl_id: ea2c6a04-be1d-463f-bc67-851da43b87b5)
+2026-03-18 20:02:11,542 [WARNING] Missing safety-critical fields for 'GLYCERIN': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,542 [WARNING] Skipping label with no drug name (spl_id: c3d96073-8a40-a58c-21f4-2bf4bfad9887)
+2026-03-18 20:02:11,542 [WARNING] Skipping label with no drug name (spl_id: 367959d4-ed23-43ed-bac8-f7c6d606dc55)
+2026-03-18 20:02:11,542 [WARNING] Skipping label with no drug name (spl_id: 7c5b3625-4922-4296-b34b-5336b0ca2099)
+2026-03-18 20:02:11,542 [WARNING] Missing safety-critical fields for 'BENZOCAINE, RESORCINOL': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,542 [WARNING] Skipping label with no drug name (spl_id: b6c190d1-aab6-6fdc-e053-2a95a90abf85)
+2026-03-18 20:02:11,542 [WARNING] Skipping label with no drug name (spl_id: 40d0b087-3987-213c-e054-00144ff8d46c)
+2026-03-18 20:02:11,542 [WARNING] Skipping label with no drug name (spl_id: cb92989a-98b5-46d3-82e8-cbedde97d667)
+2026-03-18 20:02:11,542 [WARNING] Skipping label with no drug name (spl_id: 3d6a40a1-b103-4636-b143-6119ff16803a)
+2026-03-18 20:02:11,542 [WARNING] Skipping label with no drug name (spl_id: 0d26bd16-503b-49f5-a459-f48483d021b5)
+2026-03-18 20:02:11,545 [WARNING] Skipping label with no drug name (spl_id: c68be39d-f1c6-80a2-e053-2a95a90a61b5)
+2026-03-18 20:02:11,545 [WARNING] Skipping label with no drug name (spl_id: 89aa506d-64d5-4c44-8ef1-0f3a2d3ca183)
+2026-03-18 20:02:11,545 [WARNING] Missing safety-critical fields for 'ALUMINUM CHLOROHYDRATE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,547 [WARNING] Missing safety-critical fields for 'BETAMETHASONE DIPROPIONATE': drug_interactions
+2026-03-18 20:02:11,547 [WARNING] Skipping label with no drug name (spl_id: 74b7d044-ac52-4d7c-bf85-9a52283357c6)
+2026-03-18 20:02:11,547 [WARNING] Skipping label with no drug name (spl_id: c9efb85c-6792-4afb-b727-7ff82539cace)
+2026-03-18 20:02:11,547 [WARNING] Missing safety-critical fields for 'POVIDONE-IODINE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,547 [WARNING] Skipping label with no drug name (spl_id: 58f9e9f6-9960-4e9f-a606-695ea04abffb)
+2026-03-18 20:02:11,547 [WARNING] Skipping label with no drug name (spl_id: a53a65a4-d0b9-4459-98ac-82c22cd279ce)
+2026-03-18 20:02:11,547 [WARNING] Skipping label with no drug name (spl_id: 471f3917-49e9-55be-e063-6394a90a6b85)
+2026-03-18 20:02:11,550 [WARNING] Skipping label with no drug name (spl_id: 48808b7b-26c6-0448-e054-00144ff8d46c)
+2026-03-18 20:02:11,550 [WARNING] Skipping label with no drug name (spl_id: b647933b-f1e2-4778-8168-1415c01f5920)
+2026-03-18 20:02:11,551 [WARNING] Skipping label with no drug name (spl_id: ed6202f9-42ac-4736-b014-545f9c5c2be6)
+2026-03-18 20:02:11,551 [WARNING] Skipping label with no drug name (spl_id: f35a00b1-12ad-4730-8158-062a09f70329)
+2026-03-18 20:02:11,551 [WARNING] Skipping label with no drug name (spl_id: a541f9f5-e27b-4f22-ab16-4bacffa4e572)
+2026-03-18 20:02:11,551 [WARNING] Missing safety-critical fields for 'PETROLATUM AND LANOLIN': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,551 [WARNING] Skipping label with no drug name (spl_id: e30ceea3-89d5-4472-8091-226c878fe2ed)
+2026-03-18 20:02:11,551 [WARNING] Skipping label with no drug name (spl_id: 6735d026-b782-4d2f-a333-6e0186c1567c)
+2026-03-18 20:02:11,551 [WARNING] Skipping label with no drug name (spl_id: 0011c61b-e3ce-d909-e063-6394a90a6ac2)
+2026-03-18 20:02:11,551 [WARNING] Skipping label with no drug name (spl_id: e828ba72-7c2e-4ad3-9348-824c233b3d06)
+2026-03-18 20:02:11,553 [WARNING] Skipping label with no drug name (spl_id: 0013824B-6AEE-4DA4-AFFD-35BC6BF19D91)
+2026-03-18 20:02:11,553 [WARNING] Skipping label with no drug name (spl_id: 9117f8fa-f838-4f23-8da6-ff8bf32a9326)
+2026-03-18 20:02:11,553 [WARNING] Skipping label with no drug name (spl_id: fd12cd86-bbb2-4a3d-81e3-6b46e5f11e37)
+2026-03-18 20:02:11,554 [WARNING] Missing safety-critical fields for 'ACETAMINOPHEN': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,554 [WARNING] Skipping label with no drug name (spl_id: 45ed9b92-a2b5-53d2-e054-00144ff88e88)
+2026-03-18 20:02:11,554 [WARNING] Skipping label with no drug name (spl_id: 75fc31e7-8d28-4296-8a73-a17f0d872c67)
+2026-03-18 20:02:11,554 [WARNING] Skipping label with no drug name (spl_id: 0b581dc2-c9a7-4792-e063-6394a90a7db3)
+2026-03-18 20:02:11,554 [WARNING] Missing safety-critical fields for 'SODIUM FLUORIDE': contraindications, drug_interactions
+2026-03-18 20:02:11,558 [WARNING] Missing safety-critical fields for 'BENZALKONIUM CHLORIDE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,558 [WARNING] Missing safety-critical fields for 'ESOMEPRAZOLE MAGNESIUM': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: 45d912e2-7610-40c4-b35a-1a520ab62e09)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: 28105e38-dd04-c3b2-e063-6394a90abf36)
+2026-03-18 20:02:11,558 [WARNING] Missing safety-critical fields for 'OCTISALATE, TITANIUM DIOXIDE': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: af1dad81-bf25-42c9-933f-e1aab296f738)
+2026-03-18 20:02:11,558 [WARNING] Missing safety-critical fields for 'POLYETHYLENE GLYCOL 400': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: 00192bf2-1280-2656-e063-6294a90a4237)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: 42da8ead-c417-e182-e063-6394a90a7a37)
+2026-03-18 20:02:11,558 [WARNING] Missing safety-critical fields for 'POLYETHYLENE GLYCOL 400, TETRAHYDROZOLINE HCL': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: 6f8c4717-2a22-7d3a-e053-2991aa0a99f3)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: dd944506-1db6-402b-e053-2a95a90a3430)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: ef34a696-43c4-4850-8b48-fce763d5a262)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: 6a52e468-0d09-43d5-9055-380d56651f7f)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: ab5153c1-a823-4f23-bd98-e818db369e65)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: 9860d565-4e69-4d23-9c2e-3a5978c6b58d)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: 3fcac10a-9021-4e2d-ab33-5a1aac3230aa)
+2026-03-18 20:02:11,558 [WARNING] Missing safety-critical fields for 'ISOPROPYL ALCOHOL': contraindications, drug_interactions, adverse_reactions
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: 06e429a5-0429-4899-a0d5-37fa340ccd4e)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: dd80166d-cac5-3261-e053-2995a90aa412)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: 8f6182f0-e8ce-4177-9021-25673b3c3b37)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: ce91983d-5202-256c-1002-3dbd31e19fde)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: bd47f3e5-58ff-4cf3-86bc-e5740d79c5d7)
+2026-03-18 20:02:11,558 [WARNING] Skipping label with no drug name (spl_id: 46f3d6e9-57bf-65d2-e054-00144ff8d46c)
+2026-03-18 20:02:11,559 [WARNING] Skipping label with no drug name (spl_id: 8f2b01b8-e712-4107-b824-e1f07faa2a41)
+2026-03-18 20:02:11,559 [WARNING] Skipping label with no drug name (spl_id: 68239683-18b4-45e0-b132-db401924df17)
+2026-03-18 20:02:11,559 [WARNING] Skipping label with no drug name (spl_id: fdd828e3-1583-48b5-8b57-bdae587f2beb)
+2026-03-18 20:02:11,559 [WARNING] Skipping label with no drug name (spl_id: db87e908-057c-03c8-e053-2995a90a2194)
+2026-03-18 20:02:11,559 [INFO] Fetched 32 records so far...
+2026-03-18 20:02:12,065 [INFO] Bulk fetch complete. 5 records retrieved.
+2026-03-18 20:02:12,069 [INFO] Dataset exported to data/drug_labels.json (5 records)
