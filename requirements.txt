@@ -1,0 +1,4 @@
+# Runtime: extract_labels.py uses only the Python standard library.
+
+# Development / testing
+pytest>=8.0.0
