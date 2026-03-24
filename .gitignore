@@ -1,0 +1,66 @@
+#
+# Secrets — never commit
+#
+.env
+.env.*
+!.env.example
+
+#
+# Python
+#
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+.envrc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+*.egg-info/
+.eggs/
+dist/
+build/
+
+#
+# OS / editors
+#
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+#
+# Local logs & debug payloads
+#
+pipeline.log
+tmp_*.json
+
+#
+# Generated pipeline outputs (regenerate via scripts)
+# Anchored to repo root where applicable
+#
+/drug_labels.json
+/drug_labels.csv
+/simplified_labels.json
+/extracted_original.json
+/extracted_simplified.json
+/extracted_simplified_from_text.json
+/comparison_report.json
+/comparison_*_report.json
+
+/data/drug_labels.json
+/data/drug_labels.csv
+/data/drug_labels_test.json
+
+#
+# Bundled / large outputs directory
+#
+outputs/
+data/processed_labels/
