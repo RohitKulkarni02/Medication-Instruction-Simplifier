@@ -17,6 +17,7 @@ class SimplificationResult:
     drug_name: str
     original_text: str
     simplified_text: str
+    boxed_warning: str
     dosage: str
     warnings: list[str]
     contraindications: list[str]
@@ -27,6 +28,7 @@ class SimplificationResult:
             "drug_name": self.drug_name,
             "original_text": self.original_text,
             "simplified_text": self.simplified_text,
+            "boxed_warning": self.boxed_warning,
             "dosage": self.dosage,
             "warnings": self.warnings,
             "contraindications": self.contraindications,
@@ -109,6 +111,7 @@ def _extract_between_markers(text: str, start: str, end: str | None) -> str:
 def extract_sections(item: dict[str, Any]) -> dict[str, Any]:
     """
     Normalize input into a consistent set of fields:
+    - boxed_warning (string)
     - dosage (string)
     - warnings (list[str])
     - contraindications (list[str])
@@ -117,16 +120,44 @@ def extract_sections(item: dict[str, Any]) -> dict[str, Any]:
     """
     original_text = _strip(item.get("original_text")) or _strip(item.get("full_label")) or _strip(item.get("label_text"))
 
-    dosage = _strip(item.get("dosage") or item.get("dosage_section") or item.get("dosage_instructions"))
+    boxed_warning = _strip(item.get("boxed_warning"))
+
+    dosage = _strip(
+        item.get("dosage")
+        or item.get("dosage_section")
+        or item.get("dosage_instructions")
+        or item.get("dosage_and_administration")
+    )
 
     warnings = _coerce_list(item.get("warnings") or item.get("warnings_section"))
     contraindications = _coerce_list(item.get("contraindications") or item.get("contraindications_section"))
-    interactions = _coerce_list(item.get("interactions") or item.get("interactions_section"))
+    interactions = _coerce_list(
+        item.get("interactions") or item.get("interactions_section") or item.get("drug_interactions")
+    )
 
-    # Fallback to very basic parsing of a single “full_label” blob.
-    if not any([dosage, warnings, contraindications, interactions]) and original_text:
-        dosage = _extract_between_markers(original_text, "DOSAGE", "WARNINGS") or _extract_between_markers(
-            original_text, "DOSAGE", "CONTRAINDICATIONS"
+    # Per-field fallbacks from a single label blob (openFDA full_label often lacks separate dosage key in JSON).
+    if original_text:
+        if not boxed_warning:
+            boxed_warning = _strip(
+                _extract_between_markers(original_text, "BOXED WARNING", "WARNINGS")
+                or _extract_between_markers(original_text, "BOXED WARNING", "DOSAGE AND ADMINISTRATION")
+                or _extract_between_markers(original_text, "BOXED WARNING", "DOSAGE")
+            )
+        if not dosage:
+            dosage = _strip(
+                _extract_between_markers(original_text, "DOSAGE AND ADMINISTRATION", "WARNINGS")
+                or _extract_between_markers(original_text, "DOSAGE AND ADMINISTRATION", "CONTRAINDICATIONS")
+                or _extract_between_markers(original_text, "DOSAGE AND ADMINISTRATION", "DRUG INTERACTIONS")
+                or _extract_between_markers(original_text, "DOSAGE", "WARNINGS")
+                or _extract_between_markers(original_text, "DOSAGE", "CONTRAINDICATIONS")
+            )
+
+    # Fallback when almost everything is missing: parse whole blob.
+    if not any([dosage, warnings, contraindications, interactions, boxed_warning]) and original_text:
+        dosage = _strip(
+            dosage
+            or _extract_between_markers(original_text, "DOSAGE AND ADMINISTRATION", "WARNINGS")
+            or _extract_between_markers(original_text, "DOSAGE", "WARNINGS")
         )
         if not warnings:
             w = _extract_between_markers(original_text, "WARNINGS", "CONTRAINDICATIONS")
@@ -140,6 +171,7 @@ def extract_sections(item: dict[str, Any]) -> dict[str, Any]:
 
     return {
         "original_text": original_text,
+        "boxed_warning": boxed_warning,
         "dosage": dosage,
         "warnings": warnings,
         "contraindications": contraindications,
@@ -151,6 +183,7 @@ def simplify_local(item: dict[str, Any]) -> SimplificationResult:
     sections = extract_sections(item)
     drug_name = _strip(item.get("drug_name") or item.get("brand_name") or "unknown_drug")
 
+    boxed_warning = _strip(sections["boxed_warning"])
     dosage = _strip(sections["dosage"])
     warnings = sections["warnings"]
     contraindications = sections["contraindications"]
@@ -162,6 +195,10 @@ def simplify_local(item: dict[str, Any]) -> SimplificationResult:
     lines: list[str] = []
     lines.append(f"Patient-friendly medication instructions for {drug_name}")
     lines.append("")
+    if boxed_warning:
+        lines.append("Boxed warning")
+        lines.append(boxed_warning)
+        lines.append("")
     if dosage:
         lines.append("Dosage")
         lines.append(dosage)
@@ -191,6 +228,7 @@ def simplify_local(item: dict[str, Any]) -> SimplificationResult:
         drug_name=drug_name,
         original_text=original_text,
         simplified_text=simplified_text,
+        boxed_warning=boxed_warning,
         dosage=dosage,
         warnings=warnings,
         contraindications=contraindications,
@@ -250,6 +288,7 @@ def simplify_openai(item: dict[str, Any], *, model: str, api_key: str, temperatu
     drug_name = _strip(item.get("drug_name") or item.get("brand_name") or "unknown_drug")
 
     # Build a “structured blob” for the prompt.
+    boxed_in = sections["boxed_warning"]
     dosage = sections["dosage"]
     warnings = sections["warnings"]
     contraindications = sections["contraindications"]
@@ -259,6 +298,7 @@ def simplify_openai(item: dict[str, Any], *, model: str, api_key: str, temperatu
     drug_label_blob = (
         (f"Drug name: {drug_name}\n" if drug_name else "")
         + (f"Original label:\n{original_text}\n\n" if original_text else "")
+        + (f"BOXED WARNING:\n{boxed_in}\n\n" if boxed_in else "")
         + (f"DOSAGE:\n{dosage}\n\n" if dosage else "")
         + ("WARNINGS:\n" + "\n".join(warnings) + "\n\n" if warnings else "")
         + ("CONTRAINDICATIONS:\n" + "\n".join(contraindications) + "\n\n" if contraindications else "")
@@ -296,6 +336,7 @@ def simplify_openai(item: dict[str, Any], *, model: str, api_key: str, temperatu
         data = _extract_first_json_object(raw)
 
     # Validate/normalize the output shape to our expected schema.
+    boxed_out = _strip(data.get("boxed_warning") or "") or boxed_in
     dosage_out = _strip(data.get("dosage") or "")
     warnings_out = _coerce_list(data.get("warnings") or [])
     contraindications_out = _coerce_list(data.get("contraindications") or [])
@@ -304,10 +345,14 @@ def simplify_openai(item: dict[str, Any], *, model: str, api_key: str, temperatu
 
     if not simplified_text_out:
         # Fallback to keep pipeline moving if the model omits combined text.
-        simplified_text_out = "\n".join(
+        parts: list[str] = [
+            f"Patient-friendly medication instructions for {drug_name}".strip(),
+            "",
+        ]
+        if boxed_out:
+            parts.extend(["Boxed warning", boxed_out, ""])
+        parts.extend(
             [
-                f"Patient-friendly medication instructions for {drug_name}".strip(),
-                "",
                 "Dosage",
                 dosage_out,
                 "",
@@ -320,12 +365,14 @@ def simplify_openai(item: dict[str, Any], *, model: str, api_key: str, temperatu
                 "Drug interactions",
                 "\n".join(f"- {i}" for i in interactions_out),
             ]
-        ).strip()
+        )
+        simplified_text_out = "\n".join(parts).strip()
 
     return SimplificationResult(
         drug_name=drug_name,
         original_text=original_text,
         simplified_text=simplified_text_out,
+        boxed_warning=boxed_out,
         dosage=dosage_out,
         warnings=warnings_out,
         contraindications=contraindications_out,
@@ -369,6 +416,10 @@ def self_test() -> int:
                 return 1
         if dosage and dosage not in res.simplified_text:
             print(f"Self-test failed: dosage not preserved for {res.drug_name}.", file=sys.stderr)
+            return 1
+        bw = sections.get("boxed_warning", "")
+        if bw and bw not in res.simplified_text:
+            print(f"Self-test failed: boxed warning not preserved for {res.drug_name}.", file=sys.stderr)
             return 1
 
     print("Self-test passed (local simplification preserves provided safety strings).")

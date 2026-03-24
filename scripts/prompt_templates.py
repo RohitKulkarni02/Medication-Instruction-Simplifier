@@ -1,5 +1,5 @@
 """
-Prompt templates for Person 3 (LLM simplification pipeline).
+Prompt templates for the LLM simplification pipeline.
 
 These templates are designed to preserve adherence-critical content:
 - dosage instructions
@@ -35,6 +35,7 @@ SIMPLIFY_USER_PROMPT_TEMPLATE = (
     "Label text (structured where available):\n"
     "{drug_label}\n\n"
     "Return JSON with exactly these keys:\n"
+    "- boxed_warning: string (patient-friendly; empty string \"\" if none in the input)\n"
     "- dosage: string (patient-friendly dosage instructions)\n"
     "- warnings: array of strings\n"
     "- contraindications: array of strings\n"
