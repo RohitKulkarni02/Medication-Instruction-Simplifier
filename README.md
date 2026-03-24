@@ -1,42 +1,198 @@
 # Medication-Instruction-Simplifier
-CS6180 - Group 14 
 
-## Person 3: LLM Simplification Pipeline (Week 1-2)
+**CS6180 · Group 14**
 
-### Files
-- `scripts/prompt_templates.py`: prompt design (guardrails + JSON output schema)
-- `scripts/simplify_labels.py`: pipeline to generate `simplified_text`
-- `data/raw_labels/sample_labels.json`: small sample dataset for local testing
+End-to-end tooling to fetch FDA drug labels from [openFDA](https://open.fda.gov/), optionally simplify them with an LLM (or a local reformatting path), extract structured safety sections, and compare original vs simplified extractions with lightweight heuristics.
 
-### Prompt guardrails (high level)
-The prompt requires the model to preserve adherence- and safety-critical content:
-dosage instructions, warnings, contraindications, and drug interactions.
-It also asks for output as strict JSON (patient-friendly `simplified_text` plus structured safety fields).
+---
 
-### Run the local self-test
-This uses the included sample labels and a local “reformat-only” backend (no API key needed):
+## Overview
+
+| Stage | Script | Role |
+|--------|--------|------|
+| Ingest | `scripts/ingest_data.py` | Query openFDA, normalize label fields, export JSON or CSV |
+| Simplify | `scripts/simplify_labels.py` | Produce patient-friendly text and structured fields (local or OpenAI) |
+| Extract | `scripts/extract_labels.py` | Map raw or simplified records into a unified safety-field schema |
+| Compare | `scripts/compare_extractions.py` | Flag possible drops / dose mismatches / content loss between extractions |
+| Orchestrate | `scripts/run_pipeline.py` | Run ingest → simplify → extract → compare in one command |
+
+Supporting modules: `scripts/prompt_templates.py` (prompt guardrails and JSON shape), `scripts/text_section_extract.py` (rule-based parsing of `simplified_text`).
+
+Sample input: `data/raw_labels/sample_labels.json`.
+
+---
+
+## Requirements
+
+- **Python 3.11+** (3.13 used in development is fine)
+- Standard library for ingest; **OpenAI** optional for LLM simplification:
+
+  ```bash
+  pip install openai
+  ```
+
+---
+
+## Secrets and configuration
+
+- **Never commit** API keys or paste them into issues/chat. Use a **local** `.env` file (keep it gitignored).
+- Recommended variables:
+  - **`OPENFDA_API_KEY`** — optional; higher openFDA rate limits (`scripts/ingest_data.py` loads `.env` from the repo root automatically).
+  - **`OPENAI_API_KEY`** — required only for `--provider openai` on simplification.
+  - **`OPENAI_MODEL`** — optional override (default in code is often `gpt-4o-mini`).
+- If a key was ever exposed, **revoke it** in the provider dashboard and rotate.
+
+---
+
+## 1. Data ingestion (openFDA)
+
+Default behavior fetches a **curated list** of generic drugs. Other modes: single drug, bulk unfiltered pagination, or re-export from existing JSON.
+
+```bash
+# Curated list → data/drug_labels.json
+python3 scripts/ingest_data.py --output drug_labels.json
+
+# One generic name
+python3 scripts/ingest_data.py --drug ibuprofen --output drug_labels.json
+
+# Bulk (unfiltered), first N labels
+python3 scripts/ingest_data.py --bulk 500 --output drug_labels.json
+```
+
+**CSV export** — use a `.csv` path or `--format csv`:
+
+```bash
+python3 scripts/ingest_data.py --output drug_labels.csv
+python3 scripts/ingest_data.py --from-json data/drug_labels.json --output drug_labels.csv --format csv
+```
+
+`--from-json` performs export only (no API calls). If `OPENFDA_API_KEY` is set, the first request logs that authenticated (higher-limit) access is enabled; the key is never printed.
+
+---
+
+## 2. Label simplification
+
+Prompt design enforces **safety preservation**: dosage, boxed warning, warnings, contraindications, and interactions must not be dropped, softened incorrectly, or fabricated. Output is structured JSON plus a combined `simplified_text`.
+
+**Self-test** (no API key; uses sample labels):
 
 ```bash
 python3 scripts/simplify_labels.py --self-test
 ```
 
-### Run the simplification pipeline (local mode)
+**Local provider** (deterministic reformat; no API):
+
 ```bash
 python3 scripts/simplify_labels.py \
   --provider local \
   --input data/raw_labels/sample_labels.json \
-  --output outputs/simplified_labels/sample_simplified.json \
+  --output simplified_labels.json \
   --pretty
 ```
 
-### Run with OpenAI (optional)
-If you later install the `openai` package and set `OPENAI_API_KEY`, you can run:
+**OpenAI** (install `openai`, set `OPENAI_API_KEY`):
 
 ```bash
 python3 scripts/simplify_labels.py \
   --provider openai \
   --model gpt-4o-mini \
   --input data/raw_labels/sample_labels.json \
-  --output outputs/simplified_labels/sample_simplified_openai.json \
+  --output simplified_labels.json \
   --pretty
 ```
+
+Typical pipeline input is ingest output, e.g. `data/drug_labels.json`, as a JSON array of records.
+
+---
+
+## 3. Structured extraction
+
+Produces aligned JSON for **original** (openFDA-shaped) or **simplified** records.
+
+**From original labels:**
+
+```bash
+python3 scripts/extract_labels.py --source original --input data/drug_labels.json --output extracted_original.json
+```
+
+**From simplified labels** (structured JSON fields):
+
+```bash
+python3 scripts/extract_labels.py --source simplified --input simplified_labels.json --output extracted_simplified.json
+```
+
+**Simplified modes** (`--simplified-mode`):
+
+- **`structured`** (default): read `dosage`, `warnings`, etc. from JSON fields.
+- **`from_text`**: parse **only** `simplified_text` section headings.
+- **`hybrid`**: structured first, fill gaps from `simplified_text`.
+
+```bash
+python3 scripts/extract_labels.py --source simplified --input simplified_labels.json \
+  --output extracted_simplified_from_text.json --simplified-mode from_text
+```
+
+---
+
+## 4. Compare extractions
+
+Heuristic report (not clinical validation): e.g. dropped fields, possible dose token mismatches, long-prefix content loss.
+
+```bash
+python3 scripts/compare_extractions.py \
+  --original extracted_original.json \
+  --simplified extracted_simplified.json \
+  --output comparison_report.json
+```
+
+---
+
+## 5. One-command pipeline
+
+From repo root — **ingest** one generic name, **simplify**, **extract**, **compare**:
+
+```bash
+python3 scripts/run_pipeline.py --drug ibuprofen --simplify-provider local
+```
+
+With OpenAI (set `OPENAI_API_KEY`):
+
+```bash
+python3 scripts/run_pipeline.py --drug ibuprofen --simplify-provider openai
+```
+
+Skip re-fetch if `data/drug_labels.json` is already present:
+
+```bash
+python3 scripts/run_pipeline.py --skip-ingest --simplify-provider local
+```
+
+Also run text-only simplified extraction and a second report:
+
+```bash
+python3 scripts/run_pipeline.py --drug ibuprofen --simplify-provider local --extract-text
+```
+
+---
+
+## Tests
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install pytest openai   # openai only if you run OpenAI-backed tests/code paths
+python3 -m pytest scripts/ -v
+```
+
+`conftest.py` adds `scripts/` to `sys.path` so tests can import pipeline modules.
+
+---
+
+## Generated artifacts
+
+Large or local outputs (JSON/CSV from runs, logs, `outputs/`, etc.) are listed in **`.gitignore`**. Prefer committing **source** and **small fixtures** (e.g. `data/raw_labels/sample_labels.json`), not full fetched corpora or secrets.
+
+---
+
+## License / disclaimer
+
+This project is for **research and coursework**. It is **not** medical advice. Do not use outputs as a substitute for professional labeling, prescribing, or clinical decision-making.

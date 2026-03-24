@@ -376,7 +376,7 @@ def self_test() -> int:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Person 3: medication label simplification pipeline")
+    parser = argparse.ArgumentParser(description="Medication label simplification (local or OpenAI).")
     parser.add_argument("--input", type=str, help="Path to JSON/JSONL input items.")
     parser.add_argument("--output", type=str, required=False, help="Path to write JSON output.")
     parser.add_argument(

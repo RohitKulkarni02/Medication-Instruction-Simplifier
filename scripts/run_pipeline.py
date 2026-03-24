@@ -32,7 +32,7 @@ def main() -> int:
     parser.add_argument(
         "--simplify-provider",
         default="local",
-        choices=["local", "groq", "openai"],
+        choices=["local", "openai"],
         help="Backend for simplify_labels.py",
     )
     parser.add_argument("--simplify-model", default=None, help="Model id for groq/openai.")
