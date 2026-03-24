@@ -32,10 +32,20 @@ def main() -> int:
     parser.add_argument(
         "--simplify-provider",
         default="local",
-        choices=["local", "openai"],
-        help="Backend for simplify_labels.py",
+        choices=["local", "openai", "groq"],
+        help="Backend for simplify_labels.py (groq uses OpenAI SDK + GROQ_API_KEY).",
     )
-    parser.add_argument("--simplify-model", default=None, help="Model id for groq/openai.")
+    parser.add_argument(
+        "--simplify-model",
+        default=None,
+        help="Model id (Groq or OpenAI; defaults from GROQ_SIMPLIFY_MODEL / OPENAI_MODEL if omitted).",
+    )
+    parser.add_argument(
+        "--simplify-max-chars",
+        type=int,
+        default=0,
+        help="Forward to simplify_labels.py --max-llm-chars (0 = script default / env).",
+    )
     parser.add_argument(
         "--extract-text",
         action="store_true",
@@ -61,6 +71,8 @@ def main() -> int:
     ]
     if args.simplify_model:
         simp_cmd.extend(["--model", args.simplify_model])
+    if args.simplify_max_chars > 0:
+        simp_cmd.extend(["--max-llm-chars", str(args.simplify_max_chars)])
     run_step(simp_cmd)
 
     run_step(

@@ -11,7 +11,7 @@ End-to-end tooling to fetch FDA drug labels from [openFDA](https://open.fda.gov/
 | Stage | Script | Role |
 |--------|--------|------|
 | Ingest | `scripts/ingest_data.py` | Query openFDA, normalize label fields, export JSON or CSV |
-| Simplify | `scripts/simplify_labels.py` | Produce patient-friendly text and structured fields (local or OpenAI) |
+| Simplify | `scripts/simplify_labels.py` | Produce patient-friendly text and structured fields (local, OpenAI, or Groq) |
 | Extract | `scripts/extract_labels.py` | Map raw or simplified records into a unified safety-field schema |
 | Compare | `scripts/compare_extractions.py` | Flag possible drops / dose mismatches / content loss between extractions |
 | Orchestrate | `scripts/run_pipeline.py` | Run ingest → simplify → extract → compare in one command |
@@ -25,10 +25,11 @@ Sample input: `data/raw_labels/sample_labels.json`.
 ## Requirements
 
 - **Python 3.11+** (3.13 used in development is fine)
-- Standard library for ingest; **OpenAI** optional for LLM simplification:
+- Standard library for ingest. For **OpenAI** or **Groq** simplification, install dependencies (Groq uses the same OpenAI-compatible client):
 
   ```bash
-  pip install openai
+  pip install -r requirements.txt
+  # or: pip install openai
   ```
 
 ---
@@ -38,8 +39,14 @@ Sample input: `data/raw_labels/sample_labels.json`.
 - **Never commit** API keys or paste them into issues/chat. Use a **local** `.env` file (keep it gitignored).
 - Recommended variables:
   - **`OPENFDA_API_KEY`** — optional; higher openFDA rate limits (`scripts/ingest_data.py` loads `.env` from the repo root automatically).
-  - **`OPENAI_API_KEY`** — required only for `--provider openai` on simplification.
-  - **`OPENAI_MODEL`** — optional override (default in code is often `gpt-4o-mini`).
+  - **`OPENAI_API_KEY`** — for `--provider openai` on simplification.
+  - **`OPENAI_MODEL`** — optional override (default `gpt-4o-mini`).
+  - **`GROQ_API_KEY`** — for `--provider groq` (same SDK; base URL `https://api.groq.com/openai/v1`).
+  - **`GROQ_SIMPLIFY_MODEL`** — optional Groq model id (default `llama-3.1-8b-instant`). Override with `--model`.
+  - **`GROQ_OPENAI_BASE_URL`** — optional; only if Groq changes the compatible endpoint.
+  - **`SIMPLIFY_MAX_LLM_LABEL_CHARS`** — optional cap on label characters sent to the LLM (default `8000`). Lower if Groq returns “request too large” on free tier; raise for OpenAI.
+
+`scripts/simplify_labels.py` loads `.env` from the repo root (like ingest). Use `--max-llm-chars` to override per run.
 - If a key was ever exposed, **revoke it** in the provider dashboard and rotate.
 
 ---
@@ -96,6 +103,17 @@ python3 scripts/simplify_labels.py \
 python3 scripts/simplify_labels.py \
   --provider openai \
   --model gpt-4o-mini \
+  --input data/raw_labels/sample_labels.json \
+  --output simplified_labels.json \
+  --pretty
+```
+
+**Groq** (install `openai`, set `GROQ_API_KEY`; uses OpenAI-compatible chat completions. Pick any model your Groq account supports, e.g. `llama-3.1-8b-instant`):
+
+```bash
+python3 scripts/simplify_labels.py \
+  --provider groq \
+  --model llama-3.1-8b-instant \
   --input data/raw_labels/sample_labels.json \
   --output simplified_labels.json \
   --pretty
@@ -159,6 +177,12 @@ With OpenAI (set `OPENAI_API_KEY`):
 
 ```bash
 python3 scripts/run_pipeline.py --drug ibuprofen --simplify-provider openai
+```
+
+With Groq (set `GROQ_API_KEY`; optional `--simplify-model ...`):
+
+```bash
+python3 scripts/run_pipeline.py --drug ibuprofen --simplify-provider groq --simplify-model llama-3.1-8b-instant
 ```
 
 Skip re-fetch if `data/drug_labels.json` is already present:

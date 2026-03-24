@@ -11,6 +11,27 @@ from typing import Any, Iterable
 
 from prompt_templates import SIMPLIFY_SYSTEM_PROMPT, SIMPLIFY_USER_PROMPT_TEMPLATE
 
+GROQ_OPENAI_BASE_URL = "https://api.groq.com/openai/v1"
+
+
+def _load_dotenv() -> None:
+    """Load repo-root .env into os.environ (no extra dependency)."""
+    root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    env_path = os.path.join(root, ".env")
+    if not os.path.exists(env_path):
+        return
+    with open(env_path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            key, value = key.strip(), value.strip()
+            if len(value) >= 2 and value[0] == value[-1] and value[0] in "\"'":
+                value = value[1:-1]
+            if key:
+                os.environ[key] = value
+
 
 @dataclass(frozen=True)
 class SimplificationResult:
@@ -275,14 +296,83 @@ def _extract_first_json_object(text: str) -> dict[str, Any]:
     raise ValueError("Could not extract a complete JSON object.")
 
 
-def simplify_openai(item: dict[str, Any], *, model: str, api_key: str, temperature: float) -> SimplificationResult:
+def _structured_sufficient_for_llm(
+    boxed_in: str,
+    dosage: str,
+    warnings: list[str],
+    contraindications: list[str],
+    interactions: list[str],
+) -> bool:
+    """If True, skip pasting full original_label text (avoids duplicating huge SPL blobs)."""
+    if dosage and (boxed_in or warnings or contraindications or interactions):
+        return True
+    if boxed_in and dosage:
+        return True
+    parts = [bool(dosage), bool(boxed_in), bool(warnings), bool(contraindications), bool(interactions)]
+    return sum(1 for p in parts if p) >= 3
+
+
+def _truncate_for_llm(text: str, max_chars: int) -> str:
+    text = text.strip()
+    if max_chars <= 0 or len(text) <= max_chars:
+        return text
+    return text[: max(0, max_chars - 32)].rstrip() + "\n[... truncated for API size ...]"
+
+
+def _build_drug_label_blob_for_llm(
+    *,
+    drug_name: str,
+    boxed_in: str,
+    dosage: str,
+    warnings: list[str],
+    contraindications: list[str],
+    interactions: list[str],
+    original_text: str,
+    max_chars: int,
+) -> str:
+    structured = (
+        (f"Drug name: {drug_name}\n" if drug_name else "")
+        + (f"BOXED WARNING:\n{boxed_in}\n\n" if boxed_in else "")
+        + (f"DOSAGE:\n{dosage}\n\n" if dosage else "")
+        + ("WARNINGS:\n" + "\n".join(warnings) + "\n\n" if warnings else "")
+        + ("CONTRAINDICATIONS:\n" + "\n".join(contraindications) + "\n\n" if contraindications else "")
+        + ("DRUG INTERACTIONS:\n" + "\n".join(interactions) + "\n\n" if interactions else "")
+    ).strip()
+
+    use_full_original = original_text.strip() and not _structured_sufficient_for_llm(
+        boxed_in, dosage, warnings, contraindications, interactions
+    )
+
+    if use_full_original:
+        # Sparse structured fields: send truncated narrative label only.
+        head = f"Drug name: {drug_name}\n\n" if drug_name else ""
+        ot = _truncate_for_llm(original_text, max(1000, max_chars - len(head) - 64))
+        blob = f"{head}Original label:\n{ot}".strip()
+    else:
+        # Enough structured sections: do not paste full_label again (saves tokens on Groq/OpenAI).
+        blob = structured
+
+    return _truncate_for_llm(blob, max_chars) if max_chars > 0 else blob
+
+
+def simplify_openai_compatible(
+    item: dict[str, Any],
+    *,
+    model: str,
+    api_key: str,
+    temperature: float,
+    base_url: str | None = None,
+    max_label_chars: int | None = None,
+) -> SimplificationResult:
     """
-    Calls OpenAI Chat Completions and expects strict JSON output.
+    Chat Completions with JSON output. Use base_url for OpenAI-compatible providers (e.g. Groq).
     """
     try:
         from openai import OpenAI  # type: ignore
     except Exception as e:  # pragma: no cover
-        raise RuntimeError("openai package is not installed. Use --provider local or install dependencies.") from e
+        raise RuntimeError(
+            "openai package is required for API simplification. pip install openai"
+        ) from e
 
     sections = extract_sections(item)
     drug_name = _strip(item.get("drug_name") or item.get("brand_name") or "unknown_drug")
@@ -295,19 +385,30 @@ def simplify_openai(item: dict[str, Any], *, model: str, api_key: str, temperatu
     interactions = sections["interactions"]
     original_text = sections["original_text"]
 
-    drug_label_blob = (
-        (f"Drug name: {drug_name}\n" if drug_name else "")
-        + (f"Original label:\n{original_text}\n\n" if original_text else "")
-        + (f"BOXED WARNING:\n{boxed_in}\n\n" if boxed_in else "")
-        + (f"DOSAGE:\n{dosage}\n\n" if dosage else "")
-        + ("WARNINGS:\n" + "\n".join(warnings) + "\n\n" if warnings else "")
-        + ("CONTRAINDICATIONS:\n" + "\n".join(contraindications) + "\n\n" if contraindications else "")
-        + ("DRUG INTERACTIONS:\n" + "\n".join(interactions) + "\n\n" if interactions else "")
-    ).strip()
+    cap = max_label_chars
+    if cap is None:
+        # Groq free tier can reject huge prompts; keep default conservative (override with env or --max-llm-chars).
+        cap = int(os.environ.get("SIMPLIFY_MAX_LLM_LABEL_CHARS", "8000"))
+    if cap <= 0:
+        cap = 8000
+
+    drug_label_blob = _build_drug_label_blob_for_llm(
+        drug_name=drug_name,
+        boxed_in=boxed_in,
+        dosage=dosage,
+        warnings=warnings,
+        contraindications=contraindications,
+        interactions=interactions,
+        original_text=original_text,
+        max_chars=cap,
+    )
 
     user_prompt = SIMPLIFY_USER_PROMPT_TEMPLATE.format(drug_label=drug_label_blob)
 
-    client = OpenAI(api_key=api_key)
+    client_kwargs: dict[str, Any] = {"api_key": api_key}
+    if base_url:
+        client_kwargs["base_url"] = base_url
+    client = OpenAI(**client_kwargs)
 
     # Note: response_format is supported for many models; if unavailable it will throw,
     # so we keep parsing robust as well.
@@ -380,6 +481,45 @@ def simplify_openai(item: dict[str, Any], *, model: str, api_key: str, temperatu
     )
 
 
+def simplify_openai(
+    item: dict[str, Any],
+    *,
+    model: str,
+    api_key: str,
+    temperature: float,
+    max_label_chars: int | None = None,
+) -> SimplificationResult:
+    """OpenAI platform (api.openai.com)."""
+    return simplify_openai_compatible(
+        item,
+        model=model,
+        api_key=api_key,
+        temperature=temperature,
+        base_url=None,
+        max_label_chars=max_label_chars,
+    )
+
+
+def simplify_groq(
+    item: dict[str, Any],
+    *,
+    model: str,
+    api_key: str,
+    temperature: float,
+    max_label_chars: int | None = None,
+) -> SimplificationResult:
+    """Groq via OpenAI-compatible API (`https://api.groq.com/openai/v1`)."""
+    base = os.environ.get("GROQ_OPENAI_BASE_URL", GROQ_OPENAI_BASE_URL).strip() or GROQ_OPENAI_BASE_URL
+    return simplify_openai_compatible(
+        item,
+        model=model,
+        api_key=api_key,
+        temperature=temperature,
+        base_url=base,
+        max_label_chars=max_label_chars,
+    )
+
+
 def _load_sample_path() -> str:
     return os.path.abspath(
         os.path.join(os.path.dirname(__file__), "..", "data", "raw_labels", "sample_labels.json")
@@ -427,18 +567,33 @@ def self_test() -> int:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Medication label simplification (local or OpenAI).")
+    _load_dotenv()
+    parser = argparse.ArgumentParser(
+        description="Medication label simplification (local, OpenAI, or Groq OpenAI-compatible API)."
+    )
     parser.add_argument("--input", type=str, help="Path to JSON/JSONL input items.")
     parser.add_argument("--output", type=str, required=False, help="Path to write JSON output.")
     parser.add_argument(
         "--provider",
         type=str,
         default="local",
-        choices=["local", "openai", "hf"],
-        help="Simplification backend.",
+        choices=["local", "openai", "groq"],
+        help="Simplification backend (Groq uses official OpenAI Python SDK + GROQ_API_KEY).",
     )
-    parser.add_argument("--model", type=str, default=os.environ.get("OPENAI_MODEL", "gpt-4o-mini"))
+    parser.add_argument(
+        "--model",
+        type=str,
+        default="",
+        help="Model id (OpenAI or Groq per provider). Default: OPENAI_MODEL or gpt-4o-mini; "
+        "GROQ_SIMPLIFY_MODEL or llama-3.1-8b-instant for --provider groq.",
+    )
     parser.add_argument("--temperature", type=float, default=0.2)
+    parser.add_argument(
+        "--max-llm-chars",
+        type=int,
+        default=0,
+        help="Max characters for label text sent to the LLM (0 = use SIMPLIFY_MAX_LLM_LABEL_CHARS env or default).",
+    )
     parser.add_argument("--max-items", type=int, default=-1)
     parser.add_argument("--pretty", action="store_true", help="Pretty-print output JSON.")
     parser.add_argument("--sleep-ms", type=int, default=0, help="Sleep between items (avoid rate limits).")
@@ -452,14 +607,28 @@ def main() -> int:
         print("Error: --input and --output are required unless --self-test is used.", file=sys.stderr)
         return 2
 
-    api_key = os.environ.get("OPENAI_API_KEY", "")
-    if args.provider == "openai" and not api_key:
-        print("Error: OPENAI_API_KEY is not set. Either set it or use --provider local.", file=sys.stderr)
+    openai_key = os.environ.get("OPENAI_API_KEY", "").strip()
+    groq_key = os.environ.get("GROQ_API_KEY", "").strip()
+
+    if args.provider == "openai" and not openai_key:
+        print("Error: OPENAI_API_KEY is not set. Use --provider local/groq or set the key.", file=sys.stderr)
         return 2
+    if args.provider == "groq" and not groq_key:
+        print("Error: GROQ_API_KEY is not set. Use --provider local/openai or set the key.", file=sys.stderr)
+        return 2
+
+    if args.model.strip():
+        model = args.model.strip()
+    elif args.provider == "groq":
+        model = os.environ.get("GROQ_SIMPLIFY_MODEL", "llama-3.1-8b-instant").strip()
+    else:
+        model = os.environ.get("OPENAI_MODEL", "gpt-4o-mini").strip()
 
     items = _read_json_or_jsonl(args.input)
     if args.max_items > 0:
         items = items[: args.max_items]
+
+    max_llm_chars: int | None = args.max_llm_chars if args.max_llm_chars > 0 else None
 
     results: list[dict[str, Any]] = []
     for idx, item in enumerate(items):
@@ -467,10 +636,20 @@ def main() -> int:
             if args.provider == "local":
                 res = simplify_local(item)
             elif args.provider == "openai":
-                res = simplify_openai(item, model=args.model, api_key=api_key, temperature=args.temperature)
-            else:  # hf
-                raise NotImplementedError(
-                    "HF provider not implemented yet in this starter pipeline. Use --provider local or openai."
+                res = simplify_openai(
+                    item,
+                    model=model,
+                    api_key=openai_key,
+                    temperature=args.temperature,
+                    max_label_chars=max_llm_chars,
+                )
+            else:
+                res = simplify_groq(
+                    item,
+                    model=model,
+                    api_key=groq_key,
+                    temperature=args.temperature,
+                    max_label_chars=max_llm_chars,
                 )
             results.append(res.to_dict())
         except Exception as e:

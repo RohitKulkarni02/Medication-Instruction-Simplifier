@@ -1,0 +1,5 @@
+# Runtime: Groq and OpenAI simplification use the OpenAI-compatible client.
+openai>=1.0.0
+
+# Optional: tests
+pytest>=8.0.0
