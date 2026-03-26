@@ -2,7 +2,7 @@
 Heuristic comparison: aligned extracted_original vs extracted_simplified.
 
 Flags (heuristic, not clinical truth):
-  - DROPPED_FIELD: original has text, simplified is null/empty
+  - dropped: original has text, simplified is null/empty (see error_type / original_snippet in report)
   - POSSIBLE_DOSE_MISMATCH: numeric+unit tokens in original dosage not found in simplified dosage
   - POSSIBLE_CONTENT_LOSS: a long prefix of original field not found in simplified (substring check)
 """
@@ -55,8 +55,19 @@ def compare_pair(
     orig: dict[str, Any],
     simp: dict[str, Any],
 ) -> dict[str, Any]:
+    """Compare one original and one simplified extraction row for the same drug.
+
+    Parameters:
+        orig: Extracted record from the original (openfda) pipeline.
+        simp: Extracted record from the simplified pipeline.
+
+    Returns:
+        Dict with ``drug_name``, ``issue_count``, and ``issues`` (list of issue dicts).
+        Dropped-field issues use keys: drug_name, field, error_type, original_snippet,
+        simplified_value.
+    """
     drug = orig.get("drug_name") or simp.get("drug_name") or "UNKNOWN"
-    issues: list[dict[str, str]] = []
+    issues: list[dict[str, Any]] = []
 
     for field in SAFETY_FIELDS:
         o_raw = orig.get(field)
@@ -65,7 +76,15 @@ def compare_pair(
         s = str(s_raw).strip() if s_raw else ""
 
         if o and not s:
-            issues.append({"type": "DROPPED_FIELD", "field": field, "detail": "original present, simplified empty"})
+            issues.append(
+                {
+                    "drug_name": drug,
+                    "field": field,
+                    "error_type": "dropped",
+                    "original_snippet": o[:200],
+                    "simplified_value": None,
+                }
+            )
 
         if field == "dosage" and o and s:
             ot = _dose_tokens(o)
@@ -105,6 +124,19 @@ def compare_pair(
 
 
 def compare_files(path_original: str, path_simplified: str) -> dict[str, Any]:
+    """Load two extracted JSON files, align rows by ``drug_name``, and compare field-wise.
+
+    Parameters:
+        path_original: Path to ``extracted_original.json`` (or equivalent list of dicts on disk).
+        path_simplified: Path to ``extracted_simplified.json``.
+
+    Returns:
+        Report dict with ``summary`` (counts) and ``per_drug`` (pair results including issues).
+
+    Side effects:
+        Prints a WARNING to stdout for each simplified-only drug (no matching original row);
+        does not add those warnings to the returned report.
+    """
     with open(path_original, "r", encoding="utf-8") as f:
         original_list = json.load(f)
     with open(path_simplified, "r", encoding="utf-8") as f:
@@ -115,6 +147,15 @@ def compare_files(path_original: str, path_simplified: str) -> dict[str, Any]:
         dn = row.get("drug_name")
         if dn:
             by_drug[str(dn).upper()] = row
+
+    orig_keys = {str(r.get("drug_name", "")).upper() for r in original_list if r.get("drug_name")}
+    for row in simplified_list:
+        key = str(row.get("drug_name", "")).upper()
+        if key and key not in orig_keys:
+            print(
+                f"WARNING: drug in simplified but missing from original: {row.get('drug_name')!r}",
+                flush=True,
+            )
 
     per_drug: list[dict[str, Any]] = []
     missing_match = 0
@@ -145,7 +186,23 @@ def compare_files(path_original: str, path_simplified: str) -> dict[str, Any]:
     }
 
 
+def _count_dropped_by_field(per_drug: list[dict[str, Any]]) -> dict[str, int]:
+    counts = {f: 0 for f in SAFETY_FIELDS}
+    for row in per_drug:
+        for issue in row.get("issues", []):
+            if issue.get("error_type") == "dropped":
+                field = issue.get("field")
+                if field in counts:
+                    counts[str(field)] += 1
+    return counts
+
+
 def main() -> int:
+    """CLI: compare two extraction JSON files and write ``comparison_report.json``.
+
+    Returns:
+        Process exit code (0 on success).
+    """
     parser = argparse.ArgumentParser(description="Compare extracted original vs extracted simplified JSON.")
     parser.add_argument("--original", default="extracted_original.json", help="Path to extracted_original.json")
     parser.add_argument("--simplified", default="extracted_simplified.json", help="Path to extracted_simplified.json")
@@ -163,7 +220,12 @@ def main() -> int:
     print(f"Matched pairs:         {s['compared_pairs']}")
     print(f"Unmatched original:    {s['unmatched_original']}")
     print(f"Total flagged issues:  {s['total_issue_flags']}")
-    print(f"Report written to:     {args.output}")
+    dropped_by_field = _count_dropped_by_field(report["per_drug"])
+    print("\nDropped errors by field:")
+    width = max(len(f) for f in SAFETY_FIELDS)
+    for field in SAFETY_FIELDS:
+        print(f"  {field:<{width}}  {dropped_by_field[field]}")
+    print(f"\nReport written to:     {args.output}")
     return 0
 
 

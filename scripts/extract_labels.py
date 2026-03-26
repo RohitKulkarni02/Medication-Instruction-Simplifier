@@ -34,6 +34,19 @@ SIMPLIFIED_FIELD_MAP = {
 
 
 def extract_record(record: dict, field_map: dict[str, str], source: str) -> dict:
+    """Map input keys to unified safety fields for one label record.
+
+    Parameters:
+        record: Raw label dict; keys depend on ``field_map`` (openfda vs simplified shape).
+        field_map: Maps each unified output field name to the source key in ``record``.
+        source: Stored as ``source`` on the result (e.g. "openfda" or "simplified").
+
+    Returns:
+        Dict in the unified extraction schema (metadata plus five safety fields).
+
+    Side effects:
+        Prints a WARNING when a mapped field is missing, empty, or whitespace-only string.
+    """
     drug_name = record.get("drug_name", "UNKNOWN")
     extracted = {
         "drug_name": drug_name,
@@ -63,15 +76,42 @@ def extract_record(record: dict, field_map: dict[str, str], source: str) -> dict
 
 
 def extract_original(data: list[dict]) -> list[dict]:
+    """Extract unified records from openfda-shaped label dicts.
+
+    Parameters:
+        data: List of raw records using keys from ingest (e.g. ``dosage_and_administration``).
+
+    Returns:
+        List of extracted dicts with ``source`` set to "openfda".
+    """
     return [extract_record(record, ORIGINAL_FIELD_MAP, "openfda") for record in data]
 
 
 def extract_simplified(data: list[dict]) -> list[dict]:
+    """Extract unified records from simplified structured JSON label dicts.
+
+    Parameters:
+        data: List of raw records using simplified keys (e.g. ``dosage``, ``interactions``).
+
+    Returns:
+        List of extracted dicts with ``source`` set to "simplified".
+    """
     return [extract_record(record, SIMPLIFIED_FIELD_MAP, "simplified") for record in data]
 
 
 def extract_simplified_from_text_only(data: list[dict]) -> list[dict]:
-    """Parse only `simplified_text` (no structured JSON fields)."""
+    """Build unified records by parsing ``simplified_text`` only (no structured JSON fields).
+
+    Parameters:
+        data: List of dicts expected to contain ``drug_name`` and ``simplified_text``.
+
+    Returns:
+        List of extracted dicts with ``extraction_method`` ``rule_based_text`` and
+        ``extraction_confidence`` ``medium``.
+
+    Side effects:
+        Prints a WARNING for each safety field missing after text parsing.
+    """
     out: list[dict] = []
     for record in data:
         drug_name = record.get("drug_name", "UNKNOWN")
@@ -94,11 +134,27 @@ def extract_simplified_from_text_only(data: list[dict]) -> list[dict]:
 
 
 def extract_simplified_hybrid(data: list[dict]) -> list[dict]:
-    """Structured fields first; fill gaps from `simplified_text` headings."""
+    """Merge structured simplified fields with sections parsed from ``simplified_text``.
+
+    Parameters:
+        data: List of simplified records that may include both JSON fields and ``simplified_text``.
+
+    Returns:
+        List of unified extracted dicts; gaps in structured data are filled from parsed text
+        (``prefer_text=False`` keeps structured values when present).
+    """
     return [merge_structured_and_text(record, prefer_text=False) for record in data]
 
 
 def print_summary(results: list[dict]) -> None:
+    """Print counts of null safety fields across extracted records.
+
+    Parameters:
+        results: List of dicts in the unified extraction schema.
+
+    Returns:
+        None. Writes summary lines to stdout.
+    """
     total = len(results)
     null_field_counts: Counter[str] = Counter()
     records_with_nulls = 0
@@ -125,6 +181,11 @@ def print_summary(results: list[dict]) -> None:
 
 
 def main() -> int:
+    """CLI: load JSON labels, run the selected extractor, write output JSON and summary.
+
+    Returns:
+        Process exit code (0 on success).
+    """
     parser = argparse.ArgumentParser(
         description="Layer 1 structured extractor for medication safety fields."
     )
