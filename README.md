@@ -93,7 +93,7 @@ python3 scripts/simplify_labels.py --self-test
 python3 scripts/simplify_labels.py \
   --provider local \
   --input data/raw_labels/sample_labels.json \
-  --output simplified_labels.json \
+  --output outputs/simplified_labels.json \
   --pretty
 ```
 
@@ -104,7 +104,7 @@ python3 scripts/simplify_labels.py \
   --provider openai \
   --model gpt-4o-mini \
   --input data/raw_labels/sample_labels.json \
-  --output simplified_labels.json \
+  --output outputs/simplified_labels.json \
   --pretty
 ```
 
@@ -115,7 +115,7 @@ python3 scripts/simplify_labels.py \
   --provider groq \
   --model llama-3.1-8b-instant \
   --input data/raw_labels/sample_labels.json \
-  --output simplified_labels.json \
+  --output outputs/simplified_labels.json \
   --pretty
 ```
 
@@ -130,13 +130,13 @@ Produces aligned JSON for **original** (openFDA-shaped) or **simplified** record
 **From original labels:**
 
 ```bash
-python3 scripts/extract_labels.py --source original --input data/drug_labels.json --output extracted_original.json
+python3 scripts/extract_labels.py --source original --input data/drug_labels.json --output outputs/extracted_original.json
 ```
 
 **From simplified labels** (structured JSON fields):
 
 ```bash
-python3 scripts/extract_labels.py --source simplified --input simplified_labels.json --output extracted_simplified.json
+python3 scripts/extract_labels.py --source simplified --input outputs/simplified_labels.json --output outputs/extracted_simplified.json
 ```
 
 **Simplified modes** (`--simplified-mode`):
@@ -146,8 +146,8 @@ python3 scripts/extract_labels.py --source simplified --input simplified_labels.
 - **`hybrid`**: structured first, fill gaps from `simplified_text`.
 
 ```bash
-python3 scripts/extract_labels.py --source simplified --input simplified_labels.json \
-  --output extracted_simplified_from_text.json --simplified-mode from_text
+python3 scripts/extract_labels.py --source simplified --input outputs/simplified_labels.json \
+  --output outputs/extracted_simplified_from_text.json --simplified-mode from_text
 ```
 
 ---
@@ -158,9 +158,9 @@ Heuristic report (not clinical validation): e.g. dropped fields, possible dose t
 
 ```bash
 python3 scripts/compare_extractions.py \
-  --original extracted_original.json \
-  --simplified extracted_simplified.json \
-  --output comparison_report.json
+  --original outputs/extracted_original.json \
+  --simplified outputs/extracted_simplified.json \
+  --output outputs/comparison_report.json
 ```
 
 ---

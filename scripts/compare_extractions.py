@@ -1,26 +1,43 @@
 """
 Heuristic comparison: aligned extracted_original vs extracted_simplified.
 
-Flags (heuristic, not clinical truth):
-  - dropped: original has text, simplified is null/empty (see error_type / original_snippet in report)
-  - POSSIBLE_DOSE_MISMATCH: numeric+unit tokens in original dosage not found in simplified dosage
-  - POSSIBLE_CONTENT_LOSS: a long prefix of original field not found in simplified (substring check)
+Flags (heuristic, not clinical truth). Every issue uses ``error_type``:
+  - dropped: original has text, simplified is null/empty
+  - possible_dose_mismatch: dose-like tokens in original dosage not found in simplified
+  - possible_content_loss: substantial original snippet not found in simplified (substring check)
+  - no_match: original drug has no simplified row
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 from typing import Any
 
+from pipeline_paths import (
+    COMPARISON_REPORT_JSON,
+    EXTRACTED_ORIGINAL_JSON,
+    EXTRACTED_SIMPLIFIED_JSON,
+    ensure_parent_dir,
+)
+
 SAFETY_FIELDS = ["boxed_warning", "dosage", "warnings", "contraindications", "interactions"]
+
+SNIP_LEN = 200
 
 # Dose-like tokens: numbers with common units or frequency words
 DOSE_TOKEN = re.compile(
     r"\d+(?:\.\d+)?\s*(?:mg|mcg|g|ml|mL|hours?|hrs?|daily|twice|once|tid|bid|qid|q\d+h|tablet|tablets|capsule|capsules)\b",
     re.I,
 )
+
+
+def _clip(text: str, max_len: int = SNIP_LEN) -> str:
+    if not text:
+        return ""
+    return text[:max_len] if len(text) <= max_len else text[:max_len]
 
 
 def _norm(s: str | None) -> str:
@@ -62,9 +79,8 @@ def compare_pair(
         simp: Extracted record from the simplified pipeline.
 
     Returns:
-        Dict with ``drug_name``, ``issue_count``, and ``issues`` (list of issue dicts).
-        Dropped-field issues use keys: drug_name, field, error_type, original_snippet,
-        simplified_value.
+        Dict with ``drug_name``, ``issue_count``, and ``issues``. Each issue has
+        ``error_type``, ``message``, ``field``, ``drug_name``, and type-specific evidence.
     """
     drug = orig.get("drug_name") or simp.get("drug_name") or "UNKNOWN"
     issues: list[dict[str, Any]] = []
@@ -81,7 +97,8 @@ def compare_pair(
                     "drug_name": drug,
                     "field": field,
                     "error_type": "dropped",
-                    "original_snippet": o[:200],
+                    "message": "Original field has text but simplified field is empty or missing.",
+                    "original_snippet": _clip(o),
                     "simplified_value": None,
                 }
             )
@@ -91,11 +108,16 @@ def compare_pair(
             st = _dose_tokens(s)
             missing = ot - st
             if missing:
+                mt = sorted(missing)[:8]
                 issues.append(
                     {
-                        "type": "POSSIBLE_DOSE_MISMATCH",
+                        "drug_name": drug,
                         "field": field,
-                        "detail": f"tokens in original not in simplified: {sorted(missing)[:8]}",
+                        "error_type": "possible_dose_mismatch",
+                        "message": f"Dose-like tokens in original dosage not found in simplified: {mt}",
+                        "missing_tokens": mt,
+                        "original_snippet": _clip(o),
+                        "simplified_snippet": _clip(s),
                     }
                 )
 
@@ -103,15 +125,18 @@ def compare_pair(
             no = _norm(o)
             ns = _norm(s)
             if len(no) > 80 and no[:200] not in ns:
-                # Soft check: first substantial snippet
                 snippets = _significant_snippets(o)
                 for snip in snippets:
                     if snip and snip not in ns and len(snip) > 50:
                         issues.append(
                             {
-                                "type": "POSSIBLE_CONTENT_LOSS",
+                                "drug_name": drug,
                                 "field": field,
-                                "detail": "substantial original snippet not found in simplified",
+                                "error_type": "possible_content_loss",
+                                "message": "A substantial substring of the original field was not found in the simplified field.",
+                                "snippet_not_found": _clip(snip),
+                                "original_snippet": _clip(o),
+                                "simplified_snippet": _clip(s),
                             }
                         )
                         break
@@ -127,11 +152,11 @@ def compare_files(path_original: str, path_simplified: str) -> dict[str, Any]:
     """Load two extracted JSON files, align rows by ``drug_name``, and compare field-wise.
 
     Parameters:
-        path_original: Path to ``extracted_original.json`` (or equivalent list of dicts on disk).
-        path_simplified: Path to ``extracted_simplified.json``.
+        path_original: Path to extracted original JSON (list of dicts).
+        path_simplified: Path to extracted simplified JSON.
 
     Returns:
-        Report dict with ``summary`` (counts) and ``per_drug`` (pair results including issues).
+        Report dict with ``schema_version``, ``summary``, and ``per_drug``.
 
     Side effects:
         Prints a WARNING to stdout for each simplified-only drug (no matching original row);
@@ -163,11 +188,19 @@ def compare_files(path_original: str, path_simplified: str) -> dict[str, Any]:
         key = str(row.get("drug_name", "")).upper()
         if key not in by_drug:
             missing_match += 1
+            dn = row.get("drug_name")
             per_drug.append(
                 {
-                    "drug_name": row.get("drug_name"),
+                    "drug_name": dn,
                     "issue_count": 1,
-                    "issues": [{"type": "NO_MATCH", "field": "—", "detail": "no simplified record with same drug_name"}],
+                    "issues": [
+                        {
+                            "drug_name": dn,
+                            "field": None,
+                            "error_type": "no_match",
+                            "message": "No simplified record with the same drug_name.",
+                        }
+                    ],
                 }
             )
             continue
@@ -175,6 +208,7 @@ def compare_files(path_original: str, path_simplified: str) -> dict[str, Any]:
 
     total_issues = sum(r["issue_count"] for r in per_drug)
     return {
+        "schema_version": "1",
         "summary": {
             "original_records": len(original_list),
             "simplified_records": len(simplified_list),
@@ -198,18 +232,31 @@ def _count_dropped_by_field(per_drug: list[dict[str, Any]]) -> dict[str, int]:
 
 
 def main() -> int:
-    """CLI: compare two extraction JSON files and write ``comparison_report.json``.
+    """CLI: compare two extraction JSON files and write the comparison report JSON.
 
     Returns:
         Process exit code (0 on success).
     """
     parser = argparse.ArgumentParser(description="Compare extracted original vs extracted simplified JSON.")
-    parser.add_argument("--original", default="extracted_original.json", help="Path to extracted_original.json")
-    parser.add_argument("--simplified", default="extracted_simplified.json", help="Path to extracted_simplified.json")
-    parser.add_argument("--output", default="comparison_report.json", help="Write full report JSON here")
+    parser.add_argument(
+        "--original",
+        default=EXTRACTED_ORIGINAL_JSON,
+        help="Path to extracted_original.json",
+    )
+    parser.add_argument(
+        "--simplified",
+        default=EXTRACTED_SIMPLIFIED_JSON,
+        help="Path to extracted_simplified.json",
+    )
+    parser.add_argument(
+        "--output",
+        default=COMPARISON_REPORT_JSON,
+        help="Write full report JSON here",
+    )
     args = parser.parse_args()
 
     report = compare_files(args.original, args.simplified)
+    ensure_parent_dir(args.output)
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
 
@@ -225,7 +272,7 @@ def main() -> int:
     width = max(len(f) for f in SAFETY_FIELDS)
     for field in SAFETY_FIELDS:
         print(f"  {field:<{width}}  {dropped_by_field[field]}")
-    print(f"\nReport written to:     {args.output}")
+    print(f"\nReport written to:     {os.path.abspath(args.output)}")
     return 0
 
 

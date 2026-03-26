@@ -12,6 +12,13 @@ import argparse
 import json
 from collections import Counter
 
+from pipeline_paths import (
+    DEFAULT_DRUG_LABELS_JSON,
+    EXTRACTED_ORIGINAL_JSON,
+    EXTRACTED_SIMPLIFIED_JSON,
+    SIMPLIFIED_LABELS_JSON,
+    ensure_parent_dir,
+)
 from text_section_extract import extract_sections_from_simplified_text, merge_structured_and_text
 
 SAFETY_FIELDS = ["boxed_warning", "dosage", "warnings", "contraindications", "interactions"]
@@ -208,12 +215,12 @@ def main() -> int:
     args = parser.parse_args()
 
     if args.source == "original":
-        input_file = args.input or "drug_labels.json"
-        output_file = args.output or "extracted_original.json"
+        input_file = args.input or DEFAULT_DRUG_LABELS_JSON
+        output_file = args.output or EXTRACTED_ORIGINAL_JSON
         extractor = extract_original
     else:
-        input_file = args.input or "simplified_labels.json"
-        output_file = args.output or "extracted_simplified.json"
+        input_file = args.input or SIMPLIFIED_LABELS_JSON
+        output_file = args.output or EXTRACTED_SIMPLIFIED_JSON
         mode = getattr(args, "simplified_mode", "structured")
         if mode == "from_text":
             extractor = extract_simplified_from_text_only
@@ -229,6 +236,7 @@ def main() -> int:
     print(f"Extracting {len(data)} records (source: {args.source})...")
     results = extractor(data)
 
+    ensure_parent_dir(output_file)
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
 

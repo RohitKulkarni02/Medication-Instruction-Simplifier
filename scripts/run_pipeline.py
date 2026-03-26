@@ -15,6 +15,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
+# Defaults live in pipeline_paths (outputs/ for generated artifacts).
+from pipeline_paths import (
+    COMPARISON_REPORT_JSON,
+    COMPARISON_REPORT_TEXT_ONLY_JSON,
+    EXTRACTED_ORIGINAL_JSON,
+    EXTRACTED_SIMPLIFIED_FROM_TEXT_JSON,
+    EXTRACTED_SIMPLIFIED_JSON,
+    SIMPLIFIED_LABELS_JSON,
+)
+
 
 def _py() -> str:
     return sys.executable
@@ -56,7 +66,9 @@ def main() -> int:
     os.chdir(ROOT)
 
     if not args.skip_ingest:
-        run_step([_py(), "scripts/ingest_data.py", "--drug", args.drug, "--output", "drug_labels.json"])
+        run_step(
+            [_py(), "scripts/ingest_data.py", "--drug", args.drug, "--output", "data/drug_labels.json"]
+        )
 
     simp_cmd = [
         _py(),
@@ -66,7 +78,7 @@ def main() -> int:
         "--input",
         "data/drug_labels.json",
         "--output",
-        "simplified_labels.json",
+        SIMPLIFIED_LABELS_JSON,
         "--pretty",
     ]
     if args.simplify_model:
@@ -84,7 +96,7 @@ def main() -> int:
             "--input",
             "data/drug_labels.json",
             "--output",
-            "extracted_original.json",
+            EXTRACTED_ORIGINAL_JSON,
         ]
     )
     run_step(
@@ -94,9 +106,9 @@ def main() -> int:
             "--source",
             "simplified",
             "--input",
-            "simplified_labels.json",
+            SIMPLIFIED_LABELS_JSON,
             "--output",
-            "extracted_simplified.json",
+            EXTRACTED_SIMPLIFIED_JSON,
             "--simplified-mode",
             "structured",
         ]
@@ -106,11 +118,11 @@ def main() -> int:
             _py(),
             "scripts/compare_extractions.py",
             "--original",
-            "extracted_original.json",
+            EXTRACTED_ORIGINAL_JSON,
             "--simplified",
-            "extracted_simplified.json",
+            EXTRACTED_SIMPLIFIED_JSON,
             "--output",
-            "comparison_report.json",
+            COMPARISON_REPORT_JSON,
         ]
     )
 
@@ -122,9 +134,9 @@ def main() -> int:
                 "--source",
                 "simplified",
                 "--input",
-                "simplified_labels.json",
+                SIMPLIFIED_LABELS_JSON,
                 "--output",
-                "extracted_simplified_from_text.json",
+                EXTRACTED_SIMPLIFIED_FROM_TEXT_JSON,
                 "--simplified-mode",
                 "from_text",
             ]
@@ -134,19 +146,20 @@ def main() -> int:
                 _py(),
                 "scripts/compare_extractions.py",
                 "--original",
-                "extracted_original.json",
+                EXTRACTED_ORIGINAL_JSON,
                 "--simplified",
-                "extracted_simplified_from_text.json",
+                EXTRACTED_SIMPLIFIED_FROM_TEXT_JSON,
                 "--output",
-                "comparison_report_text_only.json",
+                COMPARISON_REPORT_TEXT_ONLY_JSON,
             ]
         )
 
     print("\nDone. Outputs under:", ROOT)
-    print("  data/drug_labels.json, simplified_labels.json")
-    print("  extracted_original.json, extracted_simplified.json, comparison_report.json")
+    print("  data/drug_labels.json")
+    print(f"  {SIMPLIFIED_LABELS_JSON}")
+    print(f"  {EXTRACTED_ORIGINAL_JSON}, {EXTRACTED_SIMPLIFIED_JSON}, {COMPARISON_REPORT_JSON}")
     if args.extract_text:
-        print("  extracted_simplified_from_text.json, comparison_report_text_only.json")
+        print(f"  {EXTRACTED_SIMPLIFIED_FROM_TEXT_JSON}, {COMPARISON_REPORT_TEXT_ONLY_JSON}")
     return 0
 
 
