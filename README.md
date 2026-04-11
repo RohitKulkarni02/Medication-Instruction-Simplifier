@@ -121,6 +121,44 @@ python3 scripts/simplify_labels.py \
 
 Typical pipeline input is ingest output, e.g. `data/drug_labels.json`, as a JSON array of records.
 
+### Batch: 25 drugs, two Groq models, readability
+
+For the course paper / LLM judge, generate **two** simplified corpora (same **`GROQ_API_KEY`**, two different Groq-hosted models) plus **readability** JSON under `outputs/runs/` (gitignored — copy artifacts out for submission). **No `OPENAI_API_KEY`:** run 1 uses OpenAI’s **GPT-OSS** open-weight model on Groq (`openai/gpt-oss-120b`), run 2 uses **Llama** on Groq — both are normal Groq chat model IDs.
+
+1. Ingest the curated list (25 generics) if you do not already have `data/drug_labels.json`:
+
+   ```bash
+   python3 scripts/ingest_data.py --output drug_labels.json
+   ```
+
+2. Run **two Groq simplifications** back-to-back, then readability for each:
+
+   ```bash
+   pip install -r requirements.txt   # includes textstat
+   python3 scripts/run_dual_model_simplification.py \
+     --ingest data/drug_labels.json \
+     --sleep-ms 2500 \
+     --max-llm-chars 5000
+   ```
+
+   Defaults: run 1 = **`openai/gpt-oss-120b`** (GPT-class on Groq; or `GROQ_SIMPLIFY_MODEL` / `--groq-model-1` if set). Run 2 = **`llama-3.3-70b-versatile`** (`GROQ_SIMPLIFY_MODEL_2` / `--groq-model-2`). Cheaper/faster GPT-class on Groq: `openai/gpt-oss-20b`. If your `.env` still sets `GROQ_SIMPLIFY_MODEL` to a Llama id, run 1 will use that unless you unset it or pass `--groq-model-1 openai/gpt-oss-120b`. Outputs:
+
+   - `outputs/runs/groq_gpt_oss/simplified_labels.json`, `meta.json`, `readability.json`
+   - `outputs/runs/groq_llama/simplified_labels.json`, `meta.json`, `readability.json`
+
+   Override: `--groq-model-1 ...`, `--groq-model-2 ...`, folder names `--out-label-1` / `--out-label-2`. Skip one run: `--skip-1` / `--skip-2`. To refresh readability only, run `compute_readability.py` with the same `--ingest` and `--simplified` paths.
+
+3. **Readability only** (any pair of files):
+
+   ```bash
+   python3 scripts/compute_readability.py \
+     --ingest data/drug_labels.json \
+     --simplified path/to/simplified_labels.json \
+     --output path/to/readability.json
+   ```
+
+**LLM judge taxonomy** (shared with `evaluate_labels.py`): `scripts/judge_taxonomy.py` defines **PRESERVED / SOFTENED / DROPPED**.
+
 ---
 
 ## 3. Structured extraction

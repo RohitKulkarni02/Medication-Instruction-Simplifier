@@ -355,6 +355,55 @@ def _build_drug_label_blob_for_llm(
     return _truncate_for_llm(blob, max_chars) if max_chars > 0 else blob
 
 
+def _resolve_max_output_tokens(explicit: int | None) -> int:
+    """Cap high enough for JSON-mode simplification of long/combo labels (Groq json_validate_failed otherwise)."""
+    if explicit is not None and explicit > 0:
+        return max(256, min(explicit, 131_072))
+    raw = os.environ.get("SIMPLIFY_MAX_OUTPUT_TOKENS", "8192").strip()
+    try:
+        v = int(raw)
+    except ValueError:
+        v = 8192
+    return max(256, min(v, 131_072))
+
+
+def _groq_completion_cap_for_prompt(
+    max_tokens: int,
+    *,
+    base_url: str | None,
+    system_text: str,
+    user_text: str,
+) -> int:
+    """
+    Groq free/on_demand often rejects requests when prompt + max_tokens exceeds ~8k (413 TPM-style error).
+
+    Shrink max_tokens so estimated_input + max_tokens stays under GROQ_REQUEST_TOKEN_BUDGET (default 7600).
+    Paid tiers: set GROQ_REQUEST_TOKEN_BUDGET higher (e.g. 32000) or disable with GROQ_REQUEST_TOKEN_BUDGET=0.
+    """
+    if not base_url or "groq" not in base_url.lower():
+        return max_tokens
+    raw_budget = os.environ.get("GROQ_REQUEST_TOKEN_BUDGET", "7600").strip()
+    try:
+        budget = int(raw_budget)
+    except ValueError:
+        budget = 7600
+    if budget <= 0:
+        return max_tokens
+    overhead = int(os.environ.get("GROQ_PROMPT_TOKEN_OVERHEAD", "250").strip() or "250")
+    # Conservative: ~3 chars/token worst-case for mixed text + JSON keys in prompt.
+    prompt_est = (len(system_text) + len(user_text)) // 3 + max(0, overhead)
+    allowed = budget - prompt_est
+    floor = 512
+    if allowed < floor:
+        print(
+            f"Warning: Groq token budget tight (est_prompt≈{prompt_est}, budget={budget}); "
+            f"capping completion to {floor}. Consider --max-llm-chars or GROQ_REQUEST_TOKEN_BUDGET.",
+            file=sys.stderr,
+        )
+        allowed = floor
+    return min(max_tokens, allowed)
+
+
 def simplify_openai_compatible(
     item: dict[str, Any],
     *,
@@ -363,6 +412,7 @@ def simplify_openai_compatible(
     temperature: float,
     base_url: str | None = None,
     max_label_chars: int | None = None,
+    max_output_tokens: int | None = None,
 ) -> SimplificationResult:
     """
     Chat Completions with JSON output. Use base_url for OpenAI-compatible providers (e.g. Groq).
@@ -404,6 +454,13 @@ def simplify_openai_compatible(
     )
 
     user_prompt = SIMPLIFY_USER_PROMPT_TEMPLATE.format(drug_label=drug_label_blob)
+    max_tokens = _resolve_max_output_tokens(max_output_tokens)
+    max_tokens = _groq_completion_cap_for_prompt(
+        max_tokens,
+        base_url=base_url,
+        system_text=SIMPLIFY_SYSTEM_PROMPT,
+        user_text=user_prompt,
+    )
 
     client_kwargs: dict[str, Any] = {"api_key": api_key}
     if base_url:
@@ -416,6 +473,7 @@ def simplify_openai_compatible(
         response = client.chat.completions.create(
             model=model,
             temperature=temperature,
+            max_tokens=max_tokens,
             messages=[
                 {"role": "system", "content": SIMPLIFY_SYSTEM_PROMPT},
                 {"role": "user", "content": user_prompt},
@@ -428,6 +486,7 @@ def simplify_openai_compatible(
         response = client.chat.completions.create(
             model=model,
             temperature=temperature,
+            max_tokens=max_tokens,
             messages=[
                 {"role": "system", "content": SIMPLIFY_SYSTEM_PROMPT},
                 {"role": "user", "content": user_prompt},
@@ -488,6 +547,7 @@ def simplify_openai(
     api_key: str,
     temperature: float,
     max_label_chars: int | None = None,
+    max_output_tokens: int | None = None,
 ) -> SimplificationResult:
     """OpenAI platform (api.openai.com)."""
     return simplify_openai_compatible(
@@ -497,6 +557,7 @@ def simplify_openai(
         temperature=temperature,
         base_url=None,
         max_label_chars=max_label_chars,
+        max_output_tokens=max_output_tokens,
     )
 
 
@@ -507,6 +568,7 @@ def simplify_groq(
     api_key: str,
     temperature: float,
     max_label_chars: int | None = None,
+    max_output_tokens: int | None = None,
 ) -> SimplificationResult:
     """Groq via OpenAI-compatible API (`https://api.groq.com/openai/v1`)."""
     base = os.environ.get("GROQ_OPENAI_BASE_URL", GROQ_OPENAI_BASE_URL).strip() or GROQ_OPENAI_BASE_URL
@@ -517,6 +579,7 @@ def simplify_groq(
         temperature=temperature,
         base_url=base,
         max_label_chars=max_label_chars,
+        max_output_tokens=max_output_tokens,
     )
 
 
@@ -594,6 +657,12 @@ def main() -> int:
         default=0,
         help="Max characters for label text sent to the LLM (0 = use SIMPLIFY_MAX_LLM_LABEL_CHARS env or default).",
     )
+    parser.add_argument(
+        "--max-output-tokens",
+        type=int,
+        default=0,
+        help="Max completion tokens per API call (0 = SIMPLIFY_MAX_OUTPUT_TOKENS env or 8192). Raise for long JSON.",
+    )
     parser.add_argument("--max-items", type=int, default=-1)
     parser.add_argument("--pretty", action="store_true", help="Pretty-print output JSON.")
     parser.add_argument("--sleep-ms", type=int, default=0, help="Sleep between items (avoid rate limits).")
@@ -629,6 +698,7 @@ def main() -> int:
         items = items[: args.max_items]
 
     max_llm_chars: int | None = args.max_llm_chars if args.max_llm_chars > 0 else None
+    max_out_tok: int | None = args.max_output_tokens if args.max_output_tokens > 0 else None
 
     results: list[dict[str, Any]] = []
     for idx, item in enumerate(items):
@@ -642,6 +712,7 @@ def main() -> int:
                     api_key=openai_key,
                     temperature=args.temperature,
                     max_label_chars=max_llm_chars,
+                    max_output_tokens=max_out_tok,
                 )
             else:
                 res = simplify_groq(
@@ -650,6 +721,7 @@ def main() -> int:
                     api_key=groq_key,
                     temperature=args.temperature,
                     max_label_chars=max_llm_chars,
+                    max_output_tokens=max_out_tok,
                 )
             results.append(res.to_dict())
         except Exception as e:

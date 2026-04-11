@@ -1,5 +1,8 @@
 # Runtime: Groq and OpenAI simplification use the OpenAI-compatible client.
 openai>=1.0.0
 
+# Readability metrics (Rohit: original vs simplified)
+textstat>=0.7.0
+
 # Optional: tests
 pytest>=8.0.0

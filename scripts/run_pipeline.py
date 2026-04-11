@@ -47,6 +47,12 @@ def main() -> int:
         help="Forward to simplify_labels.py --max-llm-chars (0 = script default / env).",
     )
     parser.add_argument(
+        "--simplify-max-output-tokens",
+        type=int,
+        default=0,
+        help="Forward to simplify_labels.py --max-output-tokens (0 = omit; script uses env/default).",
+    )
+    parser.add_argument(
         "--extract-text",
         action="store_true",
         help="Also run simplified extraction from simplified_text only; write comparison_text report.",
@@ -73,6 +79,8 @@ def main() -> int:
         simp_cmd.extend(["--model", args.simplify_model])
     if args.simplify_max_chars > 0:
         simp_cmd.extend(["--max-llm-chars", str(args.simplify_max_chars)])
+    if args.simplify_max_output_tokens > 0:
+        simp_cmd.extend(["--max-output-tokens", str(args.simplify_max_output_tokens)])
     run_step(simp_cmd)
 
     run_step(
