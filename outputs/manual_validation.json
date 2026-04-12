@@ -1,0 +1,122 @@
+[
+    {
+      "drug_name": "IBUPROFEN",
+      "field": "boxed_warning",
+      "human_judgment": "SOFTENED",
+      "reasoning": "Simplified covers CV risk (heart attack, stroke, CABG) but completely omits the GI bleeding/ulceration/perforation warning which is the second half of the original boxed warning. Major safety content lost but not all."
+    },
+    {
+      "drug_name": "IBUPROFEN",
+      "field": "interactions",
+      "human_judgment": "DROPPED",
+      "reasoning": "Simplified field is completely empty. Original has detailed interactions with ACE-inhibitors, aspirin, diuretics, lithium, methotrexate, warfarin. Total loss."
+    },
+    {
+      "drug_name": "IBUPROFEN",
+      "field": "contraindications",
+      "human_judgment": "DROPPED",
+      "reasoning": "Simplified only mentions CABG surgery. Original includes hypersensitivity to ibuprofen, aspirin/NSAID cross-reactivity (asthma, urticaria), and anaphylactic-like reactions. Most contraindications are missing."
+    },
+    {
+      "drug_name": "NAPROXEN",
+      "field": "dosage",
+      "human_judgment": "SOFTENED",
+      "reasoning": "Simplified says 250-500 mg every 12 hours. Original has detailed condition-specific dosing (RA/OA: 250-500mg twice daily, ankylosing spondylitis, acute gout: 750mg then 250mg q8h, pain/dysmenorrhea: 500mg then 250mg). Dose range is partially preserved but clinical specificity is lost."
+    },
+    {
+      "drug_name": "NAPROXEN",
+      "field": "interactions",
+      "human_judgment": "DROPPED",
+      "reasoning": "Simplified is completely empty. Original has extensive table of interactions with anticoagulants, SSRIs, ACE-inhibitors, diuretics, lithium, methotrexate, etc."
+    },
+    {
+      "drug_name": "WARFARIN",
+      "field": "contraindications",
+      "human_judgment": "DROPPED",
+      "reasoning": "Simplified is completely empty. Original has detailed contraindications including pregnancy, hemorrhagic tendencies, recent surgery, unsupervised patients, spinal puncture, bacterial endocarditis."
+    },
+    {
+      "drug_name": "WARFARIN",
+      "field": "warnings",
+      "human_judgment": "DROPPED",
+      "reasoning": "Simplified is one sentence about bleeding risk. Original covers tissue necrosis, calciphylaxis, acute kidney injury, systemic atheroemboli, limb ischemia/gangrene, heparin-induced thrombocytopenia, and use in pregnant women with mechanical heart valves. Nearly all content lost."
+    },
+    {
+      "drug_name": "PREDNISONE",
+      "field": "contraindications",
+      "human_judgment": "DROPPED",
+      "reasoning": "Simplified is completely empty. Original states contraindicated in systemic fungal infections and known hypersensitivity."
+    },
+    {
+      "drug_name": "PREDNISONE",
+      "field": "interactions",
+      "human_judgment": "DROPPED",
+      "reasoning": "Simplified is completely empty. Original lists interactions with amphotericin B, antibiotics, anticoagulants, antidiabetics, CYP3A4 inhibitors, NSAIDs, phenytoin."
+    },
+    {
+      "drug_name": "METFORMIN HYDROCHLORIDE",
+      "field": "dosage",
+      "human_judgment": "SOFTENED",
+      "reasoning": "Simplified says 500-2500 mg once daily. Original specifies starting at 500mg twice daily or 850mg once daily, titration schedule (500mg weekly or 850mg every 2 weeks), max 2550mg/day in divided doses, pediatric dosing starting at 500mg twice daily. Dosing frequency (divided doses vs once daily) is wrong in simplified, and titration guidance is lost."
+    },
+    {
+      "drug_name": "METFORMIN HYDROCHLORIDE",
+      "field": "interactions",
+      "human_judgment": "SOFTENED",
+      "reasoning": "Simplified mentions carbonic anhydrase inhibitors and lactic acidosis risk, which is the most critical interaction. But original also covers alcohol, cationic drugs, and specific clinical monitoring guidance. Partially preserved."
+    },
+    {
+      "drug_name": "SERTRALINE",
+      "field": "contraindications",
+      "human_judgment": "SOFTENED",
+      "reasoning": "Simplified lists MAOIs, pimozide, and thioridazine as contraindicated. Original also mentions the 14-day MAOI washout period, linezolid and IV methylene blue as MAOIs, and hypersensitivity (anaphylaxis, angioedema). Core contraindications preserved but clinical specifics weakened."
+    },
+    {
+      "drug_name": "TOFACITINIB",
+      "field": "boxed_warning",
+      "human_judgment": "SOFTENED",
+      "reasoning": "Simplified compresses 5 major warnings (infections, mortality, malignancy, MACE, thrombosis) into one sentence. Core risks named but all clinical detail stripped — no mention of TB specifically, no lymphoma rates, no MACE trial data, no DVT/PE specifics."
+    },
+    {
+      "drug_name": "TOFACITINIB",
+      "field": "dosage",
+      "human_judgment": "DROPPED",
+      "reasoning": "Simplified has placeholder text: '[insert dose] taken [insert frequency]'. No actual dosage information preserved. This is a simplification failure — the LLM did not fill in real values."
+    },
+    {
+      "drug_name": "CLOZAPINE",
+      "field": "boxed_warning",
+      "human_judgment": "DROPPED",
+      "reasoning": "Simplified only reproduces the warning header titles. Original has detailed clinical content about neutropenia monitoring (ANC thresholds), orthostatic hypotension management, seizure risk at higher doses, myocarditis monitoring, and elderly dementia mortality. All substantive safety content is missing."
+    },
+    {
+      "drug_name": "OMEPRAZOLE",
+      "field": "contraindications",
+      "human_judgment": "SOFTENED",
+      "reasoning": "Simplified mentions allergy and MEN1 syndrome. Original also covers rilpivirine co-administration contraindication and specific hypersensitivity reactions (anaphylaxis, bronchospasm, acute tubulointerstitial nephritis). Drug interaction contraindication is lost."
+    },
+    {
+      "drug_name": "ALPRAZOLAM",
+      "field": "interactions",
+      "human_judgment": "SOFTENED",
+      "reasoning": "Simplified covers opioids, MAOIs, and other sedatives. Original also details digoxin toxicity, CYP3A inhibitors (ketoconazole, itraconazole, fluvoxamine, specific dose adjustments), and CYP3A inducers. The most dangerous interactions (opioids) are preserved but pharmacokinetic interactions are lost."
+    },
+    {
+      "drug_name": "OXYCODONE HYDROCHLORIDE",
+      "field": "dosage",
+      "human_judgment": "SOFTENED",
+      "reasoning": "Simplified gives a generic 1 tablet every 4-6 hours instruction. Original has extensive opioid-specific prescribing guidance: use lowest effective dose, opioid-naive vs tolerant starting doses, titration protocol, conversion from other opioids, hepatic/renal dose adjustments. Critical safety dosing context is lost."
+    },
+    {
+      "drug_name": "DIAZEPAM",
+      "field": "contraindications",
+      "human_judgment": "DROPPED",
+      "reasoning": "Simplified talks about opioid co-use risk (which is a warning, not a contraindication). Original lists hypersensitivity to diazepam and acute narrow-angle glaucoma as actual contraindications. The simplified text is about a completely different topic."
+    },
+    {
+      "drug_name": "ISOTRETINOIN",
+      "field": "warnings",
+      "human_judgment": "SOFTENED",
+      "reasoning": "Simplified covers depression, liver damage, and eye problems. Original has extensive warnings about pediatric pharmacokinetics, psychiatric effects (including suicidal ideation), IBD, skeletal effects (premature epiphyseal closure), lipid elevation, hearing impairment, and many more. Core warnings partially preserved but scope is greatly reduced."
+    }
+  ]

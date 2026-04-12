@@ -1,0 +1,582 @@
+{
+  "ingest_path": "data/drug_labels.json",
+  "simplified_path": "outputs/simplified_labels.json",
+  "n_drugs": 25,
+  "per_drug": [
+    {
+      "drug_name": "IBUPROFEN",
+      "original_char_count": 67001,
+      "simplified_char_count": 792,
+      "original": {
+        "flesch_reading_ease": 21.044186043304393,
+        "flesch_kincaid_grade": 15.84546653731471,
+        "smog_index": 16.68948321857029,
+        "gunning_fog": 18.716345807237055
+      },
+      "simplified": {
+        "flesch_reading_ease": 51.61975694444445,
+        "flesch_kincaid_grade": 9.592604166666668,
+        "smog_index": 12.261556223090622,
+        "gunning_fog": 12.56388888888889
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 30.575570901140054,
+        "flesch_kincaid_grade": -6.252862370648042,
+        "smog_index": -4.42792699547967,
+        "gunning_fog": -6.1524569183481645
+      }
+    },
+    {
+      "drug_name": "ACETAMINOPHEN, DEXTROMETHORPHAN HYDROBROMIDE, DOXYLAMINE SUCCINATE",
+      "original_char_count": 5497,
+      "simplified_char_count": 1489,
+      "original": {
+        "flesch_reading_ease": 36.999198593690636,
+        "flesch_kincaid_grade": 15.361057012542762,
+        "smog_index": 15.202697889610203,
+        "gunning_fog": 17.53141771189662
+      },
+      "simplified": {
+        "flesch_reading_ease": 50.754608865710566,
+        "flesch_kincaid_grade": 10.690000000000001,
+        "smog_index": 12.896187039172386,
+        "gunning_fog": 13.19374185136897
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 13.75541027201993,
+        "flesch_kincaid_grade": -4.671057012542761,
+        "smog_index": -2.3065108504378173,
+        "gunning_fog": -4.33767586052765
+      }
+    },
+    {
+      "drug_name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+      "original_char_count": 11352,
+      "simplified_char_count": 1370,
+      "original": {
+        "flesch_reading_ease": 19.90789062500002,
+        "flesch_kincaid_grade": 14.457421875000005,
+        "smog_index": 15.634230697037914,
+        "gunning_fog": 17.91041666666667
+      },
+      "simplified": {
+        "flesch_reading_ease": 14.589466850828757,
+        "flesch_kincaid_grade": 15.720933701657462,
+        "smog_index": 16.76809479433877,
+        "gunning_fog": 19.39469613259669
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": -5.318423774171265,
+        "flesch_kincaid_grade": 1.2635118266574565,
+        "smog_index": 1.1338640973008545,
+        "gunning_fog": 1.484279465930019
+      }
+    },
+    {
+      "drug_name": "LORATADINE",
+      "original_char_count": 1588,
+      "simplified_char_count": 314,
+      "original": {
+        "flesch_reading_ease": 52.151153846153875,
+        "flesch_kincaid_grade": 10.953846153846154,
+        "smog_index": 12.230961643895458,
+        "gunning_fog": 12.923076923076923
+      },
+      "simplified": {
+        "flesch_reading_ease": 65.24375862068968,
+        "flesch_kincaid_grade": 7.040896551724142,
+        "smog_index": 9.888512548439397,
+        "gunning_fog": 8.77793103448276
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 13.0926047745358,
+        "flesch_kincaid_grade": -3.912949602122012,
+        "smog_index": -2.342449095456061,
+        "gunning_fog": -4.145145888594163
+      }
+    },
+    {
+      "drug_name": "OMEPRAZOLE",
+      "original_char_count": 134231,
+      "simplified_char_count": 882,
+      "original": {
+        "flesch_reading_ease": 35.81593628033042,
+        "flesch_kincaid_grade": 13.131547014837768,
+        "smog_index": 14.3542040337304,
+        "gunning_fog": 15.479513560231636
+      },
+      "simplified": {
+        "flesch_reading_ease": 51.78191047162272,
+        "flesch_kincaid_grade": 9.873621103117507,
+        "smog_index": 12.457975602129121,
+        "gunning_fog": 12.796482813749002
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 15.965974191292304,
+        "flesch_kincaid_grade": -3.2579259117202604,
+        "smog_index": -1.8962284316012799,
+        "gunning_fog": -2.6830307464826344
+      }
+    },
+    {
+      "drug_name": "CETIRIZINE HYDROCHLORIDE",
+      "original_char_count": 26450,
+      "simplified_char_count": 694,
+      "original": {
+        "flesch_reading_ease": 27.556304422072884,
+        "flesch_kincaid_grade": 14.22236817985365,
+        "smog_index": 15.903189008614273,
+        "gunning_fog": 17.84309204806828
+      },
+      "simplified": {
+        "flesch_reading_ease": 68.13304301075269,
+        "flesch_kincaid_grade": 5.8098064516129035,
+        "smog_index": 9.725611199111238,
+        "gunning_fog": 8.790537634408603
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 40.5767385886798,
+        "flesch_kincaid_grade": -8.412561728240746,
+        "smog_index": -6.177577809503035,
+        "gunning_fog": -9.052554413659676
+      }
+    },
+    {
+      "drug_name": "ACETAMINOPHEN, ASPIRIN AND CAFFEINE",
+      "original_char_count": 5801,
+      "simplified_char_count": 1297,
+      "original": {
+        "flesch_reading_ease": 34.97572033898308,
+        "flesch_kincaid_grade": 16.4676724137931,
+        "smog_index": 15.59103495243097,
+        "gunning_fog": 18.402045587375802
+      },
+      "simplified": {
+        "flesch_reading_ease": 54.76477979274611,
+        "flesch_kincaid_grade": 9.045495928941527,
+        "smog_index": 10.7630783206399,
+        "gunning_fog": 9.866617320503332
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 19.78905945376303,
+        "flesch_kincaid_grade": -7.4221764848515726,
+        "smog_index": -4.82795663179107,
+        "gunning_fog": -8.53542826687247
+      }
+    },
+    {
+      "drug_name": "NAPROXEN",
+      "original_char_count": 101483,
+      "simplified_char_count": 385,
+      "original": {
+        "flesch_reading_ease": 26.156596665329488,
+        "flesch_kincaid_grade": 14.968598245254444,
+        "smog_index": 15.771396797989112,
+        "gunning_fog": 17.380812325488474
+      },
+      "simplified": {
+        "flesch_reading_ease": 64.09201923076924,
+        "flesch_kincaid_grade": 8.356730769230769,
+        "smog_index": 10.686352973137792,
+        "gunning_fog": 8.346153846153845
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 37.93542256543975,
+        "flesch_kincaid_grade": -6.611867476023676,
+        "smog_index": -5.08504382485132,
+        "gunning_fog": -9.03465847933463
+      }
+    },
+    {
+      "drug_name": "AMOXICILLIN",
+      "original_char_count": 43423,
+      "simplified_char_count": 1510,
+      "original": {
+        "flesch_reading_ease": 23.328711991926383,
+        "flesch_kincaid_grade": 14.400329858347053,
+        "smog_index": 15.468814656321793,
+        "gunning_fog": 17.22275675227598
+      },
+      "simplified": {
+        "flesch_reading_ease": 22.738447867298618,
+        "flesch_kincaid_grade": 13.831932972241031,
+        "smog_index": 14.955608360458719,
+        "gunning_fog": 16.26553825321598
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": -0.5902641246277653,
+        "flesch_kincaid_grade": -0.5683968861060222,
+        "smog_index": -0.5132062958630748,
+        "gunning_fog": -0.9572184990600014
+      }
+    },
+    {
+      "drug_name": "METFORMIN HYDROCHLORIDE",
+      "original_char_count": 69807,
+      "simplified_char_count": 1326,
+      "original": {
+        "flesch_reading_ease": 33.98620113016901,
+        "flesch_kincaid_grade": 13.217600705422125,
+        "smog_index": 14.837258366479283,
+        "gunning_fog": 16.114376933103888
+      },
+      "simplified": {
+        "flesch_reading_ease": 32.85408980582528,
+        "flesch_kincaid_grade": 15.073859223300971,
+        "smog_index": 16.061879428645646,
+        "gunning_fog": 17.48446601941748
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": -1.1321113243437253,
+        "flesch_kincaid_grade": 1.856258517878846,
+        "smog_index": 1.2246210621663636,
+        "gunning_fog": 1.370089086313591
+      }
+    },
+    {
+      "drug_name": "LISINOPRIL",
+      "original_char_count": 60337,
+      "simplified_char_count": 847,
+      "original": {
+        "flesch_reading_ease": 29.226034041271674,
+        "flesch_kincaid_grade": 13.752909050607755,
+        "smog_index": 14.970952119539945,
+        "gunning_fog": 16.431330209249378
+      },
+      "simplified": {
+        "flesch_reading_ease": 61.12468253968254,
+        "flesch_kincaid_grade": 8.59809523809524,
+        "smog_index": 10.980518767755715,
+        "gunning_fog": 10.507936507936508
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 31.898648498410864,
+        "flesch_kincaid_grade": -5.154813812512515,
+        "smog_index": -3.9904333517842296,
+        "gunning_fog": -5.92339370131287
+      }
+    },
+    {
+      "drug_name": "ATORVASTATIN CALCIUM",
+      "original_char_count": 84903,
+      "simplified_char_count": 1589,
+      "original": {
+        "flesch_reading_ease": 33.29032503992755,
+        "flesch_kincaid_grade": 13.458616288729832,
+        "smog_index": 15.576207390405596,
+        "gunning_fog": 17.314260728854606
+      },
+      "simplified": {
+        "flesch_reading_ease": 28.293585669781947,
+        "flesch_kincaid_grade": 12.857177570093459,
+        "smog_index": 13.968273953766033,
+        "gunning_fog": 15.239376947040498
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": -4.996739370145605,
+        "flesch_kincaid_grade": -0.6014387186363734,
+        "smog_index": -1.6079334366395628,
+        "gunning_fog": -2.0748837818141084
+      }
+    },
+    {
+      "drug_name": "METOPROLOL SUCCINATE",
+      "original_char_count": 64311,
+      "simplified_char_count": 2348,
+      "original": {
+        "flesch_reading_ease": 21.112560041095293,
+        "flesch_kincaid_grade": 15.081721115941992,
+        "smog_index": 16.451314795739847,
+        "gunning_fog": 18.72353268395562
+      },
+      "simplified": {
+        "flesch_reading_ease": 36.66518562468218,
+        "flesch_kincaid_grade": 13.216121376504493,
+        "smog_index": 15.827824993895579,
+        "gunning_fog": 17.040786573995593
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 15.552625583586888,
+        "flesch_kincaid_grade": -1.8655997394374992,
+        "smog_index": -0.6234898018442685,
+        "gunning_fog": -1.6827461099600285
+      }
+    },
+    {
+      "drug_name": "SERTRALINE",
+      "original_char_count": 131680,
+      "simplified_char_count": 1624,
+      "original": {
+        "flesch_reading_ease": 25.54777251997521,
+        "flesch_kincaid_grade": 15.287633143373103,
+        "smog_index": 16.954016013311605,
+        "gunning_fog": 19.140990776690018
+      },
+      "simplified": {
+        "flesch_reading_ease": 35.92088311688315,
+        "flesch_kincaid_grade": 12.074874458874461,
+        "smog_index": 14.167174469761473,
+        "gunning_fog": 15.856969696969697
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 10.373110596907935,
+        "flesch_kincaid_grade": -3.2127586844986418,
+        "smog_index": -2.786841543550132,
+        "gunning_fog": -3.28402107972032
+      }
+    },
+    {
+      "drug_name": "PREDNISONE",
+      "original_char_count": 58423,
+      "simplified_char_count": 670,
+      "original": {
+        "flesch_reading_ease": 9.098238047129854,
+        "flesch_kincaid_grade": 17.187469299598053,
+        "smog_index": 17.8950308703544,
+        "gunning_fog": 20.76574592509643
+      },
+      "simplified": {
+        "flesch_reading_ease": 50.56583333333336,
+        "flesch_kincaid_grade": 9.560185185185187,
+        "smog_index": 11.45678717892309,
+        "gunning_fog": 10.955555555555556
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 41.467595286203505,
+        "flesch_kincaid_grade": -7.627284114412866,
+        "smog_index": -6.43824369143131,
+        "gunning_fog": -9.810190369540873
+      }
+    },
+    {
+      "drug_name": "AZITHROMYCIN",
+      "original_char_count": 92705,
+      "simplified_char_count": 1313,
+      "original": {
+        "flesch_reading_ease": 42.775513928523054,
+        "flesch_kincaid_grade": 11.603256118019626,
+        "smog_index": 13.81291764960562,
+        "gunning_fog": 14.74858840224556
+      },
+      "simplified": {
+        "flesch_reading_ease": 51.27095238095242,
+        "flesch_kincaid_grade": 10.165714285714287,
+        "smog_index": 13.295006501635747,
+        "gunning_fog": 13.472108843537416
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 8.495438452429369,
+        "flesch_kincaid_grade": -1.4375418323053388,
+        "smog_index": -0.5179111479698726,
+        "gunning_fog": -1.276479558708143
+      }
+    },
+    {
+      "drug_name": "METHOTREXATE",
+      "original_char_count": 70452,
+      "simplified_char_count": 1525,
+      "original": {
+        "flesch_reading_ease": 20.491779411764753,
+        "flesch_kincaid_grade": 14.745073996265173,
+        "smog_index": 15.659060963626342,
+        "gunning_fog": 17.74183473389356
+      },
+      "simplified": {
+        "flesch_reading_ease": 30.228535353535364,
+        "flesch_kincaid_grade": 12.079393939393942,
+        "smog_index": 13.5591,
+        "gunning_fog": 15.434343434343436
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 9.73675594177061,
+        "flesch_kincaid_grade": -2.6656800568712313,
+        "smog_index": -2.0999609636263408,
+        "gunning_fog": -2.307491299550122
+      }
+    },
+    {
+      "drug_name": "TOFACITINIB",
+      "original_char_count": 176270,
+      "simplified_char_count": 1684,
+      "original": {
+        "flesch_reading_ease": 36.48430949980241,
+        "flesch_kincaid_grade": 13.313989170256725,
+        "smog_index": 14.735804940851011,
+        "gunning_fog": 16.094419922085752
+      },
+      "simplified": {
+        "flesch_reading_ease": 29.308750000000003,
+        "flesch_kincaid_grade": 12.090372340425532,
+        "smog_index": 13.348371206891418,
+        "gunning_fog": 14.742553191489362
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": -7.175559499802404,
+        "flesch_kincaid_grade": -1.2236168298311938,
+        "smog_index": -1.3874337339595932,
+        "gunning_fog": -1.3518667305963898
+      }
+    },
+    {
+      "drug_name": "WARFARIN",
+      "original_char_count": 69272,
+      "simplified_char_count": 692,
+      "original": {
+        "flesch_reading_ease": 33.9880004948464,
+        "flesch_kincaid_grade": 12.50641960848456,
+        "smog_index": 14.362096985381278,
+        "gunning_fog": 15.792877353870153
+      },
+      "simplified": {
+        "flesch_reading_ease": 57.46815789473686,
+        "flesch_kincaid_grade": 9.289498746867167,
+        "smog_index": 10.914260884657427,
+        "gunning_fog": 11.075689223057644
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 23.48015739989046,
+        "flesch_kincaid_grade": -3.2169208616173925,
+        "smog_index": -3.447836100723851,
+        "gunning_fog": -4.717188130812509
+      }
+    },
+    {
+      "drug_name": "ISOTRETINOIN",
+      "original_char_count": 131795,
+      "simplified_char_count": 871,
+      "original": {
+        "flesch_reading_ease": 40.836362800433164,
+        "flesch_kincaid_grade": 12.521722884153945,
+        "smog_index": 14.40911306636335,
+        "gunning_fog": 15.375256380485908
+      },
+      "simplified": {
+        "flesch_reading_ease": 52.444447761194056,
+        "flesch_kincaid_grade": 9.27331343283582,
+        "smog_index": 11.20814326018867,
+        "gunning_fog": 11.031641791044777
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 11.608084960760891,
+        "flesch_kincaid_grade": -3.2484094513181248,
+        "smog_index": -3.2009698061746796,
+        "gunning_fog": -4.343614589441131
+      }
+    },
+    {
+      "drug_name": "CLOZAPINE",
+      "original_char_count": 122507,
+      "simplified_char_count": 2090,
+      "original": {
+        "flesch_reading_ease": 27.19306605539083,
+        "flesch_kincaid_grade": 14.055804666262386,
+        "smog_index": 15.797649763144392,
+        "gunning_fog": 17.758891321480053
+      },
+      "simplified": {
+        "flesch_reading_ease": 14.781470588235294,
+        "flesch_kincaid_grade": 15.420882352941181,
+        "smog_index": 16.52667757954773,
+        "gunning_fog": 19.447058823529414
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": -12.411595467155536,
+        "flesch_kincaid_grade": 1.365077686678795,
+        "smog_index": 0.7290278164033381,
+        "gunning_fog": 1.6881675020493603
+      }
+    },
+    {
+      "drug_name": "OXYCODONE HYDROCHLORIDE",
+      "original_char_count": 125161,
+      "simplified_char_count": 2618,
+      "original": {
+        "flesch_reading_ease": 23.858092907916244,
+        "flesch_kincaid_grade": 15.079225052414326,
+        "smog_index": 16.343297467861078,
+        "gunning_fog": 18.32158155584793
+      },
+      "simplified": {
+        "flesch_reading_ease": 29.22115384615384,
+        "flesch_kincaid_grade": 12.623333333333338,
+        "smog_index": 13.698571331659366,
+        "gunning_fog": 15.205128205128204
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 5.363060938237595,
+        "flesch_kincaid_grade": -2.455891719080988,
+        "smog_index": -2.6447261362017116,
+        "gunning_fog": -3.116453350719727
+      }
+    },
+    {
+      "drug_name": "ALPRAZOLAM",
+      "original_char_count": 79664,
+      "simplified_char_count": 999,
+      "original": {
+        "flesch_reading_ease": 22.870218096317302,
+        "flesch_kincaid_grade": 14.55937680453258,
+        "smog_index": 15.907276063272878,
+        "gunning_fog": 18.01201790368272
+      },
+      "simplified": {
+        "flesch_reading_ease": 31.981339066339075,
+        "flesch_kincaid_grade": 12.141056511056515,
+        "smog_index": 13.88584557914918,
+        "gunning_fog": 15.381818181818183
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 9.111120970021773,
+        "flesch_kincaid_grade": -2.4183202934760644,
+        "smog_index": -2.021430484123698,
+        "gunning_fog": -2.630199721864539
+      }
+    },
+    {
+      "drug_name": "DEXTROAMPHETAMINE SACCHARATE, AMPHETAMINE ASPARTATE MONOHYDRATE, DEXTROAMPHETAMINE SULFATE AND AMPHETAMINE SULFATE",
+      "original_char_count": 128356,
+      "simplified_char_count": 1565,
+      "original": {
+        "flesch_reading_ease": 13.027920806444143,
+        "flesch_kincaid_grade": 17.199612508104213,
+        "smog_index": 18.46565053795719,
+        "gunning_fog": 21.428220457102555
+      },
+      "simplified": {
+        "flesch_reading_ease": 40.16095714951095,
+        "flesch_kincaid_grade": 10.61266418258035,
+        "smog_index": 12.936686537176744,
+        "gunning_fog": 14.138425710293433
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 27.133036343066806,
+        "flesch_kincaid_grade": -6.5869483255238634,
+        "smog_index": -5.528964000780444,
+        "gunning_fog": -7.289794746809122
+      }
+    },
+    {
+      "drug_name": "DIAZEPAM",
+      "original_char_count": 90388,
+      "simplified_char_count": 1063,
+      "original": {
+        "flesch_reading_ease": 30.275202751375645,
+        "flesch_kincaid_grade": 13.847175156902733,
+        "smog_index": 15.511552610105536,
+        "gunning_fog": 17.081650076942008
+      },
+      "simplified": {
+        "flesch_reading_ease": 35.73776623376625,
+        "flesch_kincaid_grade": 12.100415584415586,
+        "smog_index": 14.117786864225405,
+        "gunning_fog": 15.510649350649352
+      },
+      "delta_simplified_minus_original": {
+        "flesch_reading_ease": 5.462563482390607,
+        "flesch_kincaid_grade": -1.7467595724871465,
+        "smog_index": -1.3937657458801311,
+        "gunning_fog": -1.571000726292656
+      }
+    }
+  ]
+}

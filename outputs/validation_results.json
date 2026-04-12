@@ -1,0 +1,89 @@
+{
+  "schema_version": "1",
+  "human_path": "../manual_validation.json",
+  "judge_path": "outputs/evaluation_report.json",
+  "n_human_rows": 20,
+  "n_matched_pairs": 20,
+  "n_missing_judge_or_invalid": 0,
+  "n_agreements": 12,
+  "agreement_rate_pct": 60.0,
+  "cohens_kappa": 0.27272727272727265,
+  "cohens_kappa_note": "ok",
+  "n_excluded_from_kappa_judge_not_three_way": 0,
+  "confusion_matrix_human_rows_judge_cols": {
+    "PRESERVED": {
+      "PRESERVED": 0,
+      "SOFTENED": 0,
+      "DROPPED": 0
+    },
+    "SOFTENED": {
+      "PRESERVED": 1,
+      "SOFTENED": 4,
+      "DROPPED": 5
+    },
+    "DROPPED": {
+      "PRESERVED": 1,
+      "SOFTENED": 1,
+      "DROPPED": 8
+    }
+  },
+  "disagreements": [
+    {
+      "drug_name": "IBUPROFEN",
+      "field": "boxed_warning",
+      "human_judgment": "SOFTENED",
+      "judge_judgment": "PRESERVED",
+      "judge_explanation": "The simplified text retains the safety-critical information from the original, including the increased risk of cardiovascular thrombotic events and gastrointestinal adverse events, as well as the contraindication for CABG surgery."
+    },
+    {
+      "drug_name": "NAPROXEN",
+      "field": "dosage",
+      "human_judgment": "SOFTENED",
+      "judge_judgment": "DROPPED",
+      "judge_explanation": "The simplified text lacks critical information about dosage adjustments, maximum daily doses, and specific dosing instructions for different conditions, which are present in the original text."
+    },
+    {
+      "drug_name": "WARFARIN",
+      "field": "warnings",
+      "human_judgment": "DROPPED",
+      "judge_judgment": "SOFTENED",
+      "judge_explanation": "The simplified text retains the core safety information about bleeding risk, but omits the detailed risk factors and prevention measures present in the original text, weakening the urgency and specificity of the warning."
+    },
+    {
+      "drug_name": "METFORMIN HYDROCHLORIDE",
+      "field": "interactions",
+      "human_judgment": "SOFTENED",
+      "judge_judgment": "DROPPED",
+      "judge_explanation": "The simplified text lacks critical information about specific drug interactions, such as the impact of drugs that reduce metformin clearance and the interaction with insulin secretagogues or insulin, which are present in the original text."
+    },
+    {
+      "drug_name": "SERTRALINE",
+      "field": "contraindications",
+      "human_judgment": "SOFTENED",
+      "judge_judgment": "DROPPED",
+      "judge_explanation": "The simplified text is missing information about the risk of serotonin syndrome, hypersensitivity reactions, and the specific timeframe for avoiding MAOIs, which are critical safety details present in the original text."
+    },
+    {
+      "drug_name": "CLOZAPINE",
+      "field": "boxed_warning",
+      "human_judgment": "DROPPED",
+      "judge_judgment": "PRESERVED",
+      "judge_explanation": "All safety-critical information from the original is present in the simplified text, including specific risks, contraindications, and recommendations for dosage modifications and patient monitoring."
+    },
+    {
+      "drug_name": "OMEPRAZOLE",
+      "field": "contraindications",
+      "human_judgment": "SOFTENED",
+      "judge_judgment": "DROPPED",
+      "judge_explanation": "Safety-critical information from the original, such as hypersensitivity reactions and contraindications with rilpivirine-containing products, is missing in the simplified text."
+    },
+    {
+      "drug_name": "ALPRAZOLAM",
+      "field": "interactions",
+      "human_judgment": "SOFTENED",
+      "judge_judgment": "DROPPED",
+      "judge_explanation": "The simplified text lacks detailed information about specific drug interactions, such as the effects of CYP3A inhibitors and inducers, and the interactions with digoxin, which are present in the original text."
+    }
+  ],
+  "missing_or_invalid": []
+}

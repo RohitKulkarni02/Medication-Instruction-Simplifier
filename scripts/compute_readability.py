@@ -3,6 +3,9 @@
 Readability scores: original (ingest) vs simplified text per drug.
 
 Uses textstat: Flesch Reading Ease, Flesch-Kincaid grade, SMOG, Gunning Fog.
+
+textstat 0.7+ counts syllables via NLTK ``cmudict``. That corpus is downloaded once
+into ``<repo>/nltk_data/`` (not ``~/nltk_data``) so CI and locked-down home dirs work.
 """
 
 from __future__ import annotations
@@ -13,6 +16,41 @@ import os
 import sys
 from pathlib import Path
 from typing import Any
+
+
+def _ensure_nltk_cmudict() -> None:
+    """Ensure NLTK can find ``cmudict`` (textstat depends on it for syllable counts)."""
+    try:
+        import nltk  # type: ignore
+    except ImportError as e:
+        raise SystemExit("Install textstat (includes nltk): pip install textstat") from e
+
+    root = Path(__file__).resolve().parent.parent
+    nltk_dir = root / "nltk_data"
+    nltk_dir.mkdir(parents=True, exist_ok=True)
+    nltk_path_str = str(nltk_dir)
+    if nltk_path_str not in nltk.data.path:
+        nltk.data.path.insert(0, nltk_path_str)
+
+    try:
+        nltk.data.find("corpora/cmudict")
+        return
+    except LookupError:
+        pass
+
+    try:
+        nltk.download("cmudict", download_dir=nltk_path_str, quiet=True)
+    except Exception as e:
+        raise SystemExit(
+            f"Could not download NLTK cmudict into {nltk_dir} (network or permissions). "
+            f"Fix connectivity and retry, or run manually:\n"
+            f'  python -c "import nltk; nltk.download(\'cmudict\', download_dir=\'{nltk_path_str}\')"'
+        ) from e
+
+    try:
+        nltk.data.find("corpora/cmudict")
+    except LookupError as e:
+        raise SystemExit(f"NLTK cmudict missing after download; see {nltk_dir}") from e
 
 
 def _load_json(path: str) -> list[dict[str, Any]]:
@@ -95,6 +133,8 @@ def main() -> int:
     parser.add_argument("--simplified", required=True, help="Path to simplified_labels.json.")
     parser.add_argument("--output", required=True, help="Write JSON report here.")
     args = parser.parse_args()
+
+    _ensure_nltk_cmudict()
 
     ingest = _load_json(args.ingest)
     simplified = _load_json(args.simplified)

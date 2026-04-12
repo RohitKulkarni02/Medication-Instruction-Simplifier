@@ -1,0 +1,883 @@
+{
+  "schema_version": "1",
+  "model_used": "llama-3.1-8b-instant",
+  "summary": {
+    "total_judgments": 106,
+    "preserved": 52,
+    "softened": 22,
+    "dropped": 32,
+    "errors": 0,
+    "unmatched_drugs": 0,
+    "skipped_both_empty": 10,
+    "skipped_no_original": 9
+  },
+  "per_drug": [
+    {
+      "drug_name": "IBUPROFEN",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the safety-critical information from the original, including the increased risk of cardiovascular thrombotic events and gastrointestinal adverse events, as well as the contraindication for CABG surgery.",
+          "original_snippet": "Cardiovascular Thrombotic Events Nonsteroidal anti-inflammatory drugs (NSAIDs) cause an increased risk of serious cardiovascular thrombotic events, including myocardial infarction and stroke, which ca",
+          "simplified_snippet": "Ibuprofen can increase your risk of heart attack and stroke, which can be fatal. This risk may occur early in treatment and may increase with the duration of use. Ibuprofen is not recommended for peop"
+        },
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The safety-critical information regarding dosage, including the maximum daily dose and the recommendation to take the lowest effective dose for the shortest time possible, is retained in the simplified text.",
+          "original_snippet": "DOSAGE AND ADMINISTRATION Carefully consider the potential benefits and risks of Ibuprofen Tablets, USP and other treatment options before deciding to use Ibuprofen Tablets, USP. Use the lowest effect",
+          "simplified_snippet": "Take the lowest effective dose for the shortest time possible. The suggested dose for rheumatoid arthritis and osteoarthritis is 1200-3200 mg daily, taken 3-4 times a day. If you experience stomach pr"
+        },
+        {
+          "field": "warnings",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the safety-critical information from the original, including the increased risk of heart attack and stroke, and serious stomach problems, although the wording is rephrased for readability.",
+          "original_snippet": "WARNINGS CARDIOVASCULAR EFFECTS Cardiovascular Thrombotic Events Clinical trials of several COX-2 selective and nonselective NSAIDs of up to three years duration have shown an increased risk of seriou",
+          "simplified_snippet": "Ibuprofen can increase your risk of heart attack and stroke, which can be fatal.\nIbuprofen can cause serious stomach problems, including bleeding, ulcers, and holes in the stomach or intestines, which"
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text omits critical safety information regarding hypersensitivity to ibuprofen, asthma, urticaria, and anaphylactic-like reactions, which are present in the original text.",
+          "original_snippet": "CONTRAINDICATIONS Ibuprofen tablets are contraindicated in patients with known hypersensitivity to ibuprofen. Ibuprofen tablets should not be given to patients who have experienced asthma, urticaria, ",
+          "simplified_snippet": "Ibuprofen is not recommended for people having coronary artery bypass graft (CABG) surgery."
+        },
+        {
+          "field": "interactions",
+          "judgment": "DROPPED",
+          "explanation": "Simplified field is empty while original has content.",
+          "original_snippet": "Drug Interactions ACE-inhibitors Reports suggest that NSAIDs may diminish the antihypertensive effect of ACE-inhibitors. This interaction should be given consideration in patients taking NSAIDs concom",
+          "simplified_snippet": ""
+        }
+      ]
+    },
+    {
+      "drug_name": "ACETAMINOPHEN, DEXTROMETHORPHAN HYDROBROMIDE, DOXYLAMINE SUCCINATE",
+      "judgments": [
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The safety-critical information regarding dosage frequency and maximum daily doses is retained in the simplified text, albeit with minor rewording.",
+          "original_snippet": "Directions do not take more than directed (see overdose warning) do not take more than 4 doses in any 24-hours period measure only with dosing cup provided. Do not use any other dosing device. mL= mil",
+          "simplified_snippet": "Take 30 mL every 6 hours. Do not take more than 4 doses in any 24-hour period. Use only the dosing cup provided."
+        },
+        {
+          "field": "warnings",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains all safety-critical information from the original, including severe skin reactions, liver damage, and contraindications, although some details are omitted for brevity.",
+          "original_snippet": "Warnings Liver warning: This product contains acetaminophen. Severe liver damage may occur if you take more than 4,000 mg in 24 hours with other drugs containing acetaminophen 3 or more alcoholic drin",
+          "simplified_snippet": "Acetaminophen may cause severe skin reactions, such as skin reddening, blisters, or rash. If this happens, stop using and seek medical help.\nIf you have a sore throat that is severe, lasts more than 2"
+        }
+      ]
+    },
+    {
+      "drug_name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+      "judgments": [
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains all safety-critical information regarding dosage, including specific dosing recommendations, maximum daily dosages, and administration rates, albeit in a slightly rephrased format.",
+          "original_snippet": "DOSAGE AND ADMINISTRATION THIS PRODUCT IS FOR INTRAVENOUS OR INTRAMUSCULAR ADMINISTRATION ONLY. Diphenhydramine hydrochloride injection, USP is indicated when the oral form is impractical. DOSAGE SHOU",
+          "simplified_snippet": "Take the following doses of diphenhydramine hydrochloride injection, USP:\n\n* Pediatric patients (except premature infants and neonates): 5 mg/kg/24 hours or 150 mg/m^2/24 hours, maximum daily dose 300"
+        },
+        {
+          "field": "warnings",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information about potential risks in pediatric and elderly patients, but omits specific warnings about narrow-angle glaucoma, stenosing peptic ulcer, and other conditions, making the urgency and specificity of the warnings less prominent.",
+          "original_snippet": "WARNINGS Antihistamines should be used with considerable caution in patients with narrow-angle glaucoma, stenosing peptic ulcer, pyloroduodenal obstruction, symptomatic prostatic hypertrophy or bladde",
+          "simplified_snippet": "Antihistamines may cause hallucinations, convulsions, or death in pediatric patients in overdosage.\nAntihistamines may diminish mental alertness in pediatric patients.\nIn the young pediatric patient, "
+        },
+        {
+          "field": "contraindications",
+          "judgment": "PRESERVED",
+          "explanation": "All safety-critical information from the original text is present in the simplified text, including contraindications for neonates or premature infants, nursing mothers, and specific conditions such as hypersensitivity to diphenhydramine hydrochloride.",
+          "original_snippet": "CONTRAINDICATIONS Use in Neonates or Premature Infants This drug should not be used in neonates or premature infants. Use in Nursing Mothers Because of the higher risk of antihistamines for infants ge",
+          "simplified_snippet": "Do not use in neonates or premature infants.\nDo not use in nursing mothers due to the higher risk of antihistamines for infants."
+        },
+        {
+          "field": "interactions",
+          "judgment": "DROPPED",
+          "explanation": "Simplified field is empty while original has content.",
+          "original_snippet": "Drug Interactions Diphenhydramine hydrochloride has additive effects with alcohol and other CNS depressants (hypnotics, sedatives, tranquilizers, etc.) MAO inhibitors prolong and intensify the anticho",
+          "simplified_snippet": ""
+        }
+      ]
+    },
+    {
+      "drug_name": "LORATADINE",
+      "judgments": [
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "All safety-critical information regarding dosage and contraindications is present in the simplified text, albeit rephrased for readability.",
+          "original_snippet": "Directions adults and children 6 years of age and over 1 tablet daily; not more than 1 tablet in 24 hours children under 6 years of age ask a doctor consumers with liver or kidney disease ask a doctor",
+          "simplified_snippet": "Take 1 tablet daily. Do not take more than 1 tablet in 24 hours. If you are under 6 years old, ask a doctor. If you have liver or kidney disease, ask a doctor."
+        },
+        {
+          "field": "warnings",
+          "judgment": "PRESERVED",
+          "explanation": "The safety-critical information about allergic reactions and contraindication is retained in the simplified text, albeit with identical wording.",
+          "original_snippet": "Warnings Do not use if you ever have had an allergic reaction to this product or any of its ingredients.",
+          "simplified_snippet": "Do not use if you ever had an allergic reaction to this product or any of its ingredients."
+        }
+      ]
+    },
+    {
+      "drug_name": "OMEPRAZOLE",
+      "judgments": [
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The safety-critical information regarding dosage and treatment duration for various conditions is retained in the simplified text, albeit with some rephrasing for readability.",
+          "original_snippet": "ndication Recommended Adult (2.1) and Pediatric Dosage (2.2) Treatment of Active Duodenal Ulcer 20 mg once daily for 4 weeks; some patients may require an additional 4 weeks (2.1) H. pylori Eradicatio",
+          "simplified_snippet": "Take OMEPRAZOLE 20 mg once daily for 4 weeks for active duodenal ulcer. Some patients may require an additional 4 weeks. For H. pylori eradication, take OMEPRAZOLE 20 mg, AMOXICILLIN 1000 mg, and CLAR"
+        },
+        {
+          "field": "warnings",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text omits critical safety information, including specific warnings for acute tubulointerstitial nephritis, Clostridium difficile-associated diarrhea, bone fractures, severe cutaneous adverse reactions, cutaneous and systemic lupus erythematosus, interactions with clopidogrel, cyanocobalamin deficiency, hypomagnesemia and mineral metabolism, interactions with St. John's Wort or rifampin, interactions with diagnostic investigations for neuroendocrine tumors, and fundic gland polyps.",
+          "original_snippet": "astric Malignancy: In adults, symptomatic response does not preclude the presence of gastric malignancy. Consider additional follow-up and diagnostic testing. (5.1) Acute Tubulointerstitial Nephritis:",
+          "simplified_snippet": "Tell your doctor if you have kidney disease, liver disease, or if you are taking other medications that may interact with OMEPRAZOLE."
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "Safety-critical information from the original, such as hypersensitivity reactions and contraindications with rilpivirine-containing products, is missing in the simplified text.",
+          "original_snippet": "• Omeprazole delayed-release capsules are contraindicated in patients with known hypersensitivity reactions including anaphylaxis to the formulation or any substituted benzimidazole. Hypersensitivity ",
+          "simplified_snippet": "Do not take OMEPRAZOLE if you are allergic to omeprazole or any other ingredient in the medication.\nDo not take OMEPRAZOLE if you have a rare condition called multiple endocrine neoplasia type 1 (MEN "
+        },
+        {
+          "field": "interactions",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the safety-critical information from the original, including specific drug interactions and their clinical impacts, although it is condensed and rephrased for readability.",
+          "original_snippet": "ables 3 and 4 include drugs with clinically important drug interactions and interaction with diagnostics when administered concomitantly with omeprazole and instructions for preventing or managing the",
+          "simplified_snippet": "Do not take OMEPRAZOLE with atazanavir, nelfinavir, and rilpivirine, as it may decrease their effectiveness.\nDo not take OMEPRAZOLE with clopidogrel, as it may decrease its effectiveness."
+        }
+      ]
+    },
+    {
+      "drug_name": "CETIRIZINE HYDROCHLORIDE",
+      "judgments": [
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The dosage information is rephrased for readability but retains all safety-critical information from the original text, including specific dosages and administration instructions for different age groups.",
+          "original_snippet": "DOSAGE AND ADMINISTRATION Cetirizine Hydrochloride Oral Solution, USP 1 mg/mL can be taken without regard to food consumption. Children 2 to 5 Years for Chronic Urticaria: The recommended initial dose",
+          "simplified_snippet": "Take Cetirizine Hydrochloride Oral Solution 1 mg/mL once daily. For children 2 to 5 years old, the recommended dose is 2.5 mL (2.5 mg) once daily. This dose can be increased to 5 mL (5 mg) once daily "
+        },
+        {
+          "field": "contraindications",
+          "judgment": "PRESERVED",
+          "explanation": "The safety-critical information regarding contraindications is retained in the simplified text, with the same specific details about hypersensitivity and hydroxyzine.",
+          "original_snippet": "CONTRAINDICATIONS Cetirizine hydrochloride is contraindicated in those patients with a known hypersensitivity to it or any of its ingredients or hydroxyzine.",
+          "simplified_snippet": "Do not take Cetirizine Hydrochloride Oral Solution if you are allergic to it or any of its ingredients or hydroxyzine."
+        }
+      ]
+    },
+    {
+      "drug_name": "ACETAMINOPHEN, ASPIRIN AND CAFFEINE",
+      "judgments": [
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The safety-critical information regarding dosage frequency and maximum daily intake is retained in the simplified text, albeit in a slightly rephrased manner.",
+          "original_snippet": "Directions do not take more than directed drink a full glass of water with each dose adults and children 12 years and over: take 2 caplets every 6 hours. Do not take more than 8 caplets in 24 hours. c",
+          "simplified_snippet": "Take 2 caplets every 6 hours. Do not take more than 8 caplets in 24 hours. Drink a full glass of water with each dose."
+        },
+        {
+          "field": "warnings",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains all safety-critical information from the original, including specific warnings for Reye's syndrome, severe allergic reactions, liver damage, stomach bleeding, and caffeine overdose, although some details are omitted for brevity.",
+          "original_snippet": "Warnings Reye’s syndrome: Children and teenagers who have or are recovering from chicken pox or flu-like symptoms should not use this product. When using this product, if changes in behavior with naus",
+          "simplified_snippet": "Aspirin may cause a severe allergic reaction, including shock, facial swelling, hives, and asthma.\nAcetaminophen may cause severe skin reactions, including skin reddening, blisters, and rash.\nThis pro"
+        }
+      ]
+    },
+    {
+      "drug_name": "NAPROXEN",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the core safety information from the original, including the risk of serious cardiovascular and gastrointestinal events, and the specific contraindications and risk factors. Although the wording is rephrased for readability, all safety-critical information is present.",
+          "original_snippet": "WARNING: RISK OF SERIOUS CARDIOVASCULAR AND GASTROINTESTINAL EVENTS Cardiovascular Thrombotic Events • Nonsteroidal anti-inflammatory drugs (NSAIDs) cause an increased risk of serious cardiovascular t",
+          "simplified_snippet": "WARNING: Taking this medicine may increase your risk of serious heart and stomach problems, including heart attack, stroke, and stomach bleeding. These problems can be fatal. If you have had a heart a"
+        },
+        {
+          "field": "dosage",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text lacks critical information about dosage adjustments, maximum daily doses, and specific dosing instructions for different conditions, which are present in the original text.",
+          "original_snippet": "se the lowest effective dosage for shortest duration consistent with individual patient treatment goals. ( 2.1 ) Rheumatoid Arthritis, Osteoarthritis, and Ankylosing Spondylitis Naproxen tablets 250 m",
+          "simplified_snippet": "Take 250-500 mg every 12 hours or as directed by your doctor."
+        },
+        {
+          "field": "warnings",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information about increased risk of serious heart and stomach problems, but the language is less specific and urgent compared to the original text, which lists multiple specific warnings and contraindications.",
+          "original_snippet": "epatotoxicity : Inform patients of warning signs and symptoms of hepatotoxicity. Discontinue if abnormal liver tests persist or worsen or if clinical signs and symptoms of liver disease develop. ( 5.3",
+          "simplified_snippet": "Taking this medicine may increase your risk of serious heart and stomach problems, including heart attack, stroke, and stomach bleeding.\nThese problems can be fatal.\nIf you have had a heart attack or "
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text omits all safety-critical information from the original text, including known hypersensitivity reactions, history of asthma or allergic-type reactions, and other contraindications.",
+          "original_snippet": "aproxen tablets and naproxen sodium tablets are contraindicated in the following patients: • Known hypersensitivity (e.g., anaphylactic reactions and serious skin reactions) to naproxen or any compone",
+          "simplified_snippet": "Naproxen tablets and naproxen sodium tablets are contraindicated in the setting of coronary artery bypass graft (CABG) surgery."
+        },
+        {
+          "field": "interactions",
+          "judgment": "DROPPED",
+          "explanation": "Simplified field is empty while original has content.",
+          "original_snippet": "ee Table 1 for clinically significant drug interactions with naproxen. Table 1: Clinically Significant Drug Interactions with naproxen Drugs That Interfere with Hemostasis Clinical Impact: • Naproxen ",
+          "simplified_snippet": ""
+        }
+      ]
+    },
+    {
+      "drug_name": "AMOXICILLIN",
+      "judgments": [
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the essential information about dosage, including the range of doses for adults and pediatric patients, and the frequency of administration. However, it omits some specific details and dosing regimens found in the original text.",
+          "original_snippet": "• In Adults, 750 to 1750 mg/day in divided doses every 8 to 12 hours. • In Pediatric Patients over 3 Months of Age, 20 to 45 mg/kg/day in divided doses every 8 to 12 hours. Refer to full prescribing i",
+          "simplified_snippet": "Take 750 to 1750 mg of amoxicillin per day, divided into 2 to 3 doses every 8 to 12 hours. For pediatric patients over 3 months old, take 20 to 45 mg of amoxicillin per kg of body weight per day, divi"
+        },
+        {
+          "field": "warnings",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information but softens the urgency and specificity of the original warnings, removing specific details and numeric thresholds.",
+          "original_snippet": "• Anaphylactic reactions: Serious and occasionally fatal anaphylactic reactions have been reported in patients on penicillin therapy, including amoxicillin. Discontinue amoxicillin if a reaction occur",
+          "simplified_snippet": "Amoxicillin may cause serious allergic reactions, including anaphylaxis. If you experience symptoms such as hives, itching, swelling, or difficulty breathing, seek medical attention immediately.\nAmoxi"
+        },
+        {
+          "field": "contraindications",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains all safety-critical information from the original, including specific types of hypersensitivity reactions and the scope of contraindication, albeit with minor rewording for readability.",
+          "original_snippet": "moxicillin is contraindicated in patients who have experienced a serious hypersensitivity reaction (e.g., anaphylaxis or Stevens-Johnson syndrome) to amoxicillin or to other β-lactam antibacterial dru",
+          "simplified_snippet": "Amoxicillin is contraindicated in patients with a history of a severe allergic reaction to amoxicillin or other penicillins.\nAmoxicillin is contraindicated in patients with a history of cholestatic ja"
+        },
+        {
+          "field": "interactions",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the safety-critical information from the original, including specific drug interactions and potential risks, although some details are omitted or rephrased for readability.",
+          "original_snippet": "• Coadministration with probenecid is not recommended. () • Concomitant use of amoxicillin and oral anticoagulants may increase the prolongation of prothrombin time. () • Coadministration with allopur",
+          "simplified_snippet": "Amoxicillin may interact with other medications, including warfarin, and increase the risk of bleeding.\nAmoxicillin may interact with other medications, including methotrexate, and increase the risk o"
+        }
+      ]
+    },
+    {
+      "drug_name": "METFORMIN HYDROCHLORIDE",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information about lactic acidosis, but softens the urgency and specificity of the risk factors, and omits the detailed laboratory abnormalities and treatment recommendations present in the original text.",
+          "original_snippet": "WARNING: LACTIC ACIDOSIS Postmarketing cases of metformin-associated lactic acidosis have resulted in death, hypothermia, hypotension, and resistant bradyarrhythmias. The onset of metformin-associated",
+          "simplified_snippet": "WARNING: Lactic Acidosis is a rare but serious condition that can cause death, low body temperature, low blood pressure, and abnormal heart rhythms. Symptoms may be mild and include fatigue, muscle pa"
+        },
+        {
+          "field": "dosage",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core information about dosage, but the original's nuanced guidance on titration and maximum dose is lost, and the range of 500 mg to 2500 mg is less specific than the original's 500 mg to 2550 mg. Additionally, the original's advice on dosing frequency and food intake is simplified or omitted.",
+          "original_snippet": "dult Dosage for Metformin Hydrochloride Tablets: Starting dose: 500 mg orally twice a day or 850 mg once a day, with meals (2.1) Increase the dose in increments of 500 mg weekly or 850 mg every 2 week",
+          "simplified_snippet": "Take 500 mg to 2500 mg orally once daily, with or without food. Your doctor may adjust your dose based on your response to the medication."
+        },
+        {
+          "field": "warnings",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the safety-critical information from the original, including the risk factors for metformin-associated lactic acidosis, symptoms, and management recommendations, albeit with some rephrasing and condensation.",
+          "original_snippet": "actic Acidosis: See boxed warning. (5.1) Vitamin B 12 Deficiency: Metformin may lower vitamin B 12 levels. Measure hematological parameters annually and vitamin B 12 at 2 to 3 year intervals and manag",
+          "simplified_snippet": "Postmarketing cases of metformin-associated lactic acidosis have resulted in death, hypothermia, hypotension, and resistant bradyarrhythmias.\nThe onset of metformin-associated lactic acidosis is often"
+        },
+        {
+          "field": "contraindications",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text maintains the core safety-critical information from the original, including specific contraindications such as severe renal impairment, hypersensitivity to metformin, and acute or chronic metabolic acidosis.",
+          "original_snippet": "etformin hydrochloride tablets are contraindicated in patients with: Severe renal impairment (eGFR below 30 mL/min/1.73 m 2 ) [see Warnings and Precautions (5.1) ]. Hypersensitivity to metformin. Acut",
+          "simplified_snippet": "Do not take this medication if you have kidney problems or are at risk of kidney problems.\nDo not take this medication if you have liver problems or are at risk of liver problems.\nDo not take this med"
+        },
+        {
+          "field": "interactions",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text lacks critical information about specific drug interactions, such as the impact of drugs that reduce metformin clearance and the interaction with insulin secretagogues or insulin, which are present in the original text.",
+          "original_snippet": "able 3 presents clinically significant drug interactions with metformin hydrochloride. Table 3: Clinically Significant Drug Interactions with Metformin Hydrochloride Carbonic Anhydrase Inhibitors Clin",
+          "simplified_snippet": "Do not take this medication with carbonic anhydrase inhibitors, such as topiramate.\nDo not take this medication with other medications that may increase the risk of lactic acidosis."
+        }
+      ]
+    },
+    {
+      "drug_name": "LISINOPRIL",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the safety-critical information from the original, including the warning about fetal toxicity and the need to discontinue lisinopril when pregnancy is detected.",
+          "original_snippet": "WARNING: FETAL TOXICITY See full prescribing information for complete boxed warning. When pregnancy is detected, discontinue lisinopril as soon as possible. ( 5.1 ) Drugs that act directly on the reni",
+          "simplified_snippet": "WARNING: Lisinopril can harm your unborn baby. If you become pregnant, stop taking this medication as soon as possible. Drugs like lisinopril can cause serious harm or death to the developing fetus."
+        },
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the core safety information regarding dosage adjustments for hypertension, heart failure, and acute myocardial infarction, although it omits specific details about renal impairment and pediatric patients.",
+          "original_snippet": "ypertension: Initial adult dose is 10 mg once daily. Titrate up to 40 mg daily based on blood pressure response. Initiate patients on diuretics at 5 mg once daily ( 2.1 ) Pediatric patients with glome",
+          "simplified_snippet": "Take lisinopril as directed by your doctor. For high blood pressure, start with 10 mg once daily and adjust up to 40 mg daily based on your blood pressure response. For heart failure, start with 5 mg "
+        },
+        {
+          "field": "warnings",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the safety-critical information from the original, including the risk of fetal harm and the need to discontinue lisinopril upon pregnancy detection.",
+          "original_snippet": "ngioedema: Discontinue lisinopril, provide appropriate therapy and monitor until resolved ( 5.2 ) Renal impairment: Monitor renal function periodically ( 5.3 ) Hypotension: Patients with other heart o",
+          "simplified_snippet": "WARNING: Lisinopril can harm your unborn baby. If you become pregnant, stop taking this medication as soon as possible. Drugs like lisinopril can cause serious harm or death to the developing fetus.\nW"
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text does not mention contraindications such as angioedema, hypersensitivity, co-administration with aliskiren in patients with diabetes, or neprilysin inhibitors, which are present in the original text.",
+          "original_snippet": "ngioedema or a history of hereditary or idiopathic angioedema ( 4 ) Hypersensitivity ( 4 ) Co-administration of aliskiren with lisinopril in patients with diabetes ( 4 , 7.4 ) Lisinopril is contraindi",
+          "simplified_snippet": "Do not take lisinopril if you are pregnant or plan to become pregnant. Do not take lisinopril if you are breastfeeding."
+        },
+        {
+          "field": "interactions",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text does not mention any specific interactions with medications, which is a critical safety information present in the original text.",
+          "original_snippet": "iuretics: Excessive drop in blood pressure ( 7.1 ) NSAIDS: Increased risk of renal impairment and loss of antihypertensive efficacy ( 7.3 ) Dual inhibition of the renin-angiotensin system: Increased r",
+          "simplified_snippet": "Tell your doctor about all medications you are taking, including prescription and over-the-counter medications, vitamins, and supplements."
+        }
+      ]
+    },
+    {
+      "drug_name": "ATORVASTATIN CALCIUM",
+      "judgments": [
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The safety-critical information regarding dosage instructions, including the importance of assessing LDL-C levels and adjusting dosage as necessary, is retained in the simplified text.",
+          "original_snippet": "ake orally once daily with or without food ( 2.1 ). Assess LDL-C when clinically appropriate, as early as 4 weeks after initiating atorvastatin calcium, and adjust dosage if necessary ( 2.1 ). Adults ",
+          "simplified_snippet": "Take 1 tablet of atorvastatin calcium orally once daily, with or without food. Your doctor may adjust the dosage based on your LDL-C levels, which should be checked as early as 4 weeks after starting "
+        },
+        {
+          "field": "warnings",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information about liver and kidney disease, but omits specific details about atorvastatin calcium and its interactions, making the urgency and specificity of the warnings less prominent.",
+          "original_snippet": "yopathy and Rhabdomyolysis: Risk factors include age 65 years or greater, uncontrolled hypothyroidism, renal impairment, concomitant use with certain other drugs, and higher atorvastatin calcium dosag",
+          "simplified_snippet": "If you have liver disease, your doctor will need to monitor your liver function closely while taking this medication.\nIf you have kidney disease, your doctor will need to monitor your kidney function "
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text omits contraindications for acute liver failure or decompensated cirrhosis, hypersensitivity reactions, and anaphylaxis, which are present in the original text.",
+          "original_snippet": "cute liver failure or decompensated cirrhosis [see Warnings and Precautions ( 5.3 )] Hypersensitivity to atorvastatin or any excipients in atorvastatin calcium tablets. Hypersensitivity reactions, inc",
+          "simplified_snippet": "Pregnancy\nBreastfeeding\nHypersensitivity to atorvastatin or any of its ingredients"
+        },
+        {
+          "field": "interactions",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the safety-critical information from the original, including specific drug interactions that may increase the risk of myopathy and rhabdomyolysis, although some details are omitted for brevity.",
+          "original_snippet": "ee full prescribing information for details regarding concomitant use of atorvastatin calcium with other drugs or grapefruit juice that increase the risk of myopathy and rhabdomyolysis ( 2.5 , 7.1 ). ",
+          "simplified_snippet": "Cyclosporine: May increase the risk of myopathy, including rhabdomyolysis.\nGemfibrozil: May increase the risk of myopathy, including rhabdomyolysis.\nOther fibrates: May increase the risk of myopathy, "
+        }
+      ]
+    },
+    {
+      "drug_name": "METOPROLOL SUCCINATE",
+      "judgments": [
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains all safety-critical information from the original, including dosage ranges, titration intervals, and specific starting doses for different conditions, although some details are omitted for brevity.",
+          "original_snippet": "dminister once daily. Titrate at weekly or longer intervals as needed and tolerated. (2) Hypertension: Starting dose is 25 to 100 mg. (2.1) Angina Pectoris: Starting dose is 100 mg. (2.2) Heart Failur",
+          "simplified_snippet": "Take metoprolol succinate once daily. If needed, your doctor will adjust the dose at weekly or longer intervals. For hypertension, the starting dose is 25 to 100 mg. For angina pectoris, the starting "
+        },
+        {
+          "field": "warnings",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information but weakens the urgency and specificity of the warnings, replacing detailed contraindications and precautions with general risk statements.",
+          "original_snippet": "brupt cessation may exacerbate myocardial ischemia. ( 5.1 ) Heart Failure: Worsening cardiac failure may occur. ( 5.2 ) Bronchospastic Disease: Avoid beta-blockers. ( 5.3 ) Concomitant use of glycosid",
+          "simplified_snippet": "If you have a history of asthma, severe chronic obstructive pulmonary disease (COPD), or a history of a severe allergic reaction, you may be at increased risk for a severe allergic reaction.\nIf you ha"
+        },
+        {
+          "field": "contraindications",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains all safety-critical information from the original, albeit rephrased for readability, and includes additional conditions that are also contraindicated.",
+          "original_snippet": "nown hypersensitivity to product components. (4) Severe bradycardia: Greater than first degree heart block, or sick sinus syndrome without a pacemaker. (4) Cardiogenic shock or decompensated heart fai",
+          "simplified_snippet": "Hypersensitivity to metoprolol succinate or any of its components\nHeart block or sick sinus syndrome (unless a functioning pacemaker is in place)\nSevere bradycardia (unless a functioning pacemaker is "
+        },
+        {
+          "field": "interactions",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains all safety-critical information from the original regarding drug interactions, albeit rephrased for readability.",
+          "original_snippet": "atecholamine-depleting drugs may have an additive effect when given with beta-blocking agents. (7.1) CYP2D6 Inhibitors are likely to increase metoprolol concentration. (7.2) Beta-blockers including me",
+          "simplified_snippet": "Beta-blockers, such as propranolol, can increase the risk of bradycardia, heart block, or worsening heart failure when used with metoprolol succinate.\nCatecholamine-depleting agents, such as reserpine"
+        }
+      ]
+    },
+    {
+      "drug_name": "SERTRALINE",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the core safety information, including the risk of suicidal thoughts and behaviors in pediatric and young adult patients, and the need for close monitoring. The language is rephrased for readability, but all safety-critical information is present.",
+          "original_snippet": "WARNING: SUICIDAL THOUGHTS AND BEHAVIORS Antidepressants increased the risk of suicidal thoughts and behavior in pediatric and young adult patients in short-term studies. Closely monitor all antidepre",
+          "simplified_snippet": "WARNING: SUICIDAL THOUGHTS AND BEHAVIORS\nAntidepressants like sertraline may increase the risk of suicidal thoughts and behaviors in children and young adults. Closely monitor your mental health and r"
+        },
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text maintains the essential information regarding the dosage, including the starting and maximum dosages for various conditions, and the adjustments for patients with mild liver impairment.",
+          "original_snippet": "ndication Starting Dosage Maximum Dosage MDD ( 2.1 ) 50 mg per day 200 mg per day OCD ( 2.1 ) 25 mg per day (ages 6 to 12) 200 mg per day 50 mg per day (ages ≥ 13) PD, PTSD, SAD ( 2.1 ) 25 mg per day ",
+          "simplified_snippet": "Take sertraline as directed by your doctor. The recommended starting dosage and maximum dosage vary depending on your condition:\n\n- For depression (MDD), obsessive-compulsive disorder (OCD), post-trau"
+        },
+        {
+          "field": "warnings",
+          "judgment": "PRESERVED",
+          "explanation": "The safety-critical information regarding suicidal thoughts and behaviors in pediatric and young adult patients is retained, with the same level of urgency and specificity as the original text.",
+          "original_snippet": "erotonin Syndrome: Increased risk when co-administered with other serotonergic agents, but also when taken alone. If it occurs, discontinue sertraline hydrochloride and serotonergic agents and initiat",
+          "simplified_snippet": "Antidepressants increased the risk of suicidal thoughts and behaviors in pediatric and young adult patients in short-term studies.\nClosely monitor all antidepressant-treated patients for clinical wors"
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text is missing information about the risk of serotonin syndrome, hypersensitivity reactions, and the specific timeframe for avoiding MAOIs, which are critical safety details present in the original text.",
+          "original_snippet": "ertraline hydrochloride tablets are contraindicated in patients: Taking, or within 14 days of stopping, MAOIs, (including the MAOIs linezolid and intravenous methylene blue) because of an increased ri",
+          "simplified_snippet": "Concomitant use with MAOIs is contraindicated.\nConcomitant use with pimozide is contraindicated.\nConcomitant use with thioridazine is contraindicated."
+        },
+        {
+          "field": "interactions",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information about drug interactions but softens the urgency and specificity of the warnings, replacing detailed tables and examples with general cautions and vague medication categories.",
+          "original_snippet": "rotein-bound drugs: Monitor for adverse reactions and reduce dosage of sertraline hydrochloride or other protein-bound drugs (e.g., warfarin) as warranted. ( 7.1 , 12.3 ) CYP2D6 substrates: Reduce dos",
+          "simplified_snippet": "Avoid concomitant use with MAOIs, pimozide, thioridazine, and other serotonergic drugs.\nUse with caution in patients taking other medications that may increase the risk of bleeding, such as warfarin, "
+        }
+      ]
+    },
+    {
+      "drug_name": "PREDNISONE",
+      "judgments": [
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the essential safety information regarding dosage timing, potential side effects, and individualized dosing, although it omits some details and technical explanations.",
+          "original_snippet": "DOSAGE AND ADMINISTRATION Gastric irritation may be reduced if taken before, during, or immediately after meals or with food or milk. The maximal activity of the adrenal cortex is between 2 am and 8 a",
+          "simplified_snippet": "Take prednisone in the morning before 9 am. If you need to take large doses, take antacids between meals to help prevent peptic ulcers. Take multiple doses evenly spaced throughout the day. The initia"
+        },
+        {
+          "field": "warnings",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text lacks all safety-critical warnings present in the original text, including anaphylactoid reactions, immunosuppression, infections, tuberculosis, varicella and measles, hepatitis B virus reactivation, fungal infections, amebiasis, strongyloides infestation, cerebral malaria, vaccination, ophthalmic use, Kaposi's sarcoma, cardio-renal effects, endocrine effects, and metabolic clearance changes.",
+          "original_snippet": "WARNINGS General Rare instances of anaphylactoid reactions have occurred in patients receiving corticosteroid therapy (see ADVERSE REACTIONS : Allergic Reactions ). Increased dosage of rapidly acting ",
+          "simplified_snippet": "Gastric irritation may be reduced if taken before, during, or immediately after meals or with food or milk.\nDietary salt restriction may be advisable in patients."
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "Simplified field is empty while original has content.",
+          "original_snippet": "CONTRAINDICATIONS Prednisone tablets are contraindicated in systemic fungal infections and known hypersensitivity to components.",
+          "simplified_snippet": ""
+        },
+        {
+          "field": "interactions",
+          "judgment": "DROPPED",
+          "explanation": "Simplified field is empty while original has content.",
+          "original_snippet": "Drug Interactions Amphotericin B Injection and Potassium-Depleting Agents When corticosteroids are administered concomitantly with potassium-depleting agents (e.g., amphotericin B, diuretics ), patien",
+          "simplified_snippet": ""
+        }
+      ]
+    },
+    {
+      "drug_name": "AZITHROMYCIN",
+      "judgments": [
+        {
+          "field": "dosage",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text still conveys the core dosage information for adults, but it lacks the specific indications and dosing regimens for different infections, making it less comprehensive than the original text.",
+          "original_snippet": "dult Patients ( 2.1 ) Infection Recommended Dose/Duration of Therapy Community-acquired pneumonia (mild severity) Pharyngitis/tonsillitis (second-line therapy) Skin/skin structure (uncomplicated) 500 ",
+          "simplified_snippet": "Take AZITHROMYCIN as directed by your doctor. For adults, the recommended dose is: 500 mg as a single dose on Day 1, followed by 250 mg once daily on Days 2 through 5. For children, the dose is based "
+        },
+        {
+          "field": "warnings",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the core safety information from the original, including serious side effects such as liver damage, allergic reactions, and changes in blood sugar levels, and advises patients to inform their doctor about certain medical conditions and medications.",
+          "original_snippet": "erious (including fatal) allergic and skin reactions: Discontinue azithromycin if reaction occurs. ( 5.1 ) Hepatotoxicity: Severe, and sometimes fatal, hepatotoxicity has been reported. Discontinue az",
+          "simplified_snippet": "Tell your doctor if you have a history of liver or kidney disease, or if you are taking certain medications that may interact with AZITHROMYCIN.\nAZITHROMYCIN may cause serious side effects, including "
+        },
+        {
+          "field": "contraindications",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains all safety-critical information from the original, including specific contraindications for hypersensitivity, cholestatic jaundice/hepatic dysfunction, and macrolide/ketolide drugs, albeit rephrased for readability.",
+          "original_snippet": "atients with known hypersensitivity to azithromycin, erythromycin, any macrolide or ketolide drug. ( 4.1 ) Patients with a history of cholestatic jaundice/hepatic dysfunction associated with prior use",
+          "simplified_snippet": "Do not take AZITHROMYCIN if you have a history of cholestatic jaundice or liver dysfunction associated with prior use of azithromycin.\nDo not take AZITHROMYCIN if you have a history of QT prolongation"
+        },
+        {
+          "field": "interactions",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text mentions potential interactions but lacks specificity and detail, such as the specific adverse reactions associated with azithromycin and the need for close monitoring of prothrombin time when co-administered with warfarin.",
+          "original_snippet": "elfinavir: Close monitoring for known adverse reactions of azithromycin, such as liver enzyme abnormalities and hearing impairment, is warranted. ( 7.1 ) Warfarin: Use with azithromycin may increase c",
+          "simplified_snippet": "AZITHROMYCIN may interact with certain medications, including warfarin, digoxin, and certain antacids.\nTell your doctor about all the medications you are taking, including prescription and over-the-co"
+        }
+      ]
+    },
+    {
+      "drug_name": "METHOTREXATE",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains all safety-critical information from the original, including embryo-fetal toxicity, hypersensitivity reactions, severe adverse reactions, and risk of medication errors, albeit with some minor rewording and omission of specific references.",
+          "original_snippet": "WARNING: EMBRYO-FETAL TOXICITY, HYPERSENSITIVITY REACTIONS, SEVERE ADVERSE REACTIONS, and RISK OF MEDICATION ERRORS Methotrexate tablets can cause embryo-fetal toxicity, including fetal death. For non",
+          "simplified_snippet": "WARNING: Methotrexate can cause serious harm to an unborn baby. If you are pregnant or may become pregnant, do not take this medication. If you are a woman of childbearing age, use effective birth con"
+        },
+        {
+          "field": "dosage",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information about dosage, but the original's detailed recommendations for specific diseases and dose adjustments are omitted, making the urgency and specificity of the safety information weaker.",
+          "original_snippet": "nstruct patients and caregivers to take the recommended dosage as directed, because medication errors have led to deaths. ( 2.1 , 5.9 ) Verify pregnancy status in females of reproductive potential bef",
+          "simplified_snippet": "Take 2.5 to 7.5 milligrams of methotrexate per square meter of body surface area once a week, or as directed by your doctor."
+        },
+        {
+          "field": "warnings",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text lacks critical information about specific warnings, such as the risk of serious infections, neurotoxicity, secondary malignancies, tumor lysis syndrome, and immunization risks, which are present in the original text.",
+          "original_snippet": "erious Infections : Monitor patients for infection during and after treatment with methotrexate tablets. Withhold or discontinue methotrexate tablets for serious infections as appropriate. ( 5.11 ) Ne",
+          "simplified_snippet": "Methotrexate can cause embryo-fetal toxicity, including fetal death.\nMethotrexate can cause severe hypersensitivity reactions, including anaphylaxis.\nMethotrexate can cause severe adverse reactions, i"
+        },
+        {
+          "field": "contraindications",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains all safety-critical information from the original, including specific contraindications for pregnant women and patients with a history of severe hypersensitivity reactions to methotrexate.",
+          "original_snippet": "ethotrexate tablets are contraindicated in: Pregnant women receiving methotrexate tablets for treatment of non-neoplastic diseases [see Warnings and Precautions (5.1) , and Use in Specific Populations",
+          "simplified_snippet": "Pregnancy (for non-neoplastic diseases)\nHistory of severe hypersensitivity reactions to methotrexate, including anaphylaxis"
+        },
+        {
+          "field": "interactions",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text still conveys the core safety information about drug interactions, but it is less specific and detailed than the original, potentially weakening the urgency and scope of the warnings.",
+          "original_snippet": "efer to the full prescribing information for drug interactions with methotrexate. ( 7 ) 7.1 Effects of Other Drugs on Methotrexate Drugs that Increase Methotrexate Exposure Coadministration of methotr",
+          "simplified_snippet": "Methotrexate can interact with other medications, including certain antibiotics, anticonvulsants, and NSAIDs. Tell your doctor about all medications you are taking before taking methotrexate."
+        }
+      ]
+    },
+    {
+      "drug_name": "TOFACITINIB",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information but softens the urgency and specificity of the warnings, using more general terms such as 'serious infections' and 'heart problems' instead of the detailed list of specific risks in the original text.",
+          "original_snippet": "WARNING: SERIOUS INFECTIONS, MORTALITY, MALIGNANCY, MAJOR ADVERSE CARDIOVASCULAR EVENTS, and THROMBOSIS WARNING: SERIOUS INFECTIONS, MORTALITY, MALIGNANCY, MAJOR ADVERSE CARDIOVASCULAR EVENTS, and THR",
+          "simplified_snippet": "WARNING: TOFACITINIB may cause serious infections, death, cancer, heart problems, and blood clots. See below for details."
+        },
+        {
+          "field": "dosage",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text lacks specific dosage information, such as the recommended dose and frequency, which is crucial for patient safety and adherence to treatment.",
+          "original_snippet": "ecommended Evaluations and Immunization Prior to Treatment Initiation • Prior to initiating XELJANZ/XELJANZ XR, consider performing an active and latent TB evaluation, viral hepatitis screening, a com",
+          "simplified_snippet": "Take TOFACITINIB exactly as prescribed by your doctor. The usual dose is [insert dose] taken [insert frequency]."
+        },
+        {
+          "field": "warnings",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information but weakens the urgency and specificity of the original warnings, omitting detailed information on opportunistic infections, malignancies, and thrombosis.",
+          "original_snippet": "• Serious Infections : Avoid use of XELJANZ (tablets and oral solution) and XELJANZ XR (extended-release tablets) during an active serious infection, including localized infections. ( 5.1 ) • Gastroin",
+          "simplified_snippet": "Increased risk of serious bacterial, fungal, viral, and opportunistic infections, including tuberculosis (TB), leading to hospitalization or death.\nHigher rate of all-cause mortality, including sudden"
+        },
+        {
+          "field": "contraindications",
+          "judgment": "PRESERVED",
+          "explanation": "All safety-critical information from the original is present in the simplified text, including specific contraindications for serious infections, cancer, heart problems, and blood clots.",
+          "original_snippet": "one. None. ( 4 )",
+          "simplified_snippet": "Do not take TOFACITINIB if you have a history of serious infections, including tuberculosis (TB), or if you have a weakened immune system.\nDo not take TOFACITINIB if you have a history of cancer, incl"
+        },
+        {
+          "field": "interactions",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text omits critical information about specific drug interactions, such as strong CYP3A4 inhibitors and inducers, and instead provides a vague statement about potential interactions with immunosuppressants.",
+          "original_snippet": "able 7 includes drugs with clinically significant drug interactions when concomitantly used with XELJANZ (tablets and oral solution) and XELJANZ XR (extended-release tablets) and instructions for prev",
+          "simplified_snippet": "TOFACITINIB may interact with other medications, including immunosuppressants such as methotrexate or corticosteroids."
+        }
+      ]
+    },
+    {
+      "drug_name": "WARFARIN",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the core safety information from the original, including the risk of major or fatal bleeding, the need for regular INR monitoring, and the impact of drugs, dietary changes, and other factors on INR levels.",
+          "original_snippet": "WARNING: BLEEDING RISK Warfarin sodium can cause major or fatal bleeding [see Warnings and Precautions (5.1) ] . Perform regular monitoring of INR in all treated patients [see Dosage and Administratio",
+          "simplified_snippet": "WARNING: BLEEDING RISK\nWarfarin sodium can cause major or fatal bleeding. To minimize this risk, you will need to have regular blood tests (called INR) and follow your doctor's instructions. Certain f"
+        },
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the core safety information that the original text conveys, emphasizing the importance of individualized dosing and regular INR monitoring to adjust the dose based on the patient's INR response and condition being treated.",
+          "original_snippet": "ndividualize dosing regimen for each patient, and adjust based on INR response. (2.1, 2.2) Knowledge of genotype can inform initial dose selection. (2.3) Monitoring: Obtain daily INR determinations up",
+          "simplified_snippet": "Your doctor will work with you to find the right dose of warfarin sodium for your individual needs. This may involve regular blood tests to check your INR levels. Your dose may need to be adjusted bas"
+        },
+        {
+          "field": "warnings",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information about bleeding risk, but omits the detailed risk factors and prevention measures present in the original text, weakening the urgency and specificity of the warning.",
+          "original_snippet": "issue necrosis: Necrosis or gangrene of skin or other tissues can occur, with severe cases requiring debridement or amputation. Discontinue warfarin sodium and consider alternative anticoagulants if n",
+          "simplified_snippet": "Bleeding risk: Warfarin sodium can cause major or fatal bleeding."
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "Simplified field is empty while original has content.",
+          "original_snippet": "arfarin sodium is contraindicated in: Pregnancy Warfarin sodium is contraindicated in women who are pregnant except in pregnant women with mechanical heart valves, who are at high risk of thromboembol",
+          "simplified_snippet": ""
+        },
+        {
+          "field": "interactions",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text mentions that drugs, dietary changes, and other factors can affect INR levels, which is a safety-critical concept present in the original text, but the scope and specificity of the original text are weakened in the simplified version.",
+          "original_snippet": "oncomitant use of drugs that increase bleeding risk, antibiotics, antifungals, botanical (herbal) products, and inhibitors and inducers of CYP2C9, 1A2, or 3A4. ( 7 ) Consult labeling of all concurrent",
+          "simplified_snippet": "Drugs, dietary changes, and other factors can affect INR levels achieved with warfarin sodium therapy."
+        }
+      ]
+    },
+    {
+      "drug_name": "ISOTRETINOIN",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the critical safety information from the original, including the contraindication for pregnancy and the severe risk of birth defects, although it is rephrased for readability.",
+          "original_snippet": "CONTRAINDICATIONS AND WARNINGS Zenatane TM must not be used by patients who are or may become pregnant. There is an extremely high risk that life-threatening birth defects will result if pregnancy occ",
+          "simplified_snippet": "Do not take Zenatane if you are pregnant or may become pregnant. Taking Zenatane during pregnancy can cause severe birth defects, including abnormalities of the face, eyes, ears, skull, and heart. If "
+        },
+        {
+          "field": "dosage",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information that the dosage should be taken exactly as directed by the doctor, but it omits specific details about the dosage range and frequency, which are present in the original text.",
+          "original_snippet": "DOSAGE AND ADMINISTRATION Zenatane should be administered with a meal (see PRECAUTIONS : Information for Patients ). The recommended dosage range for Zenatane is 0.5 to 1 mg/kg/day given in two divide",
+          "simplified_snippet": "Take Zenatane exactly as directed by your doctor. The usual dose is [insert dose] per day, taken [insert frequency]. Do not take more or less than prescribed."
+        },
+        {
+          "field": "warnings",
+          "judgment": "SOFTENED",
+          "explanation": "The original warning for psychiatric disorders is more detailed and specific, including signs and symptoms of depression, whereas the simplified text is more general and vague. The simplified text still conveys the core safety information, but the urgency and specificity are weakened.",
+          "original_snippet": "Special Patient Populations Pediatric Patients The pharmacokinetics of isotretinoin were evaluated after single and multiple doses in 38 pediatric patients (12 to 15 years) and 19 adult patients (≥18 ",
+          "simplified_snippet": "Taking Zenatane can cause depression, anxiety, and other mental health problems. Tell your doctor if you experience any of these symptoms.\nZenatane can cause liver damage. Your doctor will monitor you"
+        },
+        {
+          "field": "contraindications",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the safety-critical information from the original, specifically the contraindications for pregnancy and hypersensitivity reactions, although rephrased for readability.",
+          "original_snippet": "CONTRAINDICATIONS Pregnancy: Category X. See Boxed CONTRAINDICATIONS AND WARNINGS . Allergic Reactions Zenatane is contraindicated in patients who are hypersensitive to this medication or to any of it",
+          "simplified_snippet": "Do not take Zenatane if you are pregnant or may become pregnant.\nDo not take Zenatane if you are breastfeeding, as it can pass into breast milk and harm your baby.\nDo not take Zenatane if you have a h"
+        },
+        {
+          "field": "interactions",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text lacks comprehensive information about drug interactions, including vitamin A, micro-dosed progesterone preparations, norethindrone/ethinyl estradiol, St. John's Wort, phenytoin, and systemic corticosteroids, which are all present in the original text.",
+          "original_snippet": "Drug Interactions Drug Interactions Vitamin A: Because of the relationship of Zenatane to vitamin A, patients should be advised against taking vitamin supplements containing vitamin A to avoid additiv",
+          "simplified_snippet": "Do not take Zenatane with tetracycline antibiotics, as it can increase the risk of liver damage.\nDo not take Zenatane with other medications that can cause liver damage, such as valproic acid."
+        }
+      ]
+    },
+    {
+      "drug_name": "CLOZAPINE",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "PRESERVED",
+          "explanation": "All safety-critical information from the original is present in the simplified text, including specific risks, contraindications, and recommendations for dosage modifications and patient monitoring.",
+          "original_snippet": "WARNING: SEVERE NEUTROPENIA; ORTHOSTATIC HYPOTENSION, BRADYCARDIA, AND SYNCOPE; SEIZURE; MYOCARDITIS, PERICARDITIS, AND CARDIOMYOPATHY; INCREASED MORTALITY IN ELDERLY PATIENTS WITH DEMENTIA-RELATED PS",
+          "simplified_snippet": "WARNING: SEVERE NEUTROPENIA; ORTHOSTATIC HYPOTENSION, BRADYCARDIA, AND SYNCOPE; SEIZURE; MYOCARDITIS, PERICARDITIS, AND CARDIOMYOPATHY; INCREASED MORTALITY IN ELDERLY PATIENTS WITH DEMENTIA-RELATED PS"
+        },
+        {
+          "field": "dosage",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the safety-critical information from the original, including the recommended starting dosage and the gradual increase in dose to minimize risk.",
+          "original_snippet": "ecommended starting oral dosage is 12.5 mg once daily or twice daily. ( 2.2 ) If well-tolerated, increase the total daily dosage in increments of 25 mg to 50 mg per day at target dosage of 150 mg to 2",
+          "simplified_snippet": "Take 12.5 mg of Clozapine Orally Disintegrating Tablets once or twice a day. Your doctor will gradually increase your dose and use divided dosing to minimize risk."
+        },
+        {
+          "field": "warnings",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the core safety information from the original, including severe neutropenia, orthostatic hypotension, seizures, and myocarditis, but omits some details and rephrases the warnings for clarity.",
+          "original_snippet": "evere neutropenia: See ( 5.1 ) Gastrointestinal Hypomotility with Severe Complications: Severe gastrointestinal adverse reactions have occurred with the use of clozapine. If constipation is identified",
+          "simplified_snippet": "Severe Neutropenia: Clozapine Orally Disintegrating Tablets can cause severe neutropenia, which increases the risk of serious and fatal infections. Your doctor will check your blood count before start"
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "The contraindication for hypersensitivity to clozapine or any other component of Clozapine ODT is missing in the simplified text, which only lists specific conditions related to neutropenia.",
+          "original_snippet": "lozapine ODT is contraindicated in patients with a history of hypersensitivity to clozapine (e.g., photosensitivity, vasculitis, erythema multiforme, or Stevens-Johnson Syndrome) or any other componen",
+          "simplified_snippet": "Do not take Clozapine Orally Disintegrating Tablets if you have a baseline ANC less than 1500/µL (less than 1000/µL for those with Benign Ethnic Neutropenia).\nDo not take Clozapine Orally Disintegrati"
+        },
+        {
+          "field": "interactions",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text does not mention the specific interactions with CYP1A2 inhibitors, CYP3A4 inducers, CYP2D6 inhibitors, or anticholinergic drugs, which are critical safety information present in the original text.",
+          "original_snippet": "oncomitant use of Strong CYP1A2 Inhibitors : Reduce Clozapine ODT dose to one-third when coadministered with strong CYP1A2 inhibitors (e.g., fluvoxamine, ciprofloxacin, enoxacin). ( 2.7 , 7.1 ) Concom",
+          "simplified_snippet": "Clozapine Orally Disintegrating Tablets may interact with other medications, including antihypertensive medications, and increase the risk of hypotension.\nClozapine Orally Disintegrating Tablets may i"
+        }
+      ]
+    },
+    {
+      "drug_name": "OXYCODONE HYDROCHLORIDE",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains all safety-critical information from the original, including risks of addiction, abuse, and misuse, life-threatening respiratory depression, accidental ingestion, and concomitant use with CNS depressants.",
+          "original_snippet": "WARNING: SERIOUS AND LIFE-THREATENING RISKS FROM USE OF OXYCODONE HYDROCHLORIDE TABLETS WARNING: SERIOUS AND LIFE-THREATENING RISKS FROM USE OF OXYCODONE HYDROCHLORIDE TABLETS See full prescribing inf",
+          "simplified_snippet": "WARNING: Serious and life-threatening risks from use of oxycodone hydrochloride tablets. This medication can cause addiction, abuse, and misuse, which can lead to overdose and death. It can also cause"
+        },
+        {
+          "field": "dosage",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information about dosage, but weakens the urgency and specificity by omitting details about the lowest effective dosage for the shortest duration of time and the importance of individual patient treatment goals.",
+          "original_snippet": "xycodone hydrochloride tablets should be prescribed only by healthcare professionals who are knowledgeable about the use of opioids and how to mitigate the associated risks. ( 2.1 ) Use the lowest eff",
+          "simplified_snippet": "Take 1 tablet every 4 to 6 hours as needed for pain. Do not take more than 4 tablets in 24 hours. Swallow the tablet whole with water. Do not crush, chew, or dissolve the tablet."
+        },
+        {
+          "field": "warnings",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the core safety information from the original, including serious breathing problems, accidental ingestion by children, and risks of concomitant use with other medications. However, some details and specific warnings are omitted.",
+          "original_snippet": "pioid-Induced Hyperalgesia and Allodynia: Opioid-Induced Hyperalgesia (OIH) occurs when opioid analgesic paradoxically causes an increase in pain, or an increase in sensitivity to pain. If OIH is susp",
+          "simplified_snippet": "Serious and life-threatening risks from use of oxycodone hydrochloride tablets.\nSerious breathing problems, especially when first starting or increasing the dose.\nAccidental ingestion by children can "
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text is missing significant respiratory depression as a contraindication, which is a critical safety information present in the original text.",
+          "original_snippet": "xycodone hydrochloride tablets are contraindicated in patients with: Significant respiratory depression [see Warnings and Precautions (5.2) ]. Acute or severe bronchial asthma in an unmonitored settin",
+          "simplified_snippet": "Hypersensitivity to oxycodone or any component of the tablet.\nAcute or severe bronchial asthma in an unmonitored setting or in the absence of resuscitative equipment.\nKnown or suspected paralytic ileu"
+        },
+        {
+          "field": "interactions",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text still conveys the safety-critical information about potential interactions, but it omits specific examples and details, making the urgency and specificity of the warnings less prominent.",
+          "original_snippet": "able 1 includes clinically significant drug interactions with oxycodone hydrochloride tablets. Table 1: Clinically Significant Drug Interactions with Oxycodone Hydrochloride Tablets Inhibitors of CYP3",
+          "simplified_snippet": "Concomitant use with benzodiazepines or other central nervous system (CNS) depressants, including alcohol, may result in profound sedation, respiratory depression, coma, and death.\nConcomitant use wit"
+        }
+      ]
+    },
+    {
+      "drug_name": "ALPRAZOLAM",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the core safety-critical information from the original, including the risks of concomitant use with opioids, abuse, misuse, and addiction, and dependence and withdrawal reactions, albeit in a condensed manner.",
+          "original_snippet": "WARNING: RISKS FROM CONCOMITANT USE WITH OPIOIDS; ABUSE, MISUSE, AND ADDICTION; and DEPENDENCE AND WITHDRAWAL REACTIONS Concomitant use of benzodiazepines and opioids may result in profound sedation, ",
+          "simplified_snippet": "WARNING: Taking Alprazolam with opioids can cause serious breathing problems, coma, and even death. Use with caution and only when necessary. Also, be aware of the risks of addiction, dependence, and "
+        },
+        {
+          "field": "dosage",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information about dosage, but the original's nuanced guidance on titration, maximum dose, and tapering is not present, making the information less specific and less prominent.",
+          "original_snippet": "eneralized Anxiety Disorder : ( 2.1 ) Recommended starting oral dosage is 0.25 mg to 0.5 mg three times daily. Dosage may be increased, at intervals of every 3 to 4 days, to a maximum recommended dail",
+          "simplified_snippet": "Take 0.25 to 0.5 milligrams (mg) of Alprazolam 3 times a day, as needed. Do not take more than 4 mg in a 24-hour period."
+        },
+        {
+          "field": "warnings",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the core safety information from the original, including risks from concomitant use with opioids, abuse, misuse, and addiction, and dependence and withdrawal reactions, albeit in a condensed format.",
+          "original_snippet": "ffects on Driving and Operating Machinery: Patients receiving alprazolam should be cautioned against operating machinery or driving a motor vehicle, as well as avoiding concomitant use of alcohol and ",
+          "simplified_snippet": "Risks from concomitant use with opioids; abuse, misuse, and addiction; and dependence and withdrawal reactions\nRisks from concomitant use with opioids; abuse, misuse, and addiction; and dependence and"
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "Safety-critical information about contraindications, such as strong cytochrome P450 3A (CYP3A) inhibitors and concomitant use, is missing from the simplified text.",
+          "original_snippet": "lprazolam tablets are contraindicated in patients: with known hypersensitivity to alprazolam or other benzodiazepines. Angioedema has been reported [see Adverse Reactions (6.2) ] . taking strong cytoc",
+          "simplified_snippet": "Acute angle-closure glaucoma\nHypersensitivity to alprazolam or other benzodiazepines\nPregnancy (unless absolutely necessary and under close medical supervision)\nBreastfeeding (unless absolutely necess"
+        },
+        {
+          "field": "interactions",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text lacks detailed information about specific drug interactions, such as the effects of CYP3A inhibitors and inducers, and the interactions with digoxin, which are present in the original text.",
+          "original_snippet": "se with Opioids: Increase the risk of respiratory depression. ( 7.1 ) Use with Other CNS Depressants: Produces additive CNS depressant effects. ( 7.1 ) Use with Digoxin: Increase the risk of digoxin t",
+          "simplified_snippet": "Concomitant use with opioids may result in profound sedation, respiratory depression, coma, and death\nUse with MAOIs may cause serious adverse reactions\nUse with other benzodiazepines or sedatives may"
+        }
+      ]
+    },
+    {
+      "drug_name": "DEXTROAMPHETAMINE SACCHARATE, AMPHETAMINE ASPARTATE MONOHYDRATE, DEXTROAMPHETAMINE SULFATE AND AMPHETAMINE SULFATE",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the safety-critical information from the original, including the high potential for abuse and misuse, risk of overdose and death, and the need for proper storage and disposal.",
+          "original_snippet": "WARNING: ABUSE, MISUSE, and ADDICTION Dextroamphetamine saccharate, amphetamine aspartate monohydrate, dextroamphetamine sulfate, and amphetamine sulfate extended-release capsules have a high potentia",
+          "simplified_snippet": "WARNING: This medication has a high potential for abuse and misuse, which can lead to addiction. It can cause overdose and death, especially with higher doses or unapproved methods of administration. "
+        },
+        {
+          "field": "dosage",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text lacks critical dosage information, such as specific dosages for pediatric patients and adults, and dosage adjustments for patients with renal impairment.",
+          "original_snippet": "• Pediatric patients (ages 6 to 17): 10 mg once daily in the morning. Maximum dose for children 6 to 12 years of age is 30 mg once daily. ( 2.2 , 2.3 , 2.4 ) • Adults: 20 mg once daily in the morning.",
+          "simplified_snippet": "Take 1 capsule by mouth once daily in the morning. Swallow the capsule whole with water. Do not crush, chew, or divide the capsule."
+        },
+        {
+          "field": "warnings",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains the core safety information from the original, including serious cardiac disease, psychiatric adverse reactions, and other risks. However, some details and specific warnings are omitted or condensed for brevity.",
+          "original_snippet": "• Risks to Patients with Serious Cardiac Disease: Avoid use in patients with known structural cardiac abnormalities, cardiomyopathy, serious cardiac arrhythmias, coronary artery disease, or other seri",
+          "simplified_snippet": "This medication can cause serious heart problems, including heart attack and stroke. It can also cause sudden death in people with heart problems.\nThis medication can cause serious mental health probl"
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text omits the contraindications related to hypersensitivity to amphetamine, MAOIs, and other safety-critical information present in the original text.",
+          "original_snippet": "extroamphetamine saccharate, amphetamine aspartate monohydrate, dextroamphetamine sulfate, and amphetamine sulfate extended-release capsule administration is contraindicated in patients: • known to be",
+          "simplified_snippet": "Do not take this medication if you have a history of heart problems, including heart attack, stroke, or arrhythmia.\nDo not take this medication if you have a history of mental health problems, includi"
+        },
+        {
+          "field": "interactions",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text lacks critical information about specific interactions, such as the risk of hypertensive crisis with MAOIs, serotonin syndrome with serotonergic drugs, and increased exposure with CYP2D6 inhibitors, which are essential for patient safety.",
+          "original_snippet": "• Alkalinizing agents (GI antacids and urinary): These agents increase blood levels of amphetamine. ( 2.7 , 7.1 ) • Acidifying agents (GI and urinary): These agents reduce blood levels of amphetamine.",
+          "simplified_snippet": "This medication can interact with other medications, including MAOIs, SSRIs, and blood thinners. Tell your doctor about all medications you are taking before taking this medication.\nThis medication ca"
+        }
+      ]
+    },
+    {
+      "drug_name": "DIAZEPAM",
+      "judgments": [
+        {
+          "field": "boxed_warning",
+          "judgment": "PRESERVED",
+          "explanation": "The simplified text retains all safety-critical information from the original, including the risks of concomitant use with opioids, abuse, misuse, and addiction, and dependence and withdrawal reactions. Although some details are omitted, the core safety information remains present and prominent.",
+          "original_snippet": "WARNING: RISKS FROM CONCOMITANT USE WITH OPIOIDS; ABUSE, MISUSE, AND ADDICTION; and DEPENDENCE AND WITHDRAWAL REACTIONS Concomitant use of benzodiazepines and opioids may result in profound sedation, ",
+          "simplified_snippet": "WARNING: Taking DIAZEPAM with opioids can cause serious breathing problems, coma, and even death. We must only use these medications together when absolutely necessary. We will closely monitor you for"
+        },
+        {
+          "field": "dosage",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text lacks critical information about dosage calculation, administration instructions, and treatment frequency, which are essential for safe use of the medication.",
+          "original_snippet": "dminister VALTOCO by the nasal route only. ( 2.3 ) Dosage is dependent on the patient's age and weight. ( 2.2 ) Initial Dose: VALTOCO 5 mg and 10 mg doses are administered as a single spray intranasal",
+          "simplified_snippet": "Take DIAZEPAM as directed by your doctor. The dosage and frequency will be determined by your doctor."
+        },
+        {
+          "field": "warnings",
+          "judgment": "SOFTENED",
+          "explanation": "The simplified text retains the core safety information but softens the urgency and specificity of the original warnings, particularly by removing specific drug names and numeric thresholds, and by omitting some of the original details.",
+          "original_snippet": "epression: Monitor for central nervous system (CNS) depression. May cause an increased CNS-depressant effect when used with alcohol or other CNS depressants. ( 5.4 , 7.2 ) Suicidal Behavior and Ideati",
+          "simplified_snippet": "Risks from concomitant use with opioids; abuse, misuse, and addiction; and dependence and withdrawal reactions\nThe use of benzodiazepines, including DIAZEPAM, exposes users to risks of abuse, misuse, "
+        },
+        {
+          "field": "contraindications",
+          "judgment": "DROPPED",
+          "explanation": "The contraindications listed in the original text are not present in the simplified text, which instead focuses on a different safety concern related to concomitant use of benzodiazepines and opioids.",
+          "original_snippet": "nasal spray is contraindicated in patients with: Known hypersensitivity to diazepam Acute narrow angle glaucoma [see Warnings and Precautions (5.6) ] Hypersensitivity to diazepam. ( 4 ) Acute narrow-a",
+          "simplified_snippet": "Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death."
+        },
+        {
+          "field": "interactions",
+          "judgment": "DROPPED",
+          "explanation": "The simplified text lacks critical information about potential interactions with other drugs, such as CYP2C19 and CYP3A4 inhibitors and inducers, which are present in the original text.",
+          "original_snippet": "2C19 and CYP3A4 Inhibitors: Elimination of diazepam could be decreased with concurrent administration; therefore, adverse reactions with VALTOCO may be increased. ( 7.3 ) Inducers of CYP2C19 and CYP3A",
+          "simplified_snippet": "Concomitant use of benzodiazepines and opioids may result in profound sedation, respiratory depression, coma, and death.\nThe use of benzodiazepines, including DIAZEPAM, exposes users to risks of abuse"
+        }
+      ]
+    }
+  ]
+}

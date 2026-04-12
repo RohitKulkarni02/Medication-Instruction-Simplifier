@@ -1,5 +1,5 @@
 """
-Heuristic comparison: aligned extracted_original vs extracted_simplified.
+Heuristic comparison: aligned extracted original vs extracted simplified (default paths under outputs/).
 
 Flags (heuristic, not clinical truth):
   - DROPPED_FIELD: original has text, simplified is null/empty
@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 from typing import Any
 
@@ -147,12 +148,15 @@ def compare_files(path_original: str, path_simplified: str) -> dict[str, Any]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Compare extracted original vs extracted simplified JSON.")
-    parser.add_argument("--original", default="extracted_original.json", help="Path to extracted_original.json")
-    parser.add_argument("--simplified", default="extracted_simplified.json", help="Path to extracted_simplified.json")
-    parser.add_argument("--output", default="comparison_report.json", help="Write full report JSON here")
+    parser.add_argument("--original", default="outputs/extracted_original.json", help="Path to extracted_original.json")
+    parser.add_argument("--simplified", default="outputs/extracted_simplified.json", help="Path to extracted_simplified.json")
+    parser.add_argument("--output", default="outputs/comparison_report.json", help="Write full report JSON here")
     args = parser.parse_args()
 
     report = compare_files(args.original, args.simplified)
+    out_dir = os.path.dirname(os.path.abspath(args.output))
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2, ensure_ascii=False)
 
