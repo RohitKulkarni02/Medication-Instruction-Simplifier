@@ -64,8 +64,28 @@ outputs/extracted_original.json
 outputs/extracted_simplified.json
 outputs/pipeline.log
 
+# Per-run large JSON (regenerate via run_full_evaluation.sh); keep reports + readability tracked
+outputs/runs/*/simplified_labels.json
+outputs/runs/*/extracted_original.json
+outputs/runs/*/extracted_simplified.json
+
 # Research / paper artifacts under outputs/ are tracked (not ignored):
 #   comparison_report.json, evaluation_report.json, analysis_results.json,
 #   readability.json, manual_validation.json, validation_results.json
 
 data/processed_labels/
+
+#
+# Paper / LaTeX (submitted separately as PDF)
+#
+paper.tex
+checklist.tex
+neurips_2026.sty
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz

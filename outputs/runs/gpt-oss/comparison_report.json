@@ -1,0 +1,681 @@
+{
+  "summary": {
+    "original_records": 25,
+    "simplified_records": 25,
+    "compared_pairs": 25,
+    "unmatched_original": 0,
+    "total_issue_flags": 104
+  },
+  "per_drug": [
+    {
+      "drug_name": "IBUPROFEN",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['1200 mg', '2400 mg', '3200 mg', '4 hours', '400 mg', '6 hours', '600 mg', '800 mg']"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "contraindications",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "ACETAMINOPHEN, DEXTROMETHORPHAN HYDROBROMIDE, DOXYLAMINE SUCCINATE",
+      "issue_count": 2,
+      "issues": [
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['30 ml', '6 hours']"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        }
+      ]
+    },
+    {
+      "drug_name": "DIPHENHYDRAMINE HYDROCHLORIDE",
+      "issue_count": 4,
+      "issues": [
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['10 mg', '100 mg', '150 mg', '24 hours', '25 mg', '300 mg', '400 mg', '5 mg']"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "contraindications",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "LORATADINE",
+      "issue_count": 1,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        }
+      ]
+    },
+    {
+      "drug_name": "OMEPRAZOLE",
+      "issue_count": 4,
+      "issues": [
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['10 mg', '1000 mg', '120 mg', '20 mg', '40 mg', '500 mg', '60 mg', '80 mg']"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "warnings",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "CETIRIZINE HYDROCHLORIDE",
+      "issue_count": 2,
+      "issues": [
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['1 mg', '12 hours', '2.5 mg', '2.5 ml', '5 mg', '5 ml']"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "contraindications",
+          "detail": "substantial original snippet not found in simplified"
+        }
+      ]
+    },
+    {
+      "drug_name": "ACETAMINOPHEN, ASPIRIN AND CAFFEINE",
+      "issue_count": 1,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        }
+      ]
+    },
+    {
+      "drug_name": "NAPROXEN",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "dosage",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "contraindications",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "AMOXICILLIN",
+      "issue_count": 4,
+      "issues": [
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['10 ml', '100 ml', '110 ml', '12 hours', '125 mg', '125 ml', '150 ml', '1750 mg']"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "METFORMIN HYDROCHLORIDE",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "dosage",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "LISINOPRIL",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['0.07 mg', '0.61 mg', '10 mg', '10 ml', '2.5 mg', '24 hours', '30 ml', '40 mg']"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "warnings",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "ATORVASTATIN CALCIUM",
+      "issue_count": 4,
+      "issues": [
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['10 mg', '20 mg', '40 mg', '80 mg']"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "warnings",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "METOPROLOL SUCCINATE",
+      "issue_count": 4,
+      "issues": [
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['1 mg', '100 mg', '12.5 mg', '2 mg', '200 mg', '25 mg', '400 mg', '50 mg']"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "warnings",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "SERTRALINE",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['100 mg', '150 mg', '200 mg', '25 mg', '50 mg']"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "warnings",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "PREDNISONE",
+      "issue_count": 4,
+      "issues": [
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['10 mg', '200 mg', '5 mg', '6 hours', '60 mg', '80 mg']"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "AZITHROMYCIN",
+      "issue_count": 4,
+      "issues": [
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['1.25 ml', '10 mg', '10 ml', '100 mg', '1000 mg', '12 mg', '12.5 ml', '1200 mg']"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "warnings",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "METHOTREXATE",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "dosage",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "contraindications",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "TOFACITINIB",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "dosage",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "WARFARIN",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['0.5 mg', '10 mg', '100 mg', '1639g', '2 mg', '24 hours', '3 mg', '4 hours']"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "interactions",
+          "detail": "substantial original snippet not found in simplified"
+        }
+      ]
+    },
+    {
+      "drug_name": "ISOTRETINOIN",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "dosage",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "contraindications",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "CLOZAPINE",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "POSSIBLE_DOSE_MISMATCH",
+          "field": "dosage",
+          "detail": "tokens in original not in simplified: ['100 mg', '12.5 mg', '150 mg', '225 mg', '24 hours', '25 mg', '450 mg', '50 mg']"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "contraindications",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "OXYCODONE HYDROCHLORIDE",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "dosage",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "interactions",
+          "detail": "substantial original snippet not found in simplified"
+        }
+      ]
+    },
+    {
+      "drug_name": "ALPRAZOLAM",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "dosage",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "warnings",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "interactions",
+          "detail": "substantial original snippet not found in simplified"
+        }
+      ]
+    },
+    {
+      "drug_name": "DEXTROAMPHETAMINE SACCHARATE, AMPHETAMINE ASPARTATE MONOHYDRATE, DEXTROAMPHETAMINE SULFATE AND AMPHETAMINE SULFATE",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "dosage",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "warnings",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "interactions",
+          "detail": "original present, simplified empty"
+        }
+      ]
+    },
+    {
+      "drug_name": "DIAZEPAM",
+      "issue_count": 5,
+      "issues": [
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "boxed_warning",
+          "detail": "substantial original snippet not found in simplified"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "dosage",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "warnings",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "DROPPED_FIELD",
+          "field": "contraindications",
+          "detail": "original present, simplified empty"
+        },
+        {
+          "type": "POSSIBLE_CONTENT_LOSS",
+          "field": "interactions",
+          "detail": "substantial original snippet not found in simplified"
+        }
+      ]
+    }
+  ]
+}

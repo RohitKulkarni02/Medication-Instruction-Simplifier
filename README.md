@@ -1,262 +1,141 @@
-# Medication-Instruction-Simplifier
+# Lost in Simplification: Detecting Safety-Critical Errors in LLM-Generated Medication Instructions
 
-**CS6180 · Group 14**
+This repository contains the code and frozen evaluation artifacts for our NeurIPS 2026–style paper on simplifying FDA drug labels with open-weight LLMs. The pipeline pulls structured labels from [openFDA](https://open.fda.gov/), runs simplification (Groq or OpenAI), extracts safety-critical fields, compares originals to simplifications with heuristics, scores preservation with an LLM judge, aggregates results, and computes readability metrics.
 
-End-to-end tooling to fetch FDA drug labels from [openFDA](https://open.fda.gov/), optionally simplify them with an LLM (or a local reformatting path), extract structured safety sections, and compare original vs simplified extractions with lightweight heuristics.
+## Authors
 
----
+- **Rohit Kulkarni** — co-author (pipeline, evaluation, writing).
+- **Atharv Talnikar** — co-author (experiments, reproducibility scripts, paper tables).
+- **Christopher Huitt** — co-author (analysis, writing).
 
-## Overview
+All authors contributed to implementation and the manuscript; roles above are approximate.
 
-| Stage | Script | Role |
-|--------|--------|------|
-| Ingest | `scripts/ingest_data.py` | Query openFDA, normalize label fields, export JSON or CSV |
-| Simplify | `scripts/simplify_labels.py` | Produce patient-friendly text and structured fields (local, OpenAI, or Groq) |
-| Extract | `scripts/extract_labels.py` | Map raw or simplified records into a unified safety-field schema |
-| Compare | `scripts/compare_extractions.py` | Flag possible drops / dose mismatches / content loss between extractions |
-| Orchestrate | `scripts/run_pipeline.py` | Run ingest → simplify → extract → compare in one command |
+## Repository layout
 
-Supporting modules: `scripts/prompt_templates.py` (prompt guardrails and JSON shape), `scripts/text_section_extract.py` (rule-based parsing of `simplified_text`).
-
-Sample input: `data/raw_labels/sample_labels.json`.
-
-**Outputs:** full-pipeline JSON artifacts (simplified labels, extracted rows, comparison / evaluation / analysis reports, pipeline log) default to the **`outputs/`** directory at repo root (gitignored except small fixtures under `outputs/simplified_labels/`).
-
----
-
-## Requirements
-
-- **Python 3.11+** (3.13 used in development is fine)
-- Standard library for ingest. For **OpenAI** or **Groq** simplification, install dependencies (Groq uses the same OpenAI-compatible client):
-
-  ```bash
-  pip install -r requirements.txt
-  # or: pip install openai
-  ```
-
----
-
-## Secrets and configuration
-
-- **Never commit** API keys or paste them into issues/chat. Use a **local** `.env` file (keep it gitignored).
-- Recommended variables:
-  - **`OPENFDA_API_KEY`** — optional; higher openFDA rate limits (`scripts/ingest_data.py` loads `.env` from the repo root automatically).
-  - **`OPENAI_API_KEY`** — for `--provider openai` on simplification.
-  - **`OPENAI_MODEL`** — optional override (default `gpt-4o-mini`).
-  - **`GROQ_API_KEY`** — for `--provider groq` (same SDK; base URL `https://api.groq.com/openai/v1`).
-  - **`GROQ_SIMPLIFY_MODEL`** — optional Groq model id (default `llama-3.1-8b-instant`). Override with `--model`.
-  - **`GROQ_OPENAI_BASE_URL`** — optional; only if Groq changes the compatible endpoint.
-  - **`SIMPLIFY_MAX_LLM_LABEL_CHARS`** — optional cap on label characters sent to the LLM (default `8000`). Lower if Groq returns “request too large” on free tier; raise for OpenAI.
-
-`scripts/simplify_labels.py` loads `.env` from the repo root (like ingest). Use `--max-llm-chars` to override per run.
-- If a key was ever exposed, **revoke it** in the provider dashboard and rotate.
-
----
-
-## 1. Data ingestion (openFDA)
-
-Default behavior fetches a **curated list** of generic drugs. Other modes: single drug, bulk unfiltered pagination, or re-export from existing JSON.
-
-```bash
-# Curated list → data/drug_labels.json
-python3 scripts/ingest_data.py --output drug_labels.json
-
-# One generic name
-python3 scripts/ingest_data.py --drug ibuprofen --output drug_labels.json
-
-# Bulk (unfiltered), first N labels
-python3 scripts/ingest_data.py --bulk 500 --output drug_labels.json
+```text
+.
+├── paper.tex                 # Main manuscript (NeurIPS 2026 preprint option)
+├── checklist.tex             # NeurIPS paper checklist (required for submission)
+├── neurips_2026.sty          # NeurIPS 2026 style (from official formatting zip)
+├── requirements.txt
+├── .gitignore                # Ignores secrets, venv, large/regenerable JSON
+├── .env                      # Not in git: create locally (see Setup)
+├── scripts/
+│   ├── ingest_data.py
+│   ├── simplify_labels.py
+│   ├── extract_labels.py
+│   ├── compare_extractions.py
+│   ├── evaluate_labels.py
+│   ├── analyze_results.py
+│   ├── validate_judge.py
+│   ├── compute_readability.py
+│   ├── run_pipeline.py
+│   ├── run_full_evaluation.sh
+│   ├── generate_paper_tables.py
+│   └── test_*.py
+├── data/
+│   └── raw_labels/sample_labels.json   # Small fixture
+├── data/drug_labels.json               # Gitignored; produced by ingest
+└── outputs/
+    ├── paper_tables.json               # Aggregated numbers for tables / TikZ
+    ├── manual_validation.json          # Human labels for judge validation
+    ├── validation_results.json         # Output of validate_judge.py
+    ├── runs/<run_name>/                # One directory per simplifier run
+    │   ├── evaluation_report.json      # Tracked (small)
+    │   ├── analysis_results.json
+    │   ├── comparison_report.json
+    │   ├── readability.json
+    │   ├── simplified_labels.json      # Gitignored (large)
+    │   ├── extracted_original.json     # Gitignored
+    │   └── extracted_simplified.json   # Gitignored
+    └── evaluation_report.json          # Legacy single-run copies (older layout)
 ```
 
-**CSV export** — use a `.csv` path or `--format csv`:
+Canonical artifacts for the paper’s two models live under `outputs/runs/gpt-oss/` and `outputs/runs/llama-70b/`. The JSON files at `outputs/` root (without `runs/`) are from an earlier single-directory layout and are kept for reference.
 
-```bash
-python3 scripts/ingest_data.py --output drug_labels.csv
-python3 scripts/ingest_data.py --from-json data/drug_labels.json --output drug_labels.csv --format csv
-```
+## Setup
 
-`--from-json` performs export only (no API calls). If `OPENFDA_API_KEY` is set, the first request logs that authenticated (higher-limit) access is enabled; the key is never printed.
+1. Clone the repository and enter the project root.
 
----
-
-## 2. Label simplification
-
-Prompt design enforces **safety preservation**: dosage, boxed warning, warnings, contraindications, and interactions must not be dropped, softened incorrectly, or fabricated. Output is structured JSON plus a combined `simplified_text`.
-
-**Self-test** (no API key; uses sample labels):
-
-```bash
-python3 scripts/simplify_labels.py --self-test
-```
-
-**Local provider** (deterministic reformat; no API):
-
-```bash
-python3 scripts/simplify_labels.py \
-  --provider local \
-  --input data/raw_labels/sample_labels.json \
-  --output outputs/simplified_labels.json \
-  --pretty
-```
-
-**OpenAI** (install `openai`, set `OPENAI_API_KEY`):
-
-```bash
-python3 scripts/simplify_labels.py \
-  --provider openai \
-  --model gpt-4o-mini \
-  --input data/raw_labels/sample_labels.json \
-  --output outputs/simplified_labels.json \
-  --pretty
-```
-
-**Groq** (install `openai`, set `GROQ_API_KEY`; uses OpenAI-compatible chat completions. Pick any model your Groq account supports, e.g. `llama-3.1-8b-instant`):
-
-```bash
-python3 scripts/simplify_labels.py \
-  --provider groq \
-  --model llama-3.1-8b-instant \
-  --input data/raw_labels/sample_labels.json \
-  --output outputs/simplified_labels.json \
-  --pretty
-```
-
-Typical pipeline input is ingest output, e.g. `data/drug_labels.json`, as a JSON array of records.
-
-### Batch: 25 drugs, two Groq models, readability
-
-For the course paper / LLM judge, generate **two** simplified corpora (same **`GROQ_API_KEY`**, two different Groq-hosted models) plus **readability** JSON under `outputs/runs/` (gitignored — copy artifacts out for submission). **No `OPENAI_API_KEY`:** run 1 uses OpenAI’s **GPT-OSS** open-weight model on Groq (`openai/gpt-oss-120b`), run 2 uses **Llama** on Groq — both are normal Groq chat model IDs.
-
-1. Ingest the curated list (25 generics) if you do not already have `data/drug_labels.json`:
+2. Create a virtual environment and install dependencies:
 
    ```bash
-   python3 scripts/ingest_data.py --output drug_labels.json
+   python3 -m venv .venv
+   source .venv/bin/activate   # Windows: .venv\Scripts\activate
+   pip install -r requirements.txt
    ```
 
-2. Run **two Groq simplifications** back-to-back, then readability for each:
+3. Create a `.env` file in the **repository root** (it is gitignored). Required for the full evaluation script and Groq-backed steps:
 
-   ```bash
-   pip install -r requirements.txt   # includes textstat
-   python3 scripts/run_dual_model_simplification.py \
-     --ingest data/drug_labels.json \
-     --sleep-ms 2500 \
-     --max-llm-chars 5000
-   ```
+   - **`GROQ_API_KEY`** — simplification when using `--provider groq`, and the LLM judge (Groq) in `run_full_evaluation.sh`.
 
-   Defaults: run 1 = **`openai/gpt-oss-120b`** (GPT-class on Groq; or `GROQ_SIMPLIFY_MODEL` / `--groq-model-1` if set). Run 2 = **`llama-3.3-70b-versatile`** (`GROQ_SIMPLIFY_MODEL_2` / `--groq-model-2`). Cheaper/faster GPT-class on Groq: `openai/gpt-oss-20b`. If your `.env` still sets `GROQ_SIMPLIFY_MODEL` to a Llama id, run 1 will use that unless you unset it or pass `--groq-model-1 openai/gpt-oss-120b`. Outputs:
+   Optional:
 
-   - `outputs/runs/groq_gpt_oss/simplified_labels.json`, `meta.json`, `readability.json`
-   - `outputs/runs/groq_llama/simplified_labels.json`, `meta.json`, `readability.json`
+   - **`OPENFDA_API_KEY`** — higher rate limits for `scripts/ingest_data.py` (the script loads `.env` from the repo root automatically).
+   - **`OPENAI_API_KEY`** — if you use `--provider openai` for simplification.
+   - **`JUDGE_MODEL`** — override judge default (`llama-3.1-8b-instant`) used by `run_full_evaluation.sh`.
 
-   Override: `--groq-model-1 ...`, `--groq-model-2 ...`, folder names `--out-label-1` / `--out-label-2`. Skip one run: `--skip-1` / `--skip-2`. To refresh readability only, run `compute_readability.py` with the same `--ingest` and `--simplified` paths.
+If this repo sits under a parent folder that already has a `.env` (e.g. `GENAI/.env`), `run_full_evaluation.sh` sources the repo `.env` first, then `../.env`.
 
-3. **Readability only** (any pair of files):
+## Full pipeline (one simplifier run)
 
-   ```bash
-   python3 scripts/compute_readability.py \
-     --ingest data/drug_labels.json \
-     --simplified path/to/simplified_labels.json \
-     --output path/to/readability.json
-   ```
-
-**LLM judge taxonomy** (shared with `evaluate_labels.py`): `scripts/judge_taxonomy.py` defines **PRESERVED / SOFTENED / DROPPED**.
-
----
-
-## 3. Structured extraction
-
-Produces aligned JSON for **original** (openFDA-shaped) or **simplified** records.
-
-**From original labels:**
+From the repo root, after `data/drug_labels.json` exists (run ingest once if missing):
 
 ```bash
-python3 scripts/extract_labels.py --source original --input data/drug_labels.json --output outputs/extracted_original.json
+chmod +x scripts/run_full_evaluation.sh
+./scripts/run_full_evaluation.sh <run_name> <provider> <model>
 ```
 
-**From simplified labels** (structured JSON fields):
+Examples matching the committed run directories:
 
 ```bash
-python3 scripts/extract_labels.py --source simplified --input outputs/simplified_labels.json --output outputs/extracted_simplified.json
+./scripts/run_full_evaluation.sh gpt-oss groq openai/gpt-oss-120b
+./scripts/run_full_evaluation.sh llama-70b groq llama-3.3-70b-versatile
 ```
 
-**Simplified modes** (`--simplified-mode`):
+Artifacts are written to `outputs/runs/<run_name>/`. Large intermediates (`simplified_labels.json`, `extracted_*.json`) are gitignored; commit the evaluation, comparison, analysis, and readability JSON if you need to snapshot a new run.
 
-- **`structured`** (default): read `dosage`, `warnings`, etc. from JSON fields.
-- **`from_text`**: parse **only** `simplified_text` section headings.
-- **`hybrid`**: structured first, fill gaps from `simplified_text`.
+## Paper tables JSON
+
+From the repo root (requires both runs to have `evaluation_report.json`, `comparison_report.json`, and `readability.json`):
 
 ```bash
-python3 scripts/extract_labels.py --source simplified --input outputs/simplified_labels.json \
-  --output outputs/extracted_simplified_from_text.json --simplified-mode from_text
+python scripts/generate_paper_tables.py \
+  --run1 outputs/runs/gpt-oss \
+  --label1 "GPT-OSS-120B" \
+  --run2 outputs/runs/llama-70b \
+  --label2 "Llama-3.3-70B" \
+  --output outputs/paper_tables.json
 ```
 
----
-
-## 4. Compare extractions
-
-Heuristic report (not clinical validation): e.g. dropped fields, possible dose token mismatches, long-prefix content loss.
-
-```bash
-python3 scripts/compare_extractions.py \
-  --original outputs/extracted_original.json \
-  --simplified outputs/extracted_simplified.json \
-  --output outputs/comparison_report.json
-```
-
----
-
-## 5. One-command pipeline
-
-From repo root — **ingest** one generic name, **simplify**, **extract**, **compare**:
-
-```bash
-python3 scripts/run_pipeline.py --drug ibuprofen --simplify-provider local
-```
-
-With OpenAI (set `OPENAI_API_KEY`):
-
-```bash
-python3 scripts/run_pipeline.py --drug ibuprofen --simplify-provider openai
-```
-
-With Groq (set `GROQ_API_KEY`; optional `--simplify-model ...`):
-
-```bash
-python3 scripts/run_pipeline.py --drug ibuprofen --simplify-provider groq --simplify-model llama-3.1-8b-instant
-```
-
-Skip re-fetch if `data/drug_labels.json` is already present:
-
-```bash
-python3 scripts/run_pipeline.py --skip-ingest --simplify-provider local
-```
-
-Also run text-only simplified extraction and a second report:
-
-```bash
-python3 scripts/run_pipeline.py --drug ibuprofen --simplify-provider local --extract-text
-```
-
----
+`--run1` is the primary run for judge/heuristic tables and the scatter coordinates.
 
 ## Tests
 
 ```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install pytest openai   # openai only if you run OpenAI-backed tests/code paths
-python3 -m pytest scripts/ -v
+python -m pytest scripts/ -q
 ```
 
-`conftest.py` adds `scripts/` to `sys.path` so tests can import pipeline modules.
+## Key results (paper-aligned)
 
----
+- Across 25 drugs (three risk tiers), **38.7%** of safety-critical fields are judged **preserved** after simplification (primary run, GPT-OSS-120B).
+- **Contraindications** and **drug interactions** are the weakest sections (judge-assigned drop rates **81.82%** and **90.48%** respectively on the primary run).
+- **High-risk / controlled** medications show lower preservation (**28.9%** of fields preserved) than **simple OTC** drugs (**65.4%**).
+- **Readability** improves by roughly **2.6–4.1** Flesch–Kincaid grade levels depending on model, but improvement does **not** track safety preservation; manual validation of the judge shows **~60%** agreement with Cohen’s **κ ≈ 0.27**.
 
-## Generated artifacts
+## Manual validation of the LLM judge
 
-Large or local outputs (JSON/CSV from runs, logs, `outputs/`, etc.) are listed in **`.gitignore`**. Prefer committing **source** and **small fixtures** (e.g. `data/raw_labels/sample_labels.json`), not full fetched corpora or secrets.
+`manual_validation.json` must be a **JSON array** of objects with `drug_name`, `field`, `human_judgment` (`PRESERVED`, `SOFTENED`, or `DROPPED`), and optional `reasoning`. The repository includes [`outputs/manual_validation.json`](outputs/manual_validation.json) as a reference.
 
----
+Compare human labels to a run’s `evaluation_report.json` and write metrics:
 
-## License / disclaimer
+```bash
+python scripts/validate_judge.py \
+  --human outputs/manual_validation.json \
+  --judge outputs/runs/gpt-oss/evaluation_report.json \
+  --output outputs/validation_results.json
+```
 
-This project is for **research and coursework**. It is **not** medical advice. Do not use outputs as a substitute for professional labeling, prescribing, or clinical decision-making.
+## LaTeX
+
+`paper.tex` uses the **NeurIPS 2026** template (`\usepackage[preprint]{neurips_2026}`). The repo includes **`neurips_2026.sty`** and **`checklist.tex`** from the official “Formatting Instructions for NeurIPS 2026” archive so a standard `pdflatex`/`latexmk` build can find them in the working directory. The checklist is included after the references via `\input{checklist.tex}` and does not count toward the page limit.
