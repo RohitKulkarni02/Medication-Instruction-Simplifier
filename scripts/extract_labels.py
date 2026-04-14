@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from collections import Counter
 
 from text_section_extract import extract_sections_from_simplified_text, merge_structured_and_text
@@ -147,12 +148,12 @@ def main() -> int:
     args = parser.parse_args()
 
     if args.source == "original":
-        input_file = args.input or "drug_labels.json"
-        output_file = args.output or "extracted_original.json"
+        input_file = args.input or "data/drug_labels.json"
+        output_file = args.output or "outputs/extracted_original.json"
         extractor = extract_original
     else:
-        input_file = args.input or "simplified_labels.json"
-        output_file = args.output or "extracted_simplified.json"
+        input_file = args.input or "outputs/simplified_labels.json"
+        output_file = args.output or "outputs/extracted_simplified.json"
         mode = getattr(args, "simplified_mode", "structured")
         if mode == "from_text":
             extractor = extract_simplified_from_text_only
@@ -167,6 +168,10 @@ def main() -> int:
 
     print(f"Extracting {len(data)} records (source: {args.source})...")
     results = extractor(data)
+
+    out_dir = os.path.dirname(os.path.abspath(output_file))
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
 
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)

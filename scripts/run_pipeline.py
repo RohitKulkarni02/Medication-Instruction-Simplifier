@@ -1,5 +1,5 @@
 """
-One-command orchestrator: ingest -> simplify -> extract (structured [+ text]) -> compare.
+One-command orchestrator: ingest -> simplify -> extract (structured [+ text]) -> compare [-> evaluate].
 
 Run from repo root:
   python3 scripts/run_pipeline.py --drug ibuprofen
@@ -57,6 +57,29 @@ def main() -> int:
         action="store_true",
         help="Also run simplified extraction from simplified_text only; write comparison_text report.",
     )
+    parser.add_argument(
+        "--evaluate",
+        action="store_true",
+        help="After compare: run evaluate_labels.py (LLM judge; requires API keys for --evaluate-provider).",
+    )
+    parser.add_argument(
+        "--evaluate-provider",
+        choices=["openai", "groq"],
+        default="groq",
+        help="Provider for evaluate_labels.py (default groq).",
+    )
+    parser.add_argument("--evaluate-model", default=None, help="Model id for judge (optional; uses script defaults).")
+    parser.add_argument(
+        "--evaluate-output",
+        default="outputs/evaluation_report.json",
+        help="Output path for evaluation_report.json (under outputs/ unless absolute).",
+    )
+    parser.add_argument(
+        "--evaluate-delay",
+        type=float,
+        default=1.0,
+        help="Seconds between judge API calls (forwarded to evaluate_labels.py --delay).",
+    )
     args = parser.parse_args()
 
     os.chdir(ROOT)
@@ -72,7 +95,7 @@ def main() -> int:
         "--input",
         "data/drug_labels.json",
         "--output",
-        "simplified_labels.json",
+        "outputs/simplified_labels.json",
         "--pretty",
     ]
     if args.simplify_model:
@@ -92,7 +115,7 @@ def main() -> int:
             "--input",
             "data/drug_labels.json",
             "--output",
-            "extracted_original.json",
+            "outputs/extracted_original.json",
         ]
     )
     run_step(
@@ -102,9 +125,9 @@ def main() -> int:
             "--source",
             "simplified",
             "--input",
-            "simplified_labels.json",
+            "outputs/simplified_labels.json",
             "--output",
-            "extracted_simplified.json",
+            "outputs/extracted_simplified.json",
             "--simplified-mode",
             "structured",
         ]
@@ -114,13 +137,32 @@ def main() -> int:
             _py(),
             "scripts/compare_extractions.py",
             "--original",
-            "extracted_original.json",
+            "outputs/extracted_original.json",
             "--simplified",
-            "extracted_simplified.json",
+            "outputs/extracted_simplified.json",
             "--output",
-            "comparison_report.json",
+            "outputs/comparison_report.json",
         ]
     )
+
+    if args.evaluate:
+        ev_cmd = [
+            _py(),
+            "scripts/evaluate_labels.py",
+            "--original",
+            "outputs/extracted_original.json",
+            "--simplified",
+            "outputs/extracted_simplified.json",
+            "--output",
+            args.evaluate_output,
+            "--provider",
+            args.evaluate_provider,
+            "--delay",
+            str(args.evaluate_delay),
+        ]
+        if args.evaluate_model:
+            ev_cmd.extend(["--model", args.evaluate_model])
+        run_step(ev_cmd)
 
     if args.extract_text:
         run_step(
@@ -130,9 +172,9 @@ def main() -> int:
                 "--source",
                 "simplified",
                 "--input",
-                "simplified_labels.json",
+                "outputs/simplified_labels.json",
                 "--output",
-                "extracted_simplified_from_text.json",
+                "outputs/extracted_simplified_from_text.json",
                 "--simplified-mode",
                 "from_text",
             ]
@@ -142,19 +184,21 @@ def main() -> int:
                 _py(),
                 "scripts/compare_extractions.py",
                 "--original",
-                "extracted_original.json",
+                "outputs/extracted_original.json",
                 "--simplified",
-                "extracted_simplified_from_text.json",
+                "outputs/extracted_simplified_from_text.json",
                 "--output",
-                "comparison_report_text_only.json",
+                "outputs/comparison_report_text_only.json",
             ]
         )
 
     print("\nDone. Outputs under:", ROOT)
-    print("  data/drug_labels.json, simplified_labels.json")
-    print("  extracted_original.json, extracted_simplified.json, comparison_report.json")
+    print("  data/drug_labels.json, outputs/simplified_labels.json")
+    print("  outputs/extracted_original.json, outputs/extracted_simplified.json, outputs/comparison_report.json")
+    if args.evaluate:
+        print(f"  {args.evaluate_output} (LLM judge)")
     if args.extract_text:
-        print("  extracted_simplified_from_text.json, comparison_report_text_only.json")
+        print("  outputs/extracted_simplified_from_text.json, outputs/comparison_report_text_only.json")
     return 0
 
 

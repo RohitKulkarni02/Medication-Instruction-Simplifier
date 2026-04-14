@@ -80,10 +80,13 @@ CURATED_DRUGS = [
     "diazepam",
 ]
 
+_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+_PIPELINE_LOG = os.path.join(_ROOT, "outputs", "pipeline.log")
+os.makedirs(os.path.dirname(_PIPELINE_LOG), exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[logging.FileHandler("pipeline.log"), logging.StreamHandler()],
+    handlers=[logging.FileHandler(_PIPELINE_LOG), logging.StreamHandler()],
 )
 logger = logging.getLogger(__name__)
 

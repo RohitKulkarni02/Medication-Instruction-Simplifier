@@ -1,0 +1,131 @@
+{
+  "schema_version": "1",
+  "evaluation_path": "outputs/runs/llama-70b/evaluation_report.json",
+  "comparison_path": "outputs/runs/llama-70b/comparison_report.json",
+  "table1_by_field": [
+    {
+      "field": "boxed_warning",
+      "total_judgments": 14,
+      "preserved": 14,
+      "preserved_pct": 100.0,
+      "softened": 0,
+      "softened_pct": 0.0,
+      "dropped": 0,
+      "dropped_pct": 0.0,
+      "error": 0,
+      "error_pct": 0.0
+    },
+    {
+      "field": "dosage",
+      "total_judgments": 25,
+      "preserved": 17,
+      "preserved_pct": 68.0,
+      "softened": 0,
+      "softened_pct": 0.0,
+      "dropped": 8,
+      "dropped_pct": 32.0,
+      "error": 0,
+      "error_pct": 0.0
+    },
+    {
+      "field": "warnings",
+      "total_judgments": 24,
+      "preserved": 10,
+      "preserved_pct": 41.67,
+      "softened": 7,
+      "softened_pct": 29.17,
+      "dropped": 7,
+      "dropped_pct": 29.17,
+      "error": 0,
+      "error_pct": 0.0
+    },
+    {
+      "field": "contraindications",
+      "total_judgments": 22,
+      "preserved": 3,
+      "preserved_pct": 13.64,
+      "softened": 1,
+      "softened_pct": 4.55,
+      "dropped": 18,
+      "dropped_pct": 81.82,
+      "error": 0,
+      "error_pct": 0.0
+    },
+    {
+      "field": "interactions",
+      "total_judgments": 21,
+      "preserved": 2,
+      "preserved_pct": 9.52,
+      "softened": 0,
+      "softened_pct": 0.0,
+      "dropped": 19,
+      "dropped_pct": 90.48,
+      "error": 0,
+      "error_pct": 0.0
+    }
+  ],
+  "table2_by_category": [
+    {
+      "category": "Simple OTC",
+      "drugs_in_category": 8,
+      "total_judgments": 26,
+      "preserved": 16,
+      "preserved_pct": 61.54,
+      "softened": 3,
+      "softened_pct": 11.54,
+      "dropped": 7,
+      "dropped_pct": 26.92,
+      "error": 0,
+      "error_pct": 0.0
+    },
+    {
+      "category": "Common Rx",
+      "drugs_in_category": 8,
+      "total_judgments": 35,
+      "preserved": 11,
+      "preserved_pct": 31.43,
+      "softened": 1,
+      "softened_pct": 2.86,
+      "dropped": 23,
+      "dropped_pct": 65.71,
+      "error": 0,
+      "error_pct": 0.0
+    },
+    {
+      "category": "High-Risk/Controlled",
+      "drugs_in_category": 8,
+      "total_judgments": 40,
+      "preserved": 18,
+      "preserved_pct": 45.0,
+      "softened": 3,
+      "softened_pct": 7.5,
+      "dropped": 19,
+      "dropped_pct": 47.5,
+      "error": 0,
+      "error_pct": 0.0
+    },
+    {
+      "category": "Uncategorized",
+      "drugs_in_category": 1,
+      "total_judgments": 5,
+      "preserved": 1,
+      "preserved_pct": 20.0,
+      "softened": 1,
+      "softened_pct": 20.0,
+      "dropped": 3,
+      "dropped_pct": 60.0,
+      "error": 0,
+      "error_pct": 0.0
+    }
+  ],
+  "table3_heuristic_vs_judge": {
+    "pairs_with_both_heuristic_and_judge": 106,
+    "agreement_heuristic_flagged_and_judge_softened_or_dropped": 60,
+    "false_alarm_heuristic_flagged_judge_preserved": 42,
+    "heuristic_miss_judge_softened_or_dropped": 0,
+    "both_clear_heuristic_ok_judge_preserved": 4,
+    "heuristic_flagged_judge_error": 0,
+    "heuristic_clear_judge_error": 0,
+    "total_pairs_used_in_agreement_matrix": 106
+  }
+}
