@@ -17,6 +17,7 @@ All authors contributed to implementation and the manuscript; roles above are ap
 ├── requirements.txt
 ├── .gitignore                # Ignores secrets, venv, large/regenerable JSON
 ├── .env                      # Not in git: create locally (see Setup)
+├── paper.pdf                 # Final paper (NeurIPS 2026 format)
 ├── scripts/
 │   ├── ingest_data.py
 │   ├── simplify_labels.py
