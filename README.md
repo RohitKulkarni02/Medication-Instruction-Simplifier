@@ -14,9 +14,6 @@ All authors contributed to implementation and the manuscript; roles above are ap
 
 ```text
 .
-├── paper.tex                 # Main manuscript (NeurIPS 2026 preprint option)
-├── checklist.tex             # NeurIPS paper checklist (required for submission)
-├── neurips_2026.sty          # NeurIPS 2026 style (from official formatting zip)
 ├── requirements.txt
 ├── .gitignore                # Ignores secrets, venv, large/regenerable JSON
 ├── .env                      # Not in git: create locally (see Setup)
@@ -34,8 +31,8 @@ All authors contributed to implementation and the manuscript; roles above are ap
 │   ├── generate_paper_tables.py
 │   └── test_*.py
 ├── data/
+│   ├── drug_labels.json              # Frozen ground truth (force-tracked)
 │   └── raw_labels/sample_labels.json   # Small fixture
-├── data/drug_labels.json               # Gitignored; produced by ingest
 └── outputs/
     ├── paper_tables.json               # Aggregated numbers for tables / TikZ
     ├── manual_validation.json          # Human labels for judge validation
@@ -135,7 +132,3 @@ python scripts/validate_judge.py \
   --judge outputs/runs/gpt-oss/evaluation_report.json \
   --output outputs/validation_results.json
 ```
-
-## LaTeX
-
-`paper.tex` uses the **NeurIPS 2026** template (`\usepackage[preprint]{neurips_2026}`). The repo includes **`neurips_2026.sty`** and **`checklist.tex`** from the official “Formatting Instructions for NeurIPS 2026” archive so a standard `pdflatex`/`latexmk` build can find them in the working directory. The checklist is included after the references via `\input{checklist.tex}` and does not count toward the page limit.
