@@ -1,8 +1,9 @@
 # Runtime: Groq and OpenAI simplification use the OpenAI-compatible client.
-openai>=1.0.0
+# (Pinned to versions in .venv — refresh after upgrading the venv.)
+openai==2.31.0
 
-# Readability metrics (Rohit: original vs simplified)
-textstat>=0.7.0
+# Readability metrics (original vs simplified); pulls nltk for syllable counts.
+textstat==0.7.13
 
-# Optional: tests
-pytest>=8.0.0
+# Tests
+pytest==9.0.3
